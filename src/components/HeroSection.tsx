@@ -162,11 +162,11 @@ export function HeroSection() {
 
           {/* Logo slider */}
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-            <div className="text-center">
-              <p className="text-sm font-medium text-muted-foreground">
-                Powering the best teams
+            <div className="flex flex-col items-center gap-8 sm:flex-row sm:gap-12">
+              <p className="shrink-0 text-center text-sm font-medium text-muted-foreground sm:text-left">
+                Powering the best<br className="hidden sm:block" /> teams
               </p>
-              <div className="relative mt-8">
+              <div className="relative w-full overflow-hidden">
                 <InfiniteSlider gap={24} duration={30}>
                   {[1,2,3,4,5,6,1,2].map((n, i) => (
                     <div key={i} className="flex items-center">
