@@ -55,59 +55,57 @@ const HeroHeader = () => {
               : 'border-white/5 bg-gray-950/40 backdrop-blur-md'
           )}
         >
-          <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0">
-            <div className="flex w-full items-center justify-between lg:w-auto">
-              <a href="/" aria-label="home" className="flex items-center space-x-2">
-                <Logo className="text-white" />
-              </a>
+          <div className="relative flex items-center justify-between">
+            <a href="/" aria-label="home" className="flex shrink-0 items-center space-x-2">
+              <Logo className="text-white" />
+            </a>
 
-              <button
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-              >
-                <Menu className={cn('h-6 w-6 text-white transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
-                <X className={cn('absolute inset-0 m-auto h-6 w-6 text-white transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
-              </button>
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setMenuState(!menuState)}
+              aria-label={menuState ? 'Close Menu' : 'Open Menu'}
+              className="relative z-20 -m-2.5 block cursor-pointer p-2.5 lg:hidden"
+            >
+              <Menu className={cn('h-6 w-6 text-white transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
+              <X className={cn('absolute inset-0 m-auto h-6 w-6 text-white transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
+            </button>
 
-              <div
-                className={cn(
-                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-white/10 bg-gray-950 p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
-                  menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
-                )}
-              >
-                <div className="space-y-6">
-                  {menuItems.map((item) => (
-                    <div key={item.name}>
-                      <a href={item.href} className="block text-lg text-white hover:text-white/70" onClick={() => setMenuState(false)}>
-                        <span>{item.name}</span>
-                      </a>
-                    </div>
-                  ))}
-                </div>
+            {/* Mobile menu */}
+            <div
+              className={cn(
+                'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-white/10 bg-gray-950 p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
+                menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
+              )}
+            >
+              <div className="space-y-6">
+                {menuItems.map((item) => (
+                  <div key={item.name}>
+                    <a href={item.href} className="block text-lg text-white hover:text-white/70" onClick={() => setMenuState(false)}>
+                      <span>{item.name}</span>
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-between">
-              <div className="mx-auto">
-                <ul className="flex gap-8 text-sm">
-                  {menuItems.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="block text-white/70 transition-colors duration-300 hover:text-white">
-                        <span>{item.name}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white/10 hover:text-white" asChild>
-                  <a href="#">Login</a>
-                </Button>
-                <Button size="sm" className="bg-white text-gray-950 hover:bg-white/90" asChild>
-                  <a href="#waitlist">Sign Up</a>
-                </Button>
-              </div>
+            {/* Desktop nav */}
+            <ul className="hidden lg:flex lg:items-center lg:gap-8 lg:text-sm">
+              {menuItems.map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-white/70 transition-colors duration-300 hover:text-white">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="hidden lg:flex lg:items-center lg:gap-2">
+              <Button variant="ghost" size="sm" className="text-white hover:bg-white/10 hover:text-white" asChild>
+                <a href="#">Login</a>
+              </Button>
+              <Button size="sm" className="bg-white text-gray-950 hover:bg-white/90" asChild>
+                <a href="#waitlist">Sign Up</a>
+              </Button>
             </div>
           </div>
         </div>
