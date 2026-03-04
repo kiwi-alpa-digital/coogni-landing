@@ -1,6 +1,6 @@
 const BenefitsSection = () => {
   return (
-    <section className="bg-card py-16 md:py-24">
+    <section id="benefits" className="bg-card py-16 md:py-24">
       <div className="container mx-auto max-w-3xl px-4 text-center">
         <h2 className="mb-8 text-2xl font-bold text-foreground md:text-3xl lg:text-4xl">
           Por qué evolucionar hacia el cuidado basado en datos.
