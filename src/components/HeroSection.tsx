@@ -45,14 +45,14 @@ const HeroHeader = () => {
     <header>
       <nav
         data-state={scrolled ? 'scrolled' : 'top'}
-        className="fixed z-50 w-full px-2"
+        className="fixed z-50 w-full px-4 pt-2"
       >
         <div
           className={cn(
-            'mx-auto mt-2 max-w-6xl rounded-2xl px-6 py-3 transition-all duration-300 lg:px-8',
+            'mx-auto max-w-6xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
             scrolled
-              ? 'border border-white/10 bg-gray-950/60 shadow-lg backdrop-blur-xl'
-              : 'bg-transparent'
+              ? 'border-white/10 bg-gray-950/70 shadow-lg backdrop-blur-xl'
+              : 'border-white/5 bg-gray-950/40 backdrop-blur-md'
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0">
