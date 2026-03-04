@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import WaitlistSection from "@/components/WaitlistSection";
+import FooterSection from "@/components/FooterSection";
 
 const Index = () => {
   return (
@@ -10,6 +11,7 @@ const Index = () => {
       <FeaturesSection />
       <BenefitsSection />
       <WaitlistSection />
+      <FooterSection />
     </main>
   );
 };
