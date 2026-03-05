@@ -171,7 +171,7 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="bg-background py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-2xl font-bold text-foreground md:mb-16 md:text-3xl lg:text-4xl">
+        <h2 className="mb-12 max-w-2xl text-4xl font-semibold text-foreground md:mb-16 lg:text-5xl">
           Herramientas diseñadas para la precisión clínica y la colaboración.
         </h2>
 
