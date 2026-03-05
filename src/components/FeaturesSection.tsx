@@ -175,47 +175,48 @@ export default function FeaturesSection() {
           Herramientas diseñadas para la precisión clínica y la colaboración.
         </h2>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-rows-2">
-          {/* 1. MAP - Top Left */}
-          <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
-            <div className="mb-2 flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground">Distribución de Pacientes</span>
+        <div className="space-y-4">
+          {/* Fila 1: Distribución de Pacientes + Core Analítica Predictiva */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
+              <div className="mb-2 flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-foreground">Distribución de Pacientes</span>
+              </div>
+              <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
+                Visualiza la distribución geográfica de pacientes.{" "}
+                <span className="text-foreground font-medium">Monitoriza tendencias regionales en tiempo real.</span>
+              </p>
+              <div className="relative flex-1 min-h-[160px]">
+                <MapVisualization />
+                <div className="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-full bg-card/90 px-3 py-1.5 text-[10px] font-medium text-muted-foreground shadow-sm border border-border backdrop-blur-sm">
+                  🌍 342 pacientes activos en seguimiento
+                </div>
+              </div>
             </div>
-            <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
-              Visualiza la distribución geográfica de pacientes.{" "}
-              <span className="text-foreground font-medium">Monitoriza tendencias regionales en tiempo real.</span>
-            </p>
-            <div className="relative flex-1 min-h-[160px]">
-              <MapVisualization />
-              <div className="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-full bg-card/90 px-3 py-1.5 text-[10px] font-medium text-muted-foreground shadow-sm border border-border backdrop-blur-sm">
-                🌍 342 pacientes activos en seguimiento
+
+            <div className="flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
+              <div className="mb-3">
+                <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
+                  Core — Analítica Predictiva
+                </span>
+                <h3 className="mt-3 text-lg font-bold leading-tight text-foreground md:text-xl">
+                  Analítica Predictiva y Soporte a la Decisión{" "}
+                  <span className="text-muted-foreground font-normal text-base">
+                    — El motor de tu clínica
+                  </span>
+                </h3>
+              </div>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                No te conformes con saber cómo está el paciente hoy; predice qué ocurrirá mañana. Nuestro motor analiza trayectorias cognitivas y funcionales para detectar puntos de inflexión antes de que sean visibles.
+              </p>
+              <div className="flex-1">
+                <AlertsFeed />
               </div>
             </div>
           </div>
 
-          {/* 2. FEATURED CASE - Top Right (Predictive Analytics) */}
-          <div className="flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
-            <div className="mb-3">
-              <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
-                Core — Analítica Predictiva
-              </span>
-              <h3 className="mt-3 text-lg font-bold leading-tight text-foreground md:text-xl">
-                Analítica Predictiva y Soporte a la Decisión{" "}
-                <span className="text-muted-foreground font-normal text-base">
-                  — El motor de tu clínica
-                </span>
-              </h3>
-            </div>
-            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-              No te conformes con saber cómo está el paciente hoy; predice qué ocurrirá mañana. Nuestro motor analiza trayectorias cognitivas y funcionales para detectar puntos de inflexión antes de que sean visibles.
-            </p>
-            <div className="flex-1">
-              <AlertsFeed />
-            </div>
-          </div>
-
-          {/* 3. CHART - Bottom Left */}
+          {/* Fila 2: Trayectoria Cognitiva (ancho completo) */}
           <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
             <div className="mb-2 flex items-center gap-2">
               <Activity className="h-4 w-4 text-primary" />
@@ -238,8 +239,8 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          {/* 4. FEATURE CARDS - Bottom Right */}
-          <div className="grid grid-rows-2 gap-4">
+          {/* Fila 3: Roles Multidisciplinares + Mensajería Segura */}
+          <div className="grid gap-4 md:grid-cols-2">
             <FeatureCard
               icon={<Users className="h-5 w-5 text-primary" />}
               title="Roles Multidisciplinares"
