@@ -1,10 +1,31 @@
 import React from 'react'
+import { ArrowRight, ChevronRight, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { AnimatedGroup } from '@/components/ui/animated-group'
+import { cn } from '@/lib/utils'
+import { TextEffect } from '@/components/ui/text-effect'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
-import { cn } from '@/lib/utils'
-import { Menu, X, ChevronRight } from 'lucide-react'
-import { useScroll, motion } from 'framer-motion'
+
+const transitionVariants = {
+  item: {
+    hidden: {
+      opacity: 0,
+      filter: 'blur(12px)',
+      y: 12,
+    },
+    visible: {
+      opacity: 1,
+      filter: 'blur(0px)',
+      y: 0,
+      transition: {
+        type: 'spring' as const,
+        bounce: 0.3,
+        duration: 1.5,
+      },
+    },
+  },
+}
 
 export function HeroSection() {
   return (
@@ -13,55 +34,83 @@ export function HeroSection() {
       <main className="overflow-hidden">
         <section>
           <div className="relative pt-24 md:pt-36">
-            <motion.div
-              animate={{ opacity: [0, 1] }}
-              transition={{ duration: 2, ease: 'easeInOut' }}
-              className="absolute inset-0 -z-10"
-            >
-              <div className="absolute inset-0 [background-image:radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-primary/20 to-transparent to-70%" />
-            </motion.div>
+            <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_-20%,transparent_45%,hsl(var(--primary))_125%)]"></div>
+            <div className="absolute inset-x-0 top-56 -z-10 h-24 bg-gradient-to-b from-transparent to-background"></div>
+            <div className="absolute inset-x-0 bottom-0 -z-10 h-56 bg-background"></div>
 
-            <div className="mx-auto max-w-5xl px-6">
-              <div className="sm:mx-auto lg:mr-auto lg:mt-0">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+                <AnimatedGroup preset="blur-slide">
+                  <a
+                    href="#waitlist"
+                    className="hover:bg-muted bg-muted/50 group mx-auto flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300"
+                  >
+                    <span className="text-foreground text-sm">Introducing Support for AI Models</span>
+                    <span className="bg-primary text-primary-foreground block rounded-full px-2 py-1 text-xs">
+                      What&apos;s new
+                      <ArrowRight className="ml-1 inline h-3 w-3" />
+                    </span>
+                  </a>
+                </AnimatedGroup>
+
+                <TextEffect
+                  preset="fade"
+                  per="word"
+                  as="h1"
+                  className="mt-8 text-balance text-5xl font-semibold md:text-6xl xl:text-[4.5rem] xl:leading-[1.2]"
+                  delay={0.5}
                 >
-                  <h1 className="mt-8 max-w-2xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16 xl:text-[5.25rem] xl:leading-[1.15]">
-                    Build 10x Faster with NS
-                  </h1>
-                  <p className="mt-8 max-w-lg text-pretty text-lg text-muted-foreground">
-                    Highly customizable components for building modern websites and applications you mean it.
-                  </p>
-                  <div className="mt-12 flex items-center gap-2">
-                    <Button size="lg" className="pr-4" asChild>
+                  Modern Solutions for Customer Engagement
+                </TextEffect>
+
+                <TextEffect
+                  per="line"
+                  as="p"
+                  preset="fade"
+                  delay={0.7}
+                  className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground"
+                >
+                  Highly customizable components for building modern websites and applications that look and feel the way you mean it.
+                </TextEffect>
+
+                <AnimatedGroup
+                  preset="blur-slide"
+                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
+                >
+                  <div>
+                    <Button size="lg" className="rounded-xl px-5" asChild>
                       <a href="#waitlist">
-                        <span>Start Building</span>
+                        <span className="text-nowrap">Start Building</span>
                         <ChevronRight className="ml-1 h-4 w-4" />
                       </a>
                     </Button>
-                    <Button variant="ghost" size="lg" asChild>
-                      <a href="#waitlist">
-                        <span>Request a demo</span>
-                      </a>
-                    </Button>
                   </div>
-                </motion.div>
+                  <Button size="lg" variant="ghost" className="rounded-xl px-5" asChild>
+                    <a href="#waitlist">
+                      <span className="text-nowrap">Request a demo</span>
+                    </a>
+                  </Button>
+                </AnimatedGroup>
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-              className="relative mx-auto mt-8 max-w-6xl overflow-hidden px-2 sm:mt-12 md:mt-20"
+            <AnimatedGroup
+              variants={{
+                container: {
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15,
+                      delayChildren: 1,
+                    },
+                  },
+                },
+                item: transitionVariants.item,
+              }}
+              className="relative mx-auto mt-8 max-w-6xl px-2 sm:mt-12 md:mt-20"
             >
-              <div
-                aria-hidden
-                className="bg-gradient-to-b from-transparent via-background to-background absolute inset-0 z-10"
-              />
-              <div className="relative rounded-2xl border border-border bg-background shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+              <div className="rounded-2xl border border-border bg-background shadow-lg ring-1 ring-border/50">
                 <img
                   src="https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75"
                   className="rounded-2xl"
@@ -70,14 +119,14 @@ export function HeroSection() {
                   height={1800}
                 />
               </div>
-            </motion.div>
+            </AnimatedGroup>
           </div>
 
           <div className="mx-auto max-w-5xl px-6 py-16 md:py-24">
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
               <div className="shrink-0">
                 <p className="text-center text-sm font-medium text-muted-foreground sm:text-left">
-                  Powering the best teams
+                  Meet Our Customers
                 </p>
               </div>
 
@@ -128,26 +177,26 @@ const menuItems = [
 
 const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
-  const { scrollYProgress } = useScroll()
+  const [isScrolled, setIsScrolled] = React.useState(false)
 
   React.useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (latest) => {
-      setScrolled(latest > 0.05)
-    })
-    return () => unsubscribe()
-  }, [scrollYProgress])
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <header>
       <nav
-        data-state={scrolled ? 'scrolled' : 'top'}
+        data-state={isScrolled ? 'scrolled' : 'top'}
         className="fixed z-50 w-full px-2"
       >
         <div
           className={cn(
             'mx-auto mt-2 max-w-5xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
-            scrolled
+            isScrolled
               ? 'border-border bg-background/70 shadow-lg backdrop-blur-xl'
               : 'border-transparent bg-transparent'
           )}
@@ -166,22 +215,22 @@ const HeroHeader = () => {
                 <Menu className={cn('h-6 w-6 transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
                 <X className={cn('absolute inset-0 m-auto h-6 w-6 transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
               </button>
+            </div>
 
-              <div
-                className={cn(
-                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
-                  menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
-                )}
-              >
-                <div className="space-y-6">
-                  {menuItems.map((item) => (
-                    <div key={item.name}>
-                      <a href={item.href} className="block text-lg hover:text-muted-foreground" onClick={() => setMenuState(false)}>
-                        <span>{item.name}</span>
-                      </a>
-                    </div>
-                  ))}
-                </div>
+            <div
+              className={cn(
+                'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
+                menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
+              )}
+            >
+              <div className="space-y-6">
+                {menuItems.map((item) => (
+                  <div key={item.name}>
+                    <a href={item.href} className="block text-lg hover:text-muted-foreground" onClick={() => setMenuState(false)}>
+                      <span>{item.name}</span>
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -203,6 +252,12 @@ const HeroHeader = () => {
               </Button>
               <Button size="sm" asChild>
                 <a href="#waitlist">Sign Up</a>
+              </Button>
+              <Button size="sm" asChild>
+                <a href="#waitlist">
+                  <span>Get Started</span>
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
