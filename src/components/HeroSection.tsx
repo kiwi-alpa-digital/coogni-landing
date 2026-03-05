@@ -45,9 +45,9 @@ export function HeroSection() {
                     href="#waitlist"
                     className="hover:bg-muted bg-muted/50 group mx-auto flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300"
                   >
-                    <span className="text-foreground text-sm">Introducing Support for AI Models</span>
+                    <span className="text-foreground text-sm">Beta privada — Plazas limitadas</span>
                     <span className="bg-primary text-primary-foreground block rounded-full px-2 py-1 text-xs">
-                      What&apos;s new
+                      Solicitar acceso
                       <ArrowRight className="ml-1 inline h-3 w-3" />
                     </span>
                   </a>
@@ -60,7 +60,7 @@ export function HeroSection() {
                   className="mt-8 text-balance text-5xl font-semibold md:text-6xl xl:text-[4.5rem] xl:leading-[1.2]"
                   delay={0.5}
                 >
-                  Modern Solutions for Customer Engagement
+                  Predice el deterioro cognitivo antes de que sea visible
                 </TextEffect>
 
                 <TextEffect
@@ -70,7 +70,7 @@ export function HeroSection() {
                   delay={0.7}
                   className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground"
                 >
-                  Highly customizable components for building modern websites and applications that look and feel the way you mean it.
+                  Plataforma clínica con IA predictiva para el manejo de enfermedades neurodegenerativas. Centraliza datos, anticipa trayectorias y facilita decisiones basadas en evidencia.
                 </TextEffect>
 
                 <AnimatedGroup
@@ -80,14 +80,14 @@ export function HeroSection() {
                   <div>
                     <Button size="lg" className="rounded-xl px-5" asChild>
                       <a href="#waitlist">
-                        <span className="text-nowrap">Start Building</span>
+                        <span className="text-nowrap">Unirme a la lista</span>
                         <ChevronRight className="ml-1 h-4 w-4" />
                       </a>
                     </Button>
                   </div>
                   <Button size="lg" variant="ghost" className="rounded-xl px-5" asChild>
                     <a href="#waitlist">
-                      <span className="text-nowrap">Request a demo</span>
+                      <span className="text-nowrap">Solicitar una demo</span>
                     </a>
                   </Button>
                 </AnimatedGroup>
@@ -126,7 +126,7 @@ export function HeroSection() {
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
               <div className="shrink-0">
                 <p className="text-center text-sm font-medium text-muted-foreground sm:text-left">
-                  Meet Our Customers
+                  Confían en nosotros
                 </p>
               </div>
 
@@ -169,10 +169,10 @@ export function HeroSection() {
 }
 
 const menuItems = [
-  { name: 'Features', href: '#features' },
-  { name: 'Solution', href: '#benefits' },
-  { name: 'Pricing', href: '#waitlist' },
-  { name: 'About', href: '#' },
+  { name: 'Funcionalidades', href: '#features' },
+  { name: 'Plataforma', href: '#benefits' },
+  { name: 'Beta Privada', href: '#waitlist' },
+  { name: 'Nosotros', href: '#' },
 ]
 
 const HeroHeader = () => {
@@ -248,14 +248,14 @@ const HeroHeader = () => {
 
             <div className="hidden lg:flex lg:items-center lg:gap-2">
               <Button variant="ghost" size="sm" asChild>
-                <a href="#">Login</a>
+                <a href="#">Iniciar sesión</a>
               </Button>
               <Button size="sm" asChild>
-                <a href="#waitlist">Sign Up</a>
+                <a href="#waitlist">Registrarse</a>
               </Button>
               <Button size="sm" asChild>
                 <a href="#waitlist">
-                  <span>Get Started</span>
+                  <span>Solicitar acceso</span>
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </a>
               </Button>
