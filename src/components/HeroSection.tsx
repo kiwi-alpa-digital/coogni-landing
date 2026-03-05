@@ -133,28 +133,28 @@ export function HeroSection() {
               <div className="relative w-full overflow-hidden">
                 <InfiniteSlider gap={24} duration={30}>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-1.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/nvidia.svg" alt="Nvidia" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-2.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/google.svg" alt="Google" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-3.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/microsoft.svg" alt="Microsoft" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-4.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazon.svg" alt="Amazon" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-5.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/meta.svg" alt="Meta" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-6.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/apple.svg" alt="Apple" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-1.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/samsung.svg" alt="Samsung" height="20" width="auto" />
                   </div>
                   <div className="flex items-center">
-                    <img className="mx-auto h-5 w-fit dark:invert" src="https://html.design/demo/flavor/assets/images/brand/brand-2.svg" alt="Logo" height="20" width="auto" />
+                    <img className="mx-auto h-5 w-fit dark:invert" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/intel.svg" alt="Intel" height="20" width="auto" />
                   </div>
                 </InfiniteSlider>
                 <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-20" direction="left" />
