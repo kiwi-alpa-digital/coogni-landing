@@ -34,9 +34,9 @@ export function HeroSection() {
       <main className="overflow-hidden">
         <section>
           <div className="relative pt-24 md:pt-36">
-            <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_-20%,transparent_45%,hsl(var(--primary))_125%)]"></div>
-            <div className="absolute inset-x-0 top-56 -z-10 h-24 bg-gradient-to-b from-transparent to-background"></div>
-            <div className="absolute inset-x-0 bottom-0 -z-10 h-56 bg-background"></div>
+            <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_-20%,transparent_45%,hsl(var(--primary)/0.15)_125%)]"></div>
+            <div className="absolute inset-x-0 top-56 -z-10 h-48 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
+            <div className="absolute inset-x-0 bottom-0 -z-10 h-72 bg-background"></div>
 
             <div className="mx-auto max-w-7xl px-6">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
