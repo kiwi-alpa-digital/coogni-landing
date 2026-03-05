@@ -46,7 +46,7 @@ const WaitlistSection = () => {
               </Badge>
             </div>
             <div className="flex flex-col gap-3">
-              <h2 className="max-w-xl text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+              <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-foreground lg:text-5xl">
                 Lidera el futuro del manejo neurodegenerativo.
               </h2>
               <p className="max-w-xl text-lg text-muted-foreground">
