@@ -3,7 +3,7 @@ import { Brain, Lock, Activity, Sparkles } from 'lucide-react'
 export default function FeaturesGrid() {
   return (
     <section className="overflow-hidden py-16 md:py-32">
-      <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-12">
+      <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-12">
         <div className="relative z-10 max-w-2xl">
           <h2 className="text-4xl font-semibold lg:text-5xl">Diseñado para equipos clínicos multidisciplinares</h2>
           <p className="mt-6 text-lg text-muted-foreground">Adapta los flujos de trabajo a las necesidades de cada profesional, desde neurólogos hasta terapeutas ocupacionales, con una plataforma que escala con tu equipo.</p>

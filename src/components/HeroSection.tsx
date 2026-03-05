@@ -122,7 +122,7 @@ export function HeroSection() {
             </AnimatedGroup>
           </div>
 
-          <div className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
               <div className="shrink-0">
                 <p className="text-center text-sm font-medium text-muted-foreground sm:text-left">
@@ -195,7 +195,7 @@ const HeroHeader = () => {
       >
         <div
           className={cn(
-            'mx-auto mt-2 max-w-5xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
+            'mx-auto mt-2 max-w-7xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
             isScrolled
               ? 'border-border bg-background/70 shadow-lg backdrop-blur-xl'
               : 'border-transparent bg-transparent'
