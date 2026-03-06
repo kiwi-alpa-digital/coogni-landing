@@ -12,9 +12,13 @@ export const translations = {
 
   // ---- Hero ----
   hero: {
-    title: {
-      es: 'Predice el deterioro cognitivo antes de que sea visible',
-      en: 'Predict cognitive decline before it becomes visible',
+    titleAccent: {
+      es: 'Predice',
+      en: 'Predict',
+    },
+    titleRest: {
+      es: 'el deterioro cognitivo antes de que sea visible',
+      en: 'cognitive decline before it becomes visible',
     },
     subtitle: {
       es: 'Plataforma clínica con IA predictiva para el manejo de enfermedades neurodegenerativas. Centraliza datos, anticipa trayectorias y facilita decisiones basadas en evidencia.',

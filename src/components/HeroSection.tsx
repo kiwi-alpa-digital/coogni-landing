@@ -30,15 +30,10 @@ export function HeroSection() {
             </AnimatedGroup>
 
             {/* Heading */}
-            <TextEffect
-              preset="fade"
-              per="word"
-              as="h1"
-              className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl [font-family:ui-sans-serif,system-ui,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol','Noto_Color_Emoji']"
-              delay={0.3}
-            >
-              {t(translations.hero.title)}
-            </TextEffect>
+            <h1 className="text-5xl leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl">
+              <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
+              <span className="font-light">{t(translations.hero.titleRest)}</span>
+            </h1>
 
             {/* Description */}
             <TextEffect
