@@ -46,8 +46,7 @@ export function HeroSection() {
               as="p"
               preset="fade"
               delay={0.5}
-              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
-              style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }}
+              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg [font-family:ui-sans-serif,system-ui,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol','Noto_Color_Emoji']"
             >
               {t(translations.hero.subtitle)}
             </TextEffect>
