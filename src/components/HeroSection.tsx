@@ -114,7 +114,7 @@ const HeroHeader = () => {
             className={cn(
               'mx-auto mt-2 max-w-7xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
               isScrolled
-                ? 'border-white/10 bg-black/30 shadow-lg backdrop-blur-xl'
+                ? 'border-border bg-background/80 shadow-lg backdrop-blur-xl'
                 : 'border-transparent bg-transparent'
             )}
             style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
