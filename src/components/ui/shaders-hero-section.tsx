@@ -98,7 +98,7 @@ export function PulsingCircle() {
                 d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
               />
             </defs>
-            <text className="fill-white/70 text-[11px] font-medium tracking-[0.2em] uppercase">
+            <text className="fill-primary text-[11px] font-medium tracking-[0.2em] uppercase">
               <textPath href="#circlePath">
                 Precisión clínica • IA predictiva • Colaboración • Datos seguros •
               </textPath>

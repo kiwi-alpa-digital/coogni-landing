@@ -200,7 +200,7 @@ const HeroHeader = () => {
 }
 
 const Logo = ({ className }: { className?: string }) => (
-  <svg className={cn("text-white", className)} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 120 120" fill="none">
+  <svg className={cn("text-primary", className)} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 120 120" fill="none">
     <rect width="120" height="120" rx="24" fill="currentColor" />
     <g clipPath="url(#clip)">
       <path d="M33.75 78.75L60 52.5L86.25 78.75" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
