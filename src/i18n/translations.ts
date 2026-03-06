@@ -25,6 +25,42 @@ export const translations = {
     formSubtitle: { es: 'y consigue un 20% de descuento en el lanzamiento', en: 'and get 20% off at launch' },
   },
 
+  // ---- Problems & Solutions ----
+  problemsSolutions: {
+    badge: { es: 'El problema', en: 'The problem' },
+    title: { es: 'Tu clínica merece mejor que hojas de cálculo y suposiciones.', en: 'Your clinic deserves better than spreadsheets and guesswork.' },
+    subtitle: {
+      es: 'Los equipos clínicos pierden tiempo, precisión y coordinación con herramientas que no fueron diseñadas para el manejo neurodegenerativo.',
+      en: 'Clinical teams lose time, accuracy, and coordination with tools not designed for neurodegenerative care.',
+    },
+    items: {
+      fragmented: {
+        problem: { es: 'Datos dispersos entre sistemas que no se comunican', en: 'Data scattered across systems that don\'t talk to each other' },
+        solution: { es: 'Toda la información del paciente centralizada en un único punto de verdad', en: 'All patient data centralized in a single source of truth' },
+      },
+      reactive: {
+        problem: { es: 'Decisiones reactivas cuando el deterioro ya es visible', en: 'Reactive decisions when decline is already visible' },
+        solution: { es: 'IA predictiva que detecta puntos de inflexión antes de que sean observables', en: 'Predictive AI that detects inflection points before they\'re observable' },
+      },
+      insecure: {
+        problem: { es: 'Comunicación clínica por canales no seguros (WhatsApp, email personal)', en: 'Clinical communication via insecure channels (WhatsApp, personal email)' },
+        solution: { es: 'Mensajería encriptada E2E con cumplimiento RGPD/HIPAA integrado', en: 'E2E encrypted messaging with built-in GDPR/HIPAA compliance' },
+      },
+      silos: {
+        problem: { es: 'Cada profesional trabaja aislado sin visión del equipo completo', en: 'Each professional works in isolation without full team visibility' },
+        solution: { es: 'Roles multidisciplinares con flujos de trabajo compartidos en tiempo real', en: 'Multidisciplinary roles with shared real-time workflows' },
+      },
+      subjective: {
+        problem: { es: 'Evaluaciones subjetivas sin datos longitudinales comparables', en: 'Subjective assessments without comparable longitudinal data' },
+        solution: { es: 'Trayectorias cognitivas objetivas con escalas MMSE y MoCA automatizadas', en: 'Objective cognitive trajectories with automated MMSE and MoCA scales' },
+      },
+      noData: {
+        problem: { es: 'Sin métricas para justificar decisiones clínicas ante familiares o comités', en: 'No metrics to justify clinical decisions to families or committees' },
+        solution: { es: 'Informes basados en evidencia que respaldan cada decisión con datos reales', en: 'Evidence-based reports that back every decision with real data' },
+      },
+    },
+  },
+
   // ---- Features Section (Bento Grid) ----
   features: {
     title: {
