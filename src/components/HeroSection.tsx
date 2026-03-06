@@ -70,7 +70,7 @@ export function HeroSection() {
                   />
                   <button
                     type="submit"
-                    className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
+                    className="whitespace-nowrap rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
                   >
                     {t({ es: 'Unirme', en: 'Join' })}
                   </button>
