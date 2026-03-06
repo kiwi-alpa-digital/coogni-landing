@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { ChevronRight, Menu, X, Globe } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
 import { TextEffect } from '@/components/ui/text-effect'
-import { InfiniteSlider } from '@/components/ui/infinite-slider'
-import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import WaitlistModal from '@/components/WaitlistModal'
-import { ShaderBackground, PulsingCircle } from '@/components/ui/shaders-hero-section'
+import { ShaderBackground } from '@/components/ui/shaders-hero-section'
 
 export function HeroSection() {
   const { t } = useI18n()
@@ -20,96 +17,63 @@ export function HeroSection() {
       <ShaderBackground>
         <HeroHeader />
 
-        {/* Hero content — full height, content at bottom */}
         <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
-          <div className="flex items-end justify-between gap-12">
-            {/* Left — Text + form */}
-            <div className="max-w-2xl">
-              {/* Badge */}
-              <AnimatedGroup preset="blur-slide">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
-                  <span className="text-sm text-white/90">✨</span>
-                  <span className="text-sm font-medium text-white/90">
-                    {t({ es: 'Nueva plataforma de IA clínica', en: 'New Clinical AI Platform' })}
-                  </span>
-                </div>
-              </AnimatedGroup>
-
-              {/* Heading */}
-              <TextEffect
-                preset="fade"
-                per="word"
-                as="h1"
-                className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl"
-                delay={0.3}
-              >
-                {t(translations.hero.title)}
-              </TextEffect>
-
-              {/* Description */}
-              <TextEffect
-                per="line"
-                as="p"
-                preset="fade"
-                delay={0.5}
-                className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
-              >
-                {t(translations.hero.subtitle)}
-              </TextEffect>
-
-              {/* CTA Buttons */}
-              <AnimatedGroup preset="blur-slide" className="mt-8">
-                <div className="flex flex-wrap items-center gap-4">
-                  <button
-                    onClick={() => {
-                      document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                    className="rounded-full border border-white/30 bg-transparent px-8 py-3 text-sm font-medium text-white transition-all hover:bg-white/10"
-                  >
-                    {t({ es: 'Ver más', en: 'Learn more' })}
-                  </button>
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    className="rounded-full bg-white px-8 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
-                  >
-                    {t(translations.nav.joinNow)}
-                  </button>
-                </div>
-              </AnimatedGroup>
-            </div>
-
-            {/* Right — Pulsing circle */}
-            <div className="hidden lg:block">
-              <PulsingCircle />
-            </div>
-          </div>
-
-          {/* Trusted by logos */}
-          <div className="mt-16 border-t border-white/10 pt-8">
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
-              <div className="shrink-0">
-                <p className="text-center text-sm font-medium text-white/50 sm:text-left">
-                  {t(translations.hero.trustedBy)}
-                </p>
+          <div className="max-w-2xl">
+            {/* Badge */}
+            <AnimatedGroup preset="blur-slide">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
+                <span className="text-sm text-white/90">✨</span>
+                <span className="text-sm font-medium text-white/90">
+                  {t({ es: 'Nueva plataforma de IA clínica', en: 'New Clinical AI Platform' })}
+                </span>
               </div>
-              <div className="relative w-full overflow-hidden">
-                <InfiniteSlider gap={24} duration={30}>
-                  {['nvidia', 'google', 'microsoft', 'amazon', 'meta', 'apple', 'samsung', 'intel'].map((name) => (
-                    <div key={name} className="flex items-center">
-                      <img
-                        className="mx-auto h-5 w-fit invert opacity-50"
-                        src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/${name}.svg`}
-                        alt={name}
-                        height="20"
-                        width="auto"
-                      />
-                    </div>
-                  ))}
-                </InfiniteSlider>
-                <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-20" direction="left" />
-                <ProgressiveBlur className="pointer-events-none absolute right-0 top-0 h-full w-20" direction="right" />
+            </AnimatedGroup>
+
+            {/* Heading */}
+            <TextEffect
+              preset="fade"
+              per="word"
+              as="h1"
+              className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl"
+              style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }}
+              delay={0.3}
+            >
+              {t(translations.hero.title)}
+            </TextEffect>
+
+            {/* Description */}
+            <TextEffect
+              per="line"
+              as="p"
+              preset="fade"
+              delay={0.5}
+              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
+              style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' }}
+            >
+              {t(translations.hero.subtitle)}
+            </TextEffect>
+
+            {/* CTA Buttons */}
+            <AnimatedGroup preset="blur-slide" className="mt-8">
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => {
+                    document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="rounded-full border border-white/30 bg-transparent px-8 py-3 text-sm font-medium text-white transition-all hover:bg-white/10"
+                  style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
+                >
+                  {t({ es: 'Ver más', en: 'Learn more' })}
+                </button>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="rounded-full bg-white px-8 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
+                  style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
+                >
+                  {t(translations.nav.joinNow)}
+                </button>
               </div>
-            </div>
+            </AnimatedGroup>
           </div>
         </div>
       </ShaderBackground>
@@ -141,7 +105,7 @@ const HeroHeader = () => {
 
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="fixed inset-x-0 top-0 z-50">
         <nav className="w-full px-2">
           <div
             className={cn(
@@ -150,6 +114,7 @@ const HeroHeader = () => {
                 ? 'border-white/10 bg-black/30 shadow-lg backdrop-blur-xl'
                 : 'border-transparent bg-transparent'
             )}
+            style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
           >
             <div className="relative flex items-center justify-between">
               <div className="flex items-center gap-2">
