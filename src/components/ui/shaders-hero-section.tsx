@@ -34,7 +34,7 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-neutral-900"
+      className="relative min-h-screen w-full overflow-hidden bg-background"
     >
       {/* SVG Filters */}
       <svg className="absolute h-0 w-0">
@@ -52,15 +52,14 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
-      {/* Background Shaders */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Shaders - subtle on light bg */}
+      <div className="absolute inset-0 z-0 opacity-15">
         <MeshGradient
           style={{ width: "100%", height: "100%" }}
           colors={["#0A1628", "#0056B3", "#1A8FA6", "#0D2847"]}
           speed={0.2}
         />
       </div>
-      <div className="absolute inset-0 z-0 bg-black/10" />
 
       <div className="relative z-10">
         {children}
@@ -99,7 +98,7 @@ export function PulsingCircle() {
                 d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
               />
             </defs>
-            <text className="fill-white/70 text-[11px] font-medium tracking-[0.2em] uppercase">
+            <text className="fill-primary text-[11px] font-medium tracking-[0.2em] uppercase">
               <textPath href="#circlePath">
                 Precisión clínica • IA predictiva • Colaboración • Datos seguros •
               </textPath>

@@ -20,7 +20,7 @@ export function HeroSection() {
         <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
           <div className="max-w-3xl">
             {/* Heading */}
-            <h1 className="text-4xl leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+            <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
               <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
               <span className="font-light">{t(translations.hero.titleRest)}</span>
             </h1>
@@ -31,7 +31,7 @@ export function HeroSection() {
               as="p"
               preset="fade"
               delay={0.5}
-              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
+              className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               {t(translations.hero.subtitle)}
             </TextEffect>
@@ -40,11 +40,11 @@ export function HeroSection() {
             <AnimatedGroup preset="blur-slide" className="mt-10">
               <div className="max-w-lg">
                 {/* Discount badge */}
-                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/15 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(174_62%_40%/0.15)]">
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/20">
-                    <Sparkles className="h-3 w-3 text-accent" />
+                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(210_100%_35%/0.15)]">
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
+                    <Sparkles className="h-3 w-3 text-primary" />
                   </div>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-foreground">
                     {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
                   </span>
                 </div>
@@ -60,17 +60,17 @@ export function HeroSection() {
                     type="text"
                     required
                     placeholder={t(translations.waitlist.namePlaceholder)}
-                    className="flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-colors focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/10"
+                    className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                   />
                   <input
                     type="email"
                     required
                     placeholder={t(translations.waitlist.emailPlaceholder)}
-                    className="flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-colors focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/10"
+                    className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                   />
                   <button
                     type="submit"
-                    className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
+                    className="whitespace-nowrap rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
                   >
                     {t({ es: 'Unirme', en: 'Join' })}
                   </button>
@@ -114,7 +114,7 @@ const HeroHeader = () => {
             className={cn(
               'mx-auto mt-2 max-w-7xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
               isScrolled
-                ? 'border-white/10 bg-black/30 shadow-lg backdrop-blur-xl'
+                ? 'border-border bg-background/80 shadow-lg backdrop-blur-xl'
                 : 'border-transparent bg-transparent'
             )}
             style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
@@ -127,7 +127,7 @@ const HeroHeader = () => {
                 <button
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 text-white lg:hidden"
+                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 text-foreground lg:hidden"
                 >
                   <Menu className={cn('h-6 w-6 transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
                   <X className={cn('absolute inset-0 m-auto h-6 w-6 transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
@@ -137,21 +137,21 @@ const HeroHeader = () => {
               {/* Mobile menu */}
               <div
                 className={cn(
-                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-white/10 bg-neutral-900/95 p-6 pt-24 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden',
+                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background/95 p-6 pt-24 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden',
                   menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
                 )}
               >
                 <div className="space-y-6">
                   {menuItems.map((item) => (
                     <div key={item.name}>
-                      <a href={item.href} className="block text-lg text-white/80 hover:text-white" onClick={() => setMenuState(false)}>
+                      <a href={item.href} className="block text-lg text-muted-foreground hover:text-foreground" onClick={() => setMenuState(false)}>
                         <span>{item.name}</span>
                       </a>
                     </div>
                   ))}
                   <button
                     onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                    className="flex items-center gap-2 text-lg text-white/60 hover:text-white"
+                    className="flex items-center gap-2 text-lg text-muted-foreground hover:text-foreground"
                   >
                     <Globe className="h-4 w-4" />
                     {locale === 'es' ? 'English' : 'Español'}
@@ -164,7 +164,7 @@ const HeroHeader = () => {
                 <ul className="flex items-center gap-8 text-sm">
                   {menuItems.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-white/60 transition-colors duration-300 hover:text-white">
+                      <a href={item.href} className="text-muted-foreground transition-colors duration-300 hover:text-foreground">
                         {item.name}
                       </a>
                     </li>
@@ -176,7 +176,7 @@ const HeroHeader = () => {
               <div className="hidden lg:flex lg:items-center lg:gap-2">
                 <button
                   onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-white/60 transition-colors hover:text-white"
+                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   aria-label="Toggle language"
                 >
                   <Globe className="h-4 w-4" />
@@ -184,7 +184,7 @@ const HeroHeader = () => {
                 </button>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                  className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/20"
                 >
                   <span>{t(translations.nav.joinNow)}</span>
                   <ChevronRight className="ml-1 h-4 w-4" />
@@ -200,7 +200,7 @@ const HeroHeader = () => {
 }
 
 const Logo = ({ className }: { className?: string }) => (
-  <svg className={cn("text-white", className)} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 120 120" fill="none">
+  <svg className={cn("text-primary", className)} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 120 120" fill="none">
     <rect width="120" height="120" rx="24" fill="currentColor" />
     <g clipPath="url(#clip)">
       <path d="M33.75 78.75L60 52.5L86.25 78.75" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
