@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Gift } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
@@ -9,6 +10,7 @@ import { translations } from "@/i18n/translations";
 const WaitlistSection = () => {
   const { t } = useI18n();
   const w = translations.waitlist;
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "", email: "", specialty: "", clinic: "",
@@ -24,8 +26,10 @@ const WaitlistSection = () => {
     setIsSubmitting(true);
     setTimeout(() => {
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
+      const name = formData.name;
       setFormData({ name: "", email: "", specialty: "", clinic: "" });
       setIsSubmitting(false);
+      navigate("/gracias-lista-espera", { state: { name } });
     }, 1000);
   };
 
@@ -38,7 +42,10 @@ const WaitlistSection = () => {
         <div className="flex flex-col items-center gap-10 rounded-2xl bg-muted p-8 md:p-14 lg:flex-row lg:gap-16">
           <div className="flex flex-1 flex-col gap-6 text-center lg:text-left">
             <div>
-              <Badge variant="outline" className="gap-2">{t(w.badge)}</Badge>
+              <Badge variant="outline" className="gap-2">
+                <Gift className="h-3.5 w-3.5" />
+                {t(w.discountBadge)}
+              </Badge>
             </div>
             <div className="flex flex-col gap-3">
               <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-foreground lg:text-5xl">
