@@ -60,6 +60,8 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
           speed={0.2}
         />
       </div>
+      {/* Bottom fade to background */}
+      <div className="absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative z-10">
         {children}
