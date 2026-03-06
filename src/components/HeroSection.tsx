@@ -18,9 +18,9 @@ export function HeroSection() {
         <HeroHeader />
 
         <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             {/* Heading */}
-            <h1 className="text-5xl leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl">
+            <h1 className="text-4xl leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
               <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
               <span className="font-light">{t(translations.hero.titleRest)}</span>
             </h1>
@@ -38,17 +38,28 @@ export function HeroSection() {
 
             {/* Inline waitlist form */}
             <AnimatedGroup preset="blur-slide" className="mt-10">
-              <div className="max-w-md">
-                <p className="mb-3 text-sm font-medium text-white/60">
-                  {t({ es: 'Únete a la lista de espera · 20% dto. en el lanzamiento', en: 'Join the waitlist · 20% off at launch' })}
-                </p>
+              <div className="max-w-lg">
+                {/* Discount badge */}
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-1.5 backdrop-blur-sm">
+                  <span className="text-base">🎁</span>
+                  <span className="text-sm font-semibold text-yellow-300">
+                    {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
+                  </span>
+                </div>
+
                 <form
                   onSubmit={(e) => {
                     e.preventDefault()
                     setModalOpen(true)
                   }}
-                  className="flex gap-2"
+                  className="flex flex-col gap-2 sm:flex-row"
                 >
+                  <input
+                    type="text"
+                    required
+                    placeholder={t(translations.waitlist.namePlaceholder)}
+                    className="flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-colors focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/10"
+                  />
                   <input
                     type="email"
                     required
@@ -57,7 +68,7 @@ export function HeroSection() {
                   />
                   <button
                     type="submit"
-                    className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
+                    className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
                   >
                     {t({ es: 'Unirme', en: 'Join' })}
                   </button>
