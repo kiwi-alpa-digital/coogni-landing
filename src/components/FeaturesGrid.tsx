@@ -8,7 +8,7 @@ export default function FeaturesGrid() {
 
   return (
     <section id="platform" className="overflow-hidden py-16 md:py-32">
-      <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-12">
+      <div className="mx-auto space-y-8 px-6 md:space-y-12 md:px-12 lg:px-20">
         <div className="relative z-10 max-w-2xl">
           <h2 className="text-4xl font-semibold lg:text-5xl">{t(fg.title)}</h2>
           <p className="mt-6 text-lg text-muted-foreground">{t(fg.subtitle)}</p>

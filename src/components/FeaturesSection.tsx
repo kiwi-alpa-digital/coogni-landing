@@ -131,7 +131,7 @@ export default function FeaturesSection() {
 
   return (
     <section id="features" className="overflow-hidden bg-background py-16 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto px-6 md:px-12 lg:px-20">
         <h2 className="mb-12 max-w-2xl text-4xl font-semibold text-foreground md:mb-16 lg:text-5xl">
           {t(f.title)}
         </h2>

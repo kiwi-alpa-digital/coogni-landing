@@ -38,7 +38,7 @@ const WaitlistSection = () => {
 
   return (
     <section id="waitlist" className="w-full py-16 md:py-24 lg:py-32">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col items-center gap-10 rounded-2xl bg-muted p-8 md:p-14 lg:flex-row lg:gap-16">
           <div className="flex flex-1 flex-col gap-6 text-center lg:text-left">
             <div>
