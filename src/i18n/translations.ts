@@ -7,13 +7,11 @@ export const translations = {
     platform: { es: 'Plataforma', en: 'Platform' },
     beta: { es: 'Beta Privada', en: 'Private Beta' },
     about: { es: 'Nosotros', en: 'About' },
-    joinNow: { es: 'Únete ahora', en: 'Join now' },
+    joinNow: { es: 'Solicita tu demo', en: 'Request your demo' },
   },
 
   // ---- Hero ----
   hero: {
-    badge: { es: 'Beta privada — Plazas limitadas', en: 'Private beta — Limited spots' },
-    badgeCta: { es: 'Solicitar acceso', en: 'Request access' },
     title: {
       es: 'Predice el deterioro cognitivo antes de que sea visible',
       en: 'Predict cognitive decline before it becomes visible',
@@ -22,9 +20,9 @@ export const translations = {
       es: 'Plataforma clínica con IA predictiva para el manejo de enfermedades neurodegenerativas. Centraliza datos, anticipa trayectorias y facilita decisiones basadas en evidencia.',
       en: 'Clinical platform with predictive AI for managing neurodegenerative diseases. Centralize data, anticipate trajectories, and enable evidence-based decisions.',
     },
-    cta: { es: 'Unirme a la lista', en: 'Join the waitlist' },
-    demo: { es: 'Solicitar una demo', en: 'Request a demo' },
     trustedBy: { es: 'Confían en nosotros', en: 'Trusted by' },
+    formTitle: { es: 'Solicita tu demo gratuita', en: 'Request your free demo' },
+    formSubtitle: { es: 'y consigue un 20% de descuento en el lanzamiento', en: 'and get 20% off at launch' },
   },
 
   // ---- Features Section (Bento Grid) ----
@@ -161,10 +159,10 @@ export const translations = {
   // ---- Waitlist ----
   waitlist: {
     badge: { es: 'Beta Privada', en: 'Private Beta' },
-    title: { es: 'Lidera el futuro del manejo neurodegenerativo.', en: 'Lead the future of neurodegenerative care.' },
+    title: { es: 'Solicita tu demo gratuita y consigue un 20% de descuento', en: 'Request your free demo and get 20% off' },
     desc: {
-      es: 'Estamos finalizando el desarrollo de nuestra beta privada. Únete a la lista de espera para asegurar tu plaza y ser de los primeros en transformar tu práctica clínica.',
-      en: "We're finalizing our private beta. Join the waitlist to secure your spot and be among the first to transform your clinical practice.",
+      es: 'Reserva tu plaza en nuestra beta privada. Accede antes que nadie y asegura un 20% de descuento exclusivo en el lanzamiento.',
+      en: 'Reserve your spot in our private beta. Get early access and lock in an exclusive 20% discount at launch.',
     },
     nameLabel: { es: 'Nombre completo', en: 'Full name' },
     namePlaceholder: { es: 'Dr. María García', en: 'Dr. Jane Smith' },
@@ -180,7 +178,7 @@ export const translations = {
     },
     clinicLabel: { es: 'Nombre del Centro / Clínica', en: 'Center / Clinic Name' },
     clinicPlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
-    submit: { es: 'Unirme a la lista de espera', en: 'Join the waitlist' },
+    submit: { es: 'Solicitar demo gratuita — 20% dto.', en: 'Request free demo — 20% off' },
     submitting: { es: 'Enviando...', en: 'Submitting...' },
     privacy: {
       es: 'Tus datos están protegidos. Cero spam, solo te avisaremos cuando estemos listos para ti.',
@@ -188,6 +186,50 @@ export const translations = {
     },
     successTitle: { es: '¡Te has unido a la lista de espera!', en: "You've joined the waitlist!" },
     successDesc: { es: 'Te avisaremos cuando estemos listos.', en: "We'll notify you when we're ready." },
+    discountBadge: { es: '🎁 20% de descuento asegurado', en: '🎁 20% discount locked in' },
+  },
+
+  // ---- Thank you page ----
+  thankYou: {
+    title: { es: '¡Gracias por unirte!', en: 'Thanks for joining!' },
+    subtitle: { es: 'Ya tienes un 20% de descuento asegurado.', en: 'You already have a 20% discount locked in.' },
+    extraBanner: { es: '¿Quieres un 5% extra?', en: 'Want an extra 5%?' },
+    extraBannerDesc: { es: 'Responde unas preguntas rápidas y desbloquea un 25% de descuento total.', en: 'Answer a few quick questions and unlock a 25% total discount.' },
+    profileTypeLabel: { es: '¿Cuál es tu perfil profesional?', en: 'What is your professional profile?' },
+    profileOptions: {
+      independent: { es: 'Profesional independiente', en: 'Independent professional' },
+      clinic: { es: 'Clínica / Centro médico', en: 'Clinic / Medical center' },
+    },
+    clinicNameLabel: { es: 'Nombre del centro (opcional)', en: 'Center name (optional)' },
+    clinicNamePlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
+    patientsLabel: { es: '¿Cuántos pacientes gestionas aproximadamente?', en: 'Approximately how many patients do you manage?' },
+    patientsOptions: {
+      small: { es: '1-20', en: '1-20' },
+      medium: { es: '21-100', en: '21-100' },
+      large: { es: '101-500', en: '101-500' },
+      xlarge: { es: '+500', en: '500+' },
+    },
+    interestsLabel: { es: '¿Qué funcionalidades te interesan más?', en: 'Which features interest you most?' },
+    interests: {
+      patientManagement: { es: 'Gestión segura de pacientes', en: 'Secure patient management' },
+      predictiveAnalytics: { es: 'Analítica predictiva', en: 'Predictive analytics' },
+      decisionSupport: { es: 'Herramientas de Soporte a la Decisión', en: 'Decision Support Tools' },
+      patientExercises: { es: 'Ejercitación para pacientes', en: 'Patient exercises' },
+      teamCollaboration: { es: 'Colaboración multidisciplinar', en: 'Multidisciplinary collaboration' },
+      reporting: { es: 'Informes y reportes', en: 'Reports and reporting' },
+    },
+    otherLabel: { es: '¿Qué más te gustaría ver? (opcional)', en: 'What else would you like to see? (optional)' },
+    otherPlaceholder: {
+      es: 'Ej: Me gustaría que pudiera recordarle tomar sus medicinas, o monitorizar aspectos básicos de su día a día...',
+      en: 'E.g.: I\'d like it to remind patients to take their medicines, or monitor basic daily aspects...',
+    },
+    submitExtra: { es: 'Desbloquear 5% extra 🎁', en: 'Unlock extra 5% 🎁' },
+    skipExtra: { es: 'No gracias, continuar con 20%', en: 'No thanks, continue with 20%' },
+    submittingExtra: { es: 'Guardando...', en: 'Saving...' },
+    finalTitle: { es: '¡Listo! Tu descuento del 25% está asegurado.', en: 'Done! Your 25% discount is locked in.' },
+    finalDesc: { es: 'Tus respuestas nos ayudan a crear un mejor servicio para ti y tus pacientes.', en: 'Your answers help us build a better service for you and your patients.' },
+    backHome: { es: 'Volver al inicio', en: 'Back to home' },
+    charCount: { es: '/500', en: '/500' },
   },
 
   // ---- Footer ----

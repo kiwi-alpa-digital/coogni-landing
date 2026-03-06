@@ -1,5 +1,5 @@
-import React from 'react'
-import { ArrowRight, ChevronRight, Menu, X, Globe } from 'lucide-react'
+import React, { useState } from 'react'
+import { ChevronRight, Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
@@ -8,6 +8,7 @@ import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
+import WaitlistModal from '@/components/WaitlistModal'
 
 const transitionVariants = {
   item: {
@@ -21,6 +22,7 @@ const transitionVariants = {
 
 export function HeroSection() {
   const { t } = useI18n()
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <>
@@ -28,35 +30,20 @@ export function HeroSection() {
       <main className="overflow-hidden">
         <section>
           <div className="relative pt-28 md:pt-40 pb-16 md:pb-24">
-            {/* Background effects */}
             <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_70%_-20%,hsl(var(--primary)/0.08),transparent)]" />
             <div className="absolute right-0 top-1/4 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
             <div className="absolute left-1/4 bottom-0 -z-10 h-64 w-64 rounded-full bg-accent/5 blur-3xl" />
 
             <div className="mx-auto max-w-7xl px-6">
-              {/* Two-column layout */}
               <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                {/* Left — Text content */}
+                {/* Left — Text + inline form */}
                 <div className="max-w-xl">
-                  <AnimatedGroup preset="blur-slide">
-                    <a
-                      href="#waitlist"
-                      className="hover:bg-muted bg-muted/50 group inline-flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300"
-                    >
-                      <span className="text-foreground text-sm">{t(translations.hero.badge)}</span>
-                      <span className="bg-primary text-primary-foreground block rounded-full px-2 py-1 text-xs">
-                        {t(translations.hero.badgeCta)}
-                        <ArrowRight className="ml-1 inline h-3 w-3" />
-                      </span>
-                    </a>
-                  </AnimatedGroup>
-
                   <TextEffect
                     preset="fade"
                     per="word"
                     as="h1"
-                    className="mt-8 text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl xl:text-6xl"
-                    delay={0.5}
+                    className="text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl xl:text-6xl"
+                    delay={0.3}
                   >
                     {t(translations.hero.title)}
                   </TextEffect>
@@ -65,44 +52,21 @@ export function HeroSection() {
                     per="line"
                     as="p"
                     preset="fade"
-                    delay={0.7}
+                    delay={0.5}
                     className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground"
                   >
                     {t(translations.hero.subtitle)}
                   </TextEffect>
 
-                  <AnimatedGroup
-                    preset="blur-slide"
-                    className="mt-10 flex flex-col gap-3 sm:flex-row"
-                  >
-                    <div>
-                      <Button size="lg" className="rounded-xl px-6 shadow-[var(--hero-shadow)]" asChild>
-                        <a href="#waitlist">
-                          <span className="text-nowrap">{t(translations.hero.cta)}</span>
-                          <ChevronRight className="ml-1 h-4 w-4" />
-                        </a>
-                      </Button>
+                  {/* Inline CTA form area */}
+                  <AnimatedGroup preset="blur-slide" className="mt-10">
+                    <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
+                      <div className="mb-4">
+                        <h3 className="text-lg font-semibold text-foreground">{t(translations.hero.formTitle)}</h3>
+                        <p className="text-sm text-accent font-medium">{t(translations.hero.formSubtitle)}</p>
+                      </div>
+                      <HeroInlineForm onOpenModal={() => setModalOpen(true)} />
                     </div>
-                    <Button size="lg" variant="outline" className="rounded-xl px-6" asChild>
-                      <a href="#waitlist">
-                        <span className="text-nowrap">{t(translations.hero.demo)}</span>
-                      </a>
-                    </Button>
-                  </AnimatedGroup>
-
-                  {/* Mini social proof */}
-                  <AnimatedGroup preset="blur-slide" className="mt-10 flex items-center gap-3">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="h-8 w-8 rounded-full border-2 border-background bg-primary/10"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {t({ es: '+200 profesionales en lista de espera', en: '+200 professionals on the waitlist' })}
-                    </p>
                   </AnimatedGroup>
                 </div>
 
@@ -118,7 +82,6 @@ export function HeroSection() {
                   className="relative"
                 >
                   <div className="relative">
-                    {/* Glow behind the card */}
                     <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-2xl" />
                     <div className="rounded-2xl border border-border bg-card shadow-2xl shadow-primary/10 ring-1 ring-border/50">
                       <img
@@ -129,7 +92,6 @@ export function HeroSection() {
                         height={1800}
                       />
                     </div>
-                    {/* Floating accent card */}
                     <div className="absolute -bottom-6 -left-6 rounded-xl border border-border bg-card p-4 shadow-lg">
                       <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -174,13 +136,61 @@ export function HeroSection() {
           </div>
         </section>
       </main>
+
+      <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
+  )
+}
+
+/** Compact inline form: just name + email, then opens modal for full form */
+function HeroInlineForm({ onOpenModal }: { onOpenModal: () => void }) {
+  const { t } = useI18n()
+  const w = translations.waitlist
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Open the full modal — in a real app you'd pass name/email as defaults
+    onOpenModal()
+  }
+
+  const inputClasses =
+    "w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20"
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={t(w.namePlaceholder)}
+          className={inputClasses}
+        />
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t(w.emailPlaceholder)}
+          className={inputClasses}
+        />
+      </div>
+      <Button type="submit" variant="cta" size="lg" className="w-full gap-2 py-5 text-base">
+        {t(w.submit)}
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </form>
   )
 }
 
 const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const { t, locale, setLocale } = useI18n()
 
   const menuItems = [
@@ -197,85 +207,86 @@ const HeroHeader = () => {
   }, [])
 
   return (
-    <header>
-      <nav data-state={isScrolled ? 'scrolled' : 'top'} className="fixed z-50 w-full px-2">
-        <div
-          className={cn(
-            'mx-auto mt-2 max-w-7xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
-            isScrolled ? 'border-border bg-background/70 shadow-lg backdrop-blur-xl' : 'border-transparent bg-transparent'
-          )}
-        >
-          <div className="relative flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <a href="/" aria-label="home" className="flex shrink-0 items-center space-x-2">
-                <Logo />
-              </a>
-              <button
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-              >
-                <Menu className={cn('h-6 w-6 transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
-                <X className={cn('absolute inset-0 m-auto h-6 w-6 transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
-              </button>
-            </div>
-
-            <div
-              className={cn(
-                'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
-                menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
-              )}
-            >
-              <div className="space-y-6">
-                {menuItems.map((item) => (
-                  <div key={item.name}>
-                    <a href={item.href} className="block text-lg hover:text-muted-foreground" onClick={() => setMenuState(false)}>
-                      <span>{item.name}</span>
-                    </a>
-                  </div>
-                ))}
+    <>
+      <header>
+        <nav data-state={isScrolled ? 'scrolled' : 'top'} className="fixed z-50 w-full px-2">
+          <div
+            className={cn(
+              'mx-auto mt-2 max-w-7xl rounded-2xl border px-6 py-3 transition-all duration-300 lg:px-8',
+              isScrolled ? 'border-border bg-background/70 shadow-lg backdrop-blur-xl' : 'border-transparent bg-transparent'
+            )}
+          >
+            <div className="relative flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <a href="/" aria-label="home" className="flex shrink-0 items-center space-x-2">
+                  <Logo />
+                </a>
                 <button
-                  onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                  className="flex items-center gap-2 text-lg text-muted-foreground hover:text-foreground"
+                  onClick={() => setMenuState(!menuState)}
+                  aria-label={menuState ? 'Close Menu' : 'Open Menu'}
+                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
                 >
-                  <Globe className="h-4 w-4" />
-                  {locale === 'es' ? 'English' : 'Español'}
+                  <Menu className={cn('h-6 w-6 transition-all duration-300', menuState && 'rotate-180 scale-0 opacity-0')} />
+                  <X className={cn('absolute inset-0 m-auto h-6 w-6 transition-all duration-300', !menuState && '-rotate-180 scale-0 opacity-0')} />
                 </button>
               </div>
-            </div>
 
-            <div className="hidden lg:flex lg:items-center">
-              <ul className="flex items-center gap-8 text-sm">
-                {menuItems.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="text-muted-foreground transition-colors duration-300 hover:text-foreground">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="hidden lg:flex lg:items-center lg:gap-2">
-              <button
-                onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Toggle language"
+              <div
+                className={cn(
+                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background p-6 pt-24 shadow-2xl transition-all duration-300 lg:hidden',
+                  menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
+                )}
               >
-                <Globe className="h-4 w-4" />
-                <span className="uppercase font-medium">{locale === 'es' ? 'EN' : 'ES'}</span>
-              </button>
-              <Button size="sm" asChild>
-                <a href="#waitlist">
+                <div className="space-y-6">
+                  {menuItems.map((item) => (
+                    <div key={item.name}>
+                      <a href={item.href} className="block text-lg hover:text-muted-foreground" onClick={() => setMenuState(false)}>
+                        <span>{item.name}</span>
+                      </a>
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
+                    className="flex items-center gap-2 text-lg text-muted-foreground hover:text-foreground"
+                  >
+                    <Globe className="h-4 w-4" />
+                    {locale === 'es' ? 'English' : 'Español'}
+                  </button>
+                </div>
+              </div>
+
+              <div className="hidden lg:flex lg:items-center">
+                <ul className="flex items-center gap-8 text-sm">
+                  {menuItems.map((item) => (
+                    <li key={item.name}>
+                      <a href={item.href} className="text-muted-foreground transition-colors duration-300 hover:text-foreground">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="hidden lg:flex lg:items-center lg:gap-2">
+                <button
+                  onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
+                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="Toggle language"
+                >
+                  <Globe className="h-4 w-4" />
+                  <span className="uppercase font-medium">{locale === 'es' ? 'EN' : 'ES'}</span>
+                </button>
+                <Button size="sm" onClick={() => setModalOpen(true)}>
                   <span>{t(translations.nav.joinNow)}</span>
                   <ChevronRight className="ml-1 h-4 w-4" />
-                </a>
-              </Button>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+      <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
+    </>
   )
 }
 
