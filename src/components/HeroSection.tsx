@@ -27,106 +27,148 @@ export function HeroSection() {
       <HeroHeader />
       <main className="overflow-hidden">
         <section>
-          <div className="relative pt-24 md:pt-36">
-            <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_-20%,transparent_45%,hsl(var(--primary)/0.15)_125%)]"></div>
-            <div className="absolute inset-x-0 top-56 -z-10 h-48 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
-            <div className="absolute inset-x-0 bottom-0 -z-10 h-72 bg-background"></div>
+          <div className="relative pt-28 md:pt-40 pb-16 md:pb-24">
+            {/* Background effects */}
+            <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_70%_-20%,hsl(var(--primary)/0.08),transparent)]" />
+            <div className="absolute right-0 top-1/4 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute left-1/4 bottom-0 -z-10 h-64 w-64 rounded-full bg-accent/5 blur-3xl" />
 
             <div className="mx-auto max-w-7xl px-6">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                <AnimatedGroup preset="blur-slide">
-                  <a
-                    href="#waitlist"
-                    className="hover:bg-muted bg-muted/50 group mx-auto flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300"
+              {/* Two-column layout */}
+              <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+                {/* Left — Text content */}
+                <div className="max-w-xl">
+                  <AnimatedGroup preset="blur-slide">
+                    <a
+                      href="#waitlist"
+                      className="hover:bg-muted bg-muted/50 group inline-flex w-fit items-center gap-4 rounded-full border border-border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300"
+                    >
+                      <span className="text-foreground text-sm">{t(translations.hero.badge)}</span>
+                      <span className="bg-primary text-primary-foreground block rounded-full px-2 py-1 text-xs">
+                        {t(translations.hero.badgeCta)}
+                        <ArrowRight className="ml-1 inline h-3 w-3" />
+                      </span>
+                    </a>
+                  </AnimatedGroup>
+
+                  <TextEffect
+                    preset="fade"
+                    per="word"
+                    as="h1"
+                    className="mt-8 text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl xl:text-6xl"
+                    delay={0.5}
                   >
-                    <span className="text-foreground text-sm">{t(translations.hero.badge)}</span>
-                    <span className="bg-primary text-primary-foreground block rounded-full px-2 py-1 text-xs">
-                      {t(translations.hero.badgeCta)}
-                      <ArrowRight className="ml-1 inline h-3 w-3" />
-                    </span>
-                  </a>
-                </AnimatedGroup>
+                    {t(translations.hero.title)}
+                  </TextEffect>
 
-                <TextEffect
-                  preset="fade"
-                  per="word"
-                  as="h1"
-                  className="mt-8 text-balance text-5xl font-semibold md:text-6xl xl:text-[4.5rem] xl:leading-[1.2]"
-                  delay={0.5}
-                >
-                  {t(translations.hero.title)}
-                </TextEffect>
+                  <TextEffect
+                    per="line"
+                    as="p"
+                    preset="fade"
+                    delay={0.7}
+                    className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground"
+                  >
+                    {t(translations.hero.subtitle)}
+                  </TextEffect>
 
-                <TextEffect
-                  per="line"
-                  as="p"
-                  preset="fade"
-                  delay={0.7}
-                  className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground"
-                >
-                  {t(translations.hero.subtitle)}
-                </TextEffect>
-
-                <AnimatedGroup
-                  preset="blur-slide"
-                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
-                >
-                  <div>
-                    <Button size="lg" className="rounded-xl px-5" asChild>
+                  <AnimatedGroup
+                    preset="blur-slide"
+                    className="mt-10 flex flex-col gap-3 sm:flex-row"
+                  >
+                    <div>
+                      <Button size="lg" className="rounded-xl px-6 shadow-[var(--hero-shadow)]" asChild>
+                        <a href="#waitlist">
+                          <span className="text-nowrap">{t(translations.hero.cta)}</span>
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                    <Button size="lg" variant="outline" className="rounded-xl px-6" asChild>
                       <a href="#waitlist">
-                        <span className="text-nowrap">{t(translations.hero.cta)}</span>
-                        <ChevronRight className="ml-1 h-4 w-4" />
+                        <span className="text-nowrap">{t(translations.hero.demo)}</span>
                       </a>
                     </Button>
+                  </AnimatedGroup>
+
+                  {/* Mini social proof */}
+                  <AnimatedGroup preset="blur-slide" className="mt-10 flex items-center gap-3">
+                    <div className="flex -space-x-2">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div
+                          key={i}
+                          className="h-8 w-8 rounded-full border-2 border-background bg-primary/10"
+                        />
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {t({ es: '+200 profesionales en lista de espera', en: '+200 professionals on the waitlist' })}
+                    </p>
+                  </AnimatedGroup>
+                </div>
+
+                {/* Right — Dashboard image */}
+                <AnimatedGroup
+                  variants={{
+                    container: {
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.8 } },
+                    },
+                    item: transitionVariants.item,
+                  }}
+                  className="relative"
+                >
+                  <div className="relative">
+                    {/* Glow behind the card */}
+                    <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-2xl" />
+                    <div className="rounded-2xl border border-border bg-card shadow-2xl shadow-primary/10 ring-1 ring-border/50">
+                      <img
+                        src="https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75"
+                        className="rounded-2xl"
+                        alt="app illustration"
+                        width={2797}
+                        height={1800}
+                      />
+                    </div>
+                    {/* Floating accent card */}
+                    <div className="absolute -bottom-6 -left-6 rounded-xl border border-border bg-card p-4 shadow-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">+23%</p>
+                          <p className="text-xs text-muted-foreground">
+                            {t({ es: 'Detección temprana', en: 'Early detection' })}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <Button size="lg" variant="ghost" className="rounded-xl px-5" asChild>
-                    <a href="#waitlist">
-                      <span className="text-nowrap">{t(translations.hero.demo)}</span>
-                    </a>
-                  </Button>
                 </AnimatedGroup>
               </div>
             </div>
 
-            <AnimatedGroup
-              variants={{
-                container: {
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 1 } },
-                },
-                item: transitionVariants.item,
-              }}
-              className="relative mx-auto mt-8 max-w-6xl px-2 sm:mt-12 md:mt-20"
-            >
-              <div className="rounded-2xl border border-border bg-background shadow-lg ring-1 ring-border/50">
-                <img
-                  src="https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75"
-                  className="rounded-2xl"
-                  alt="app illustration"
-                  width={2797}
-                  height={1800}
-                />
-              </div>
-            </AnimatedGroup>
-          </div>
-
-          <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
-              <div className="shrink-0">
-                <p className="text-center text-sm font-medium text-muted-foreground sm:text-left">
-                  {t(translations.hero.trustedBy)}
-                </p>
-              </div>
-              <div className="relative w-full overflow-hidden">
-                <InfiniteSlider gap={24} duration={30}>
-                  {['nvidia', 'google', 'microsoft', 'amazon', 'meta', 'apple', 'samsung', 'intel'].map((name) => (
-                    <div key={name} className="flex items-center">
-                      <img className="mx-auto h-5 w-fit dark:invert" src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/${name}.svg`} alt={name} height="20" width="auto" />
-                    </div>
-                  ))}
-                </InfiniteSlider>
-                <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-20" direction="left" />
-                <ProgressiveBlur className="pointer-events-none absolute right-0 top-0 h-full w-20" direction="right" />
+            {/* Trusted by logos */}
+            <div className="mx-auto max-w-7xl px-6 pt-20 md:pt-28">
+              <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-12">
+                <div className="shrink-0">
+                  <p className="text-center text-sm font-medium text-muted-foreground sm:text-left">
+                    {t(translations.hero.trustedBy)}
+                  </p>
+                </div>
+                <div className="relative w-full overflow-hidden">
+                  <InfiniteSlider gap={24} duration={30}>
+                    {['nvidia', 'google', 'microsoft', 'amazon', 'meta', 'apple', 'samsung', 'intel'].map((name) => (
+                      <div key={name} className="flex items-center">
+                        <img className="mx-auto h-5 w-fit dark:invert" src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/${name}.svg`} alt={name} height="20" width="auto" />
+                      </div>
+                    ))}
+                  </InfiniteSlider>
+                  <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-20" direction="left" />
+                  <ProgressiveBlur className="pointer-events-none absolute right-0 top-0 h-full w-20" direction="right" />
+                </div>
               </div>
             </div>
           </div>
