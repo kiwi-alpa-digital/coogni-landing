@@ -176,7 +176,7 @@ const HeroHeader = () => {
               <div className="hidden lg:flex lg:items-center lg:gap-2">
                 <button
                   onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-white/60 transition-colors hover:text-white"
+                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   aria-label="Toggle language"
                 >
                   <Globe className="h-4 w-4" />
