@@ -185,9 +185,9 @@ const HeroHeader = () => {
 
   const menuItems = [
     { name: t(translations.nav.features), href: '#features' },
-    { name: t(translations.nav.platform), href: '#benefits' },
+    { name: t(translations.nav.platform), href: '#platform' },
+    { name: t(translations.nav.about), href: '#benefits' },
     { name: t(translations.nav.beta), href: '#waitlist' },
-    { name: t(translations.nav.about), href: '#' },
   ]
 
   React.useEffect(() => {
