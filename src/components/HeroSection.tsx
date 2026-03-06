@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ChevronRight, Menu, X, Globe } from 'lucide-react'
+import { ChevronRight, Menu, X, Globe, Sparkles } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { cn } from '@/lib/utils'
 import { TextEffect } from '@/components/ui/text-effect'
