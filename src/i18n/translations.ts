@@ -35,26 +35,32 @@ export const translations = {
     },
     items: {
       fragmented: {
+        title: { es: 'Datos fragmentados', en: 'Fragmented data' },
         problem: { es: 'Datos dispersos entre sistemas que no se comunican', en: 'Data scattered across systems that don\'t talk to each other' },
         solution: { es: 'Toda la información del paciente centralizada en un único punto de verdad', en: 'All patient data centralized in a single source of truth' },
       },
       reactive: {
+        title: { es: 'Gestión reactiva', en: 'Reactive management' },
         problem: { es: 'Decisiones reactivas cuando el deterioro ya es visible', en: 'Reactive decisions when decline is already visible' },
         solution: { es: 'IA predictiva que detecta puntos de inflexión antes de que sean observables', en: 'Predictive AI that detects inflection points before they\'re observable' },
       },
       insecure: {
+        title: { es: 'Comunicación insegura', en: 'Insecure communication' },
         problem: { es: 'Comunicación clínica por canales no seguros (WhatsApp, email personal)', en: 'Clinical communication via insecure channels (WhatsApp, personal email)' },
         solution: { es: 'Mensajería encriptada E2E con cumplimiento RGPD/HIPAA integrado', en: 'E2E encrypted messaging with built-in GDPR/HIPAA compliance' },
       },
       silos: {
+        title: { es: 'Silos profesionales', en: 'Professional silos' },
         problem: { es: 'Cada profesional trabaja aislado sin visión del equipo completo', en: 'Each professional works in isolation without full team visibility' },
         solution: { es: 'Roles multidisciplinares con flujos de trabajo compartidos en tiempo real', en: 'Multidisciplinary roles with shared real-time workflows' },
       },
       subjective: {
+        title: { es: 'Evaluación subjetiva', en: 'Subjective assessment' },
         problem: { es: 'Evaluaciones subjetivas sin datos longitudinales comparables', en: 'Subjective assessments without comparable longitudinal data' },
         solution: { es: 'Trayectorias cognitivas objetivas con escalas MMSE y MoCA automatizadas', en: 'Objective cognitive trajectories with automated MMSE and MoCA scales' },
       },
       noData: {
+        title: { es: 'Sin respaldo de datos', en: 'No data backing' },
         problem: { es: 'Sin métricas para justificar decisiones clínicas ante familiares o comités', en: 'No metrics to justify clinical decisions to families or committees' },
         solution: { es: 'Informes basados en evidencia que respaldan cada decisión con datos reales', en: 'Evidence-based reports that back every decision with real data' },
       },

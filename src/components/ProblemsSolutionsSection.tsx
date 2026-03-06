@@ -8,12 +8,12 @@ const ProblemsSolutionsSection = () => {
   const ps = translations.problemsSolutions;
 
   const items = [
-    { icon: FileWarning, problem: t(ps.items.fragmented.problem), solution: t(ps.items.fragmented.solution) },
-    { icon: Clock, problem: t(ps.items.reactive.problem), solution: t(ps.items.reactive.solution) },
-    { icon: ShieldAlert, problem: t(ps.items.insecure.problem), solution: t(ps.items.insecure.solution) },
-    { icon: Users, problem: t(ps.items.silos.problem), solution: t(ps.items.silos.solution) },
-    { icon: Brain, problem: t(ps.items.subjective.problem), solution: t(ps.items.subjective.solution) },
-    { icon: BarChart3, problem: t(ps.items.noData.problem), solution: t(ps.items.noData.solution) },
+    { icon: FileWarning, title: t(ps.items.fragmented.title), problem: t(ps.items.fragmented.problem), solution: t(ps.items.fragmented.solution) },
+    { icon: Clock, title: t(ps.items.reactive.title), problem: t(ps.items.reactive.problem), solution: t(ps.items.reactive.solution) },
+    { icon: ShieldAlert, title: t(ps.items.insecure.title), problem: t(ps.items.insecure.problem), solution: t(ps.items.insecure.solution) },
+    { icon: Users, title: t(ps.items.silos.title), problem: t(ps.items.silos.problem), solution: t(ps.items.silos.solution) },
+    { icon: Brain, title: t(ps.items.subjective.title), problem: t(ps.items.subjective.problem), solution: t(ps.items.subjective.solution) },
+    { icon: BarChart3, title: t(ps.items.noData.title), problem: t(ps.items.noData.problem), solution: t(ps.items.noData.solution) },
   ];
 
   return (
@@ -68,6 +68,7 @@ const ProblemsSolutionsSection = () => {
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/8 text-primary ring-1 ring-primary/10 transition-all duration-300 group-hover:bg-primary/15 group-hover:ring-primary/20 group-hover:scale-110">
                       <Icon className="h-[18px] w-[18px]" />
                     </div>
+                    <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
                   </div>
 
                   {/* Problem block */}
