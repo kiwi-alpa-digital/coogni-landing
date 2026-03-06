@@ -184,7 +184,7 @@ const HeroHeader = () => {
                 </button>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                  className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/20"
                 >
                   <span>{t(translations.nav.joinNow)}</span>
                   <ChevronRight className="ml-1 h-4 w-4" />
