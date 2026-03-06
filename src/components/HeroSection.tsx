@@ -137,7 +137,7 @@ const HeroHeader = () => {
               {/* Mobile menu */}
               <div
                 className={cn(
-                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-white/10 bg-neutral-900/95 p-6 pt-24 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden',
+                  'fixed inset-x-0 top-0 z-10 mb-6 origin-top overflow-hidden rounded-b-2xl border-b border-border bg-background/95 p-6 pt-24 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden',
                   menuState ? 'visible scale-y-100 opacity-100' : 'invisible scale-y-0 opacity-0'
                 )}
               >
