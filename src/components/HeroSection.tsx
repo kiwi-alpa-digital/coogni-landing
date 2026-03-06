@@ -223,15 +223,9 @@ const HeroHeader = () => {
                 <Globe className="h-4 w-4" />
                 <span className="uppercase font-medium">{locale === 'es' ? 'EN' : 'ES'}</span>
               </button>
-              <Button variant="ghost" size="sm" asChild>
-                <a href="#">{t(translations.nav.login)}</a>
-              </Button>
-              <Button size="sm" asChild>
-                <a href="#waitlist">{t(translations.nav.signup)}</a>
-              </Button>
               <Button size="sm" asChild>
                 <a href="#waitlist">
-                  <span>{t(translations.nav.getStarted)}</span>
+                  <span>{t(translations.nav.joinNow)}</span>
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </a>
               </Button>

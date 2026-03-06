@@ -7,9 +7,7 @@ export const translations = {
     platform: { es: 'Plataforma', en: 'Platform' },
     beta: { es: 'Beta Privada', en: 'Private Beta' },
     about: { es: 'Nosotros', en: 'About' },
-    login: { es: 'Iniciar sesión', en: 'Login' },
-    signup: { es: 'Registrarse', en: 'Sign Up' },
-    getStarted: { es: 'Solicitar acceso', en: 'Get Started' },
+    joinNow: { es: 'Únete ahora', en: 'Join now' },
   },
 
   // ---- Hero ----
