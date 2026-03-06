@@ -151,7 +151,7 @@ const HeroHeader = () => {
                   ))}
                   <button
                     onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-                    className="flex items-center gap-2 text-lg text-white/60 hover:text-white"
+                    className="flex items-center gap-2 text-lg text-muted-foreground hover:text-foreground"
                   >
                     <Globe className="h-4 w-4" />
                     {locale === 'es' ? 'English' : 'Español'}
