@@ -56,7 +56,7 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
       <div className="absolute inset-0 z-0 opacity-15">
         <MeshGradient
           style={{ width: "100%", height: "100%" }}
-          colors={["#0A1628", "#0056B3", "#1A8FA6", "#0D2847"]}
+          colors={["#0A2818", "#1A8F6A", "#2E7D5B", "#0D4735"]}
           speed={0.2}
         />
       </div>
