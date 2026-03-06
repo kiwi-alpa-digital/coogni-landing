@@ -40,11 +40,11 @@ export function HeroSection() {
             <AnimatedGroup preset="blur-slide" className="mt-10">
               <div className="max-w-lg">
                 {/* Discount badge */}
-                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/15 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(174_62%_40%/0.15)]">
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/20">
-                    <Sparkles className="h-3 w-3 text-accent" />
+                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(210_100%_35%/0.15)]">
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
+                    <Sparkles className="h-3 w-3 text-primary" />
                   </div>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-foreground">
                     {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
                   </span>
                 </div>
