@@ -164,7 +164,7 @@ const HeroHeader = () => {
                 <ul className="flex items-center gap-8 text-sm">
                   {menuItems.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-white/60 transition-colors duration-300 hover:text-white">
+                      <a href={item.href} className="text-muted-foreground transition-colors duration-300 hover:text-foreground">
                         {item.name}
                       </a>
                     </li>
