@@ -1,0 +1,110 @@
+"use client"
+
+import { PulsingBorder, MeshGradient } from "@paper-design/shaders-react"
+import { motion } from "framer-motion"
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
+
+interface ShaderBackgroundProps {
+  children: React.ReactNode
+}
+
+export function ShaderBackground({ children }: ShaderBackgroundProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isActive, setIsActive] = useState(false)
+
+  useEffect(() => {
+    const handleMouseEnter = () => setIsActive(true)
+    const handleMouseLeave = () => setIsActive(false)
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener("mouseenter", handleMouseEnter)
+      container.addEventListener("mouseleave", handleMouseLeave)
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("mouseenter", handleMouseEnter)
+        container.removeEventListener("mouseleave", handleMouseLeave)
+      }
+    }
+  }, [])
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative min-h-screen w-full overflow-hidden"
+    >
+      {/* SVG Filters */}
+      <svg className="absolute h-0 w-0">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
+            <feFlood floodColor="hsl(var(--primary))" floodOpacity="0.3" result="glowColor" />
+            <feComposite in="glowColor" in2="coloredBlur" operator="in" />
+          </filter>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feFlood floodColor="hsl(var(--accent))" floodOpacity="0.2" result="glowColor" />
+            <feComposite in="glowColor" in2="blur" operator="in" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Background Shaders */}
+      <div className="absolute inset-0 -z-10">
+        <MeshGradient
+          style={{ width: "100%", height: "100%" }}
+          colors={["#0059B3", "#339966", "#F0F4F8", "#1A8FA6"]}
+          speed={0.15}
+        />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-background/70 backdrop-blur-[1px]" />
+
+      {children}
+    </div>
+  )
+}
+
+export function PulsingCircle() {
+  return (
+    <div className="relative flex items-center justify-center">
+      <div className="relative h-32 w-32 sm:h-40 sm:w-40">
+        {/* Pulsing Border Circle */}
+        <PulsingBorder
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            position: "absolute",
+            inset: 0,
+          }}
+          colors={["#0059B3", "#339966", "#1A8FA6"]}
+          speed={0.8}
+        />
+
+        {/* Rotating Text Around the Pulsing Border */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <svg viewBox="0 0 200 200" className="h-full w-full">
+            <defs>
+              <path
+                id="circlePath"
+                d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+              />
+            </defs>
+            <text className="fill-foreground/60 text-[11px] font-medium tracking-[0.2em] uppercase">
+              <textPath href="#circlePath">
+                Precisión clínica • IA predictiva • Colaboración • Datos seguros •
+              </textPath>
+            </text>
+          </svg>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
