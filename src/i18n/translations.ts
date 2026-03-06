@@ -140,6 +140,22 @@ export const translations = {
       es: 'Enfermedades como el Alzheimer o el Parkinson no esperan. Nuestra plataforma elimina la incertidumbre clínica centralizando la información clave. Ahorra tiempo de consulta, reduce el estrés de tu equipo médico y toma decisiones clínicas justificadas y respaldadas por inteligencia de datos.',
       en: "Diseases like Alzheimer's or Parkinson's don't wait. Our platform eliminates clinical uncertainty by centralizing key information. Save consultation time, reduce your medical team's stress, and make clinical decisions justified and backed by data intelligence.",
     },
+    stats: {
+      stat1Value: { es: '40%', en: '40%' },
+      stat1Label: { es: 'Reducción en tiempo de consulta', en: 'Reduction in consultation time' },
+      stat2Value: { es: '3×', en: '3×' },
+      stat2Label: { es: 'Detección más temprana de deterioro', en: 'Earlier detection of decline' },
+      stat3Value: { es: '92%', en: '92%' },
+      stat3Label: { es: 'Satisfacción del equipo clínico', en: 'Clinical team satisfaction' },
+    },
+    pillars: {
+      p1Title: { es: 'Centralización', en: 'Centralization' },
+      p1Desc: { es: 'Un único punto de verdad para todos los datos del paciente, eliminando silos de información.', en: 'A single source of truth for all patient data, eliminating information silos.' },
+      p2Title: { es: 'Predicción', en: 'Prediction' },
+      p2Desc: { es: 'Modelos de IA que anticipan cambios antes de que sean clínicamente observables.', en: 'AI models that anticipate changes before they are clinically observable.' },
+      p3Title: { es: 'Colaboración', en: 'Collaboration' },
+      p3Desc: { es: 'Flujos de trabajo compartidos que conectan a todo el equipo multidisciplinar.', en: 'Shared workflows that connect the entire multidisciplinary team.' },
+    },
   },
 
   // ---- Waitlist ----
