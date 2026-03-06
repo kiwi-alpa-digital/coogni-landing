@@ -19,16 +19,6 @@ export function HeroSection() {
 
         <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
           <div className="max-w-2xl">
-            {/* Badge */}
-            <AnimatedGroup preset="blur-slide">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
-                <span className="text-sm text-white/90">✨</span>
-                <span className="text-sm font-medium text-white/90">
-                  {t({ es: 'Nueva plataforma de IA clínica', en: 'New Clinical AI Platform' })}
-                </span>
-              </div>
-            </AnimatedGroup>
-
             {/* Heading */}
             <h1 className="text-5xl leading-[1.1] tracking-tight text-white sm:text-6xl xl:text-7xl">
               <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
@@ -41,30 +31,37 @@ export function HeroSection() {
               as="p"
               preset="fade"
               delay={0.5}
-              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg [font-family:ui-sans-serif,system-ui,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol','Noto_Color_Emoji']"
+              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
             >
               {t(translations.hero.subtitle)}
             </TextEffect>
 
-            {/* CTA Buttons */}
-            <AnimatedGroup preset="blur-slide" className="mt-8">
-              <div className="flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => {
-                    document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+            {/* Inline waitlist form */}
+            <AnimatedGroup preset="blur-slide" className="mt-10">
+              <div className="max-w-md">
+                <p className="mb-3 text-sm font-medium text-white/60">
+                  {t({ es: 'Únete a la lista de espera · 20% dto. en el lanzamiento', en: 'Join the waitlist · 20% off at launch' })}
+                </p>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    setModalOpen(true)
                   }}
-                  className="rounded-full border border-white/30 bg-transparent px-8 py-3 text-sm font-medium text-white transition-all hover:bg-white/10"
-                  style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
+                  className="flex gap-2"
                 >
-                  {t({ es: 'Ver más', en: 'Learn more' })}
-                </button>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  className="rounded-full bg-white px-8 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
-                  style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
-                >
-                  {t(translations.nav.joinNow)}
-                </button>
+                  <input
+                    type="email"
+                    required
+                    placeholder={t(translations.waitlist.emailPlaceholder)}
+                    className="flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-colors focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/10"
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-white/90"
+                  >
+                    {t({ es: 'Unirme', en: 'Join' })}
+                  </button>
+                </form>
               </div>
             </AnimatedGroup>
           </div>
