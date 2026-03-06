@@ -31,7 +31,7 @@ export function HeroSection() {
               as="p"
               preset="fade"
               delay={0.5}
-              className="mt-6 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
+              className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               {t(translations.hero.subtitle)}
             </TextEffect>
