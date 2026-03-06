@@ -17,7 +17,9 @@ const ProblemsSolutionsSection = () => {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section className="relative w-full pt-0 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
+      {/* Gradient transition from hero */}
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-background to-transparent -z-10" />
       {/* Subtle background accents */}
       <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_60%_50%_at_50%_0%,hsl(var(--primary)/0.04),transparent)]" />
       <div className="absolute left-0 top-1/3 -z-10 h-72 w-72 rounded-full bg-destructive/3 blur-3xl" />
