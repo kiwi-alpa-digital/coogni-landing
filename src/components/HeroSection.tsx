@@ -144,7 +144,7 @@ const HeroHeader = () => {
                 <div className="space-y-6">
                   {menuItems.map((item) => (
                     <div key={item.name}>
-                      <a href={item.href} className="block text-lg text-white/80 hover:text-white" onClick={() => setMenuState(false)}>
+                      <a href={item.href} className="block text-lg text-muted-foreground hover:text-foreground" onClick={() => setMenuState(false)}>
                         <span>{item.name}</span>
                       </a>
                     </div>
