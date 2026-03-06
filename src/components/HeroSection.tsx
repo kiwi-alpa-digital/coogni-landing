@@ -9,6 +9,7 @@ import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import WaitlistModal from '@/components/WaitlistModal'
+import { ShaderBackground, PulsingCircle } from '@/components/ui/shaders-hero-section'
 
 const transitionVariants = {
   item: {
@@ -27,13 +28,9 @@ export function HeroSection() {
   return (
     <>
       <HeroHeader />
-      <main className="overflow-hidden">
+      <ShaderBackground>
         <section>
           <div className="relative pt-28 md:pt-40 pb-16 md:pb-24">
-            <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_70%_-20%,hsl(var(--primary)/0.08),transparent)]" />
-            <div className="absolute right-0 top-1/4 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-            <div className="absolute left-1/4 bottom-0 -z-10 h-64 w-64 rounded-full bg-accent/5 blur-3xl" />
-
             <div className="mx-auto max-w-7xl px-6">
               <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
                 {/* Left — Text + inline form */}
@@ -60,7 +57,7 @@ export function HeroSection() {
 
                   {/* Inline CTA form area */}
                   <AnimatedGroup preset="blur-slide" className="mt-10">
-                    <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
+                    <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-6 shadow-[var(--card-shadow)]">
                       <div className="mb-4">
                         <h3 className="text-lg font-semibold text-foreground">{t(translations.hero.formTitle)}</h3>
                         <p className="text-sm text-accent font-medium">{t(translations.hero.formSubtitle)}</p>
@@ -70,7 +67,7 @@ export function HeroSection() {
                   </AnimatedGroup>
                 </div>
 
-                {/* Right — Dashboard image */}
+                {/* Right — Dashboard image + pulsing circle */}
                 <AnimatedGroup
                   variants={{
                     container: {
@@ -83,7 +80,7 @@ export function HeroSection() {
                 >
                   <div className="relative">
                     <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-2xl" />
-                    <div className="rounded-2xl border border-border bg-card shadow-2xl shadow-primary/10 ring-1 ring-border/50">
+                    <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm shadow-2xl shadow-primary/10 ring-1 ring-border/50">
                       <img
                         src="https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75"
                         className="rounded-2xl"
@@ -92,7 +89,7 @@ export function HeroSection() {
                         height={1800}
                       />
                     </div>
-                    <div className="absolute -bottom-6 -left-6 rounded-xl border border-border bg-card p-4 shadow-lg">
+                    <div className="absolute -bottom-6 -left-6 rounded-xl border border-border bg-card/90 backdrop-blur-sm p-4 shadow-lg">
                       <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -106,6 +103,10 @@ export function HeroSection() {
                           </p>
                         </div>
                       </div>
+                    </div>
+                    {/* Pulsing circle accent */}
+                    <div className="absolute -top-8 -right-8 hidden lg:block">
+                      <PulsingCircle />
                     </div>
                   </div>
                 </AnimatedGroup>
@@ -135,7 +136,7 @@ export function HeroSection() {
             </div>
           </div>
         </section>
-      </main>
+      </ShaderBackground>
 
       <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
@@ -152,7 +153,6 @@ function HeroInlineForm({ onOpenModal }: { onOpenModal: () => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Open the full modal — in a real app you'd pass name/email as defaults
     onOpenModal()
   }
 
