@@ -25,7 +25,7 @@ const BenefitsSection = () => {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-card to-background" />
       <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.06),transparent)]" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">

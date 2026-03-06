@@ -23,7 +23,7 @@ const ProblemsSolutionsSection = () => {
       <div className="absolute left-0 top-1/3 -z-10 h-72 w-72 rounded-full bg-destructive/3 blur-3xl" />
       <div className="absolute right-0 bottom-1/4 -z-10 h-72 w-72 rounded-full bg-accent/4 blur-3xl" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
           <AnimatedGroup preset="blur-slide">

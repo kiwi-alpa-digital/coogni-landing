@@ -12,7 +12,7 @@ function FooterSection() {
 
   return (
     <footer className="relative border-t border-border bg-card text-foreground">
-      <div className="container mx-auto px-4 py-12 md:py-16">
+      <div className="mx-auto px-6 py-12 md:px-12 md:py-16 lg:px-20">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">{t(f.newsletter)}</h3>
