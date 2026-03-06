@@ -20,7 +20,7 @@ export function HeroSection() {
         <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
           <div className="max-w-3xl">
             {/* Heading */}
-            <h1 className="text-4xl leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+            <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
               <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
               <span className="font-light">{t(translations.hero.titleRest)}</span>
             </h1>
