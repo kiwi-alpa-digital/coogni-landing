@@ -24,6 +24,8 @@ export function HeroSection() {
             <div className="max-w-xl flex-1">
               <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
                 <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
+                <span className="font-light">{t(translations.hero.titleMid)}</span>{' '}
+                <span className="font-bold italic">{t(translations.hero.titleAccent2)}</span>{' '}
                 <span className="font-light">{t(translations.hero.titleRest)}</span>
               </h1>
 
