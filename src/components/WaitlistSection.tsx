@@ -48,8 +48,9 @@ const WaitlistSection = () => {
               </Badge>
             </div>
             <div className="flex flex-col gap-3">
-              <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-foreground lg:text-5xl">
-                {t(w.title)}
+              <h2 className="max-w-xl text-4xl tracking-tight text-foreground lg:text-5xl">
+                <span className="font-bold italic">{t(w.titleAccent)}</span>{' '}
+                <span className="font-light">{t(w.titleRest)}</span>
               </h2>
               <p className="max-w-xl text-lg text-muted-foreground">{t(w.desc)}</p>
             </div>

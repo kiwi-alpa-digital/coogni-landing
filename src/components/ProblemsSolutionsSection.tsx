@@ -36,8 +36,9 @@ const ProblemsSolutionsSection = () => {
             </span>
           </AnimatedGroup>
           <AnimatedGroup preset="blur-slide">
-            <h2 className="text-4xl font-semibold tracking-tight text-foreground lg:text-5xl">
-              {t(ps.title)}
+            <h2 className="text-4xl tracking-tight text-foreground lg:text-5xl">
+              <span className="font-bold italic">{t(ps.titleAccent)}</span>{' '}
+              <span className="font-light">{t(ps.titleRest)}</span>
             </h2>
           </AnimatedGroup>
           <AnimatedGroup preset="blur-slide">
