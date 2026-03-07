@@ -231,7 +231,7 @@ export const translations = {
     },
     clinicLabel: { es: 'Nombre del Centro / Clínica', en: 'Center / Clinic Name' },
     clinicPlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
-    submit: { es: 'Solicitar demo gratuita — 20% dto.', en: 'Request free demo — 20% off' },
+    submit: { es: 'Solicitar demo gratuita + 20% dto.', en: 'Request free demo + 20% off' },
     submitting: { es: 'Enviando...', en: 'Submitting...' },
     privacy: {
       es: 'Tus datos están protegidos. Cero spam, solo te avisaremos cuando estemos listos para ti.',
@@ -239,7 +239,7 @@ export const translations = {
     },
     successTitle: { es: '¡Te has unido a la lista de espera!', en: "You've joined the waitlist!" },
     successDesc: { es: 'Te avisaremos cuando estemos listos.', en: "We'll notify you when we're ready." },
-    discountBadge: { es: '🎁 20% de descuento asegurado', en: '🎁 20% discount locked in' },
+    discountBadge: { es: '20% de descuento asegurado', en: '20% discount locked in' },
   },
 
   // ---- Thank you page ----
