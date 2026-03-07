@@ -211,7 +211,8 @@ export const translations = {
   // ---- Waitlist ----
   waitlist: {
     badge: { es: 'Beta Privada', en: 'Private Beta' },
-    title: { es: 'Solicita tu demo gratuita y consigue un 20% de descuento', en: 'Request your free demo and get 20% off' },
+    titleAccent: { es: 'Solicita tu demo', en: 'Request your demo' },
+    titleRest: { es: 'gratuita y consigue un 20% de descuento', en: 'for free and get 20% off' },
     desc: {
       es: 'Reserva tu plaza en nuestra beta privada. Accede antes que nadie y asegura un 20% de descuento exclusivo en el lanzamiento.',
       en: 'Reserve your spot in our private beta. Get early access and lock in an exclusive 20% discount at launch.',
