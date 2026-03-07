@@ -41,12 +41,12 @@ const profileIcons: Record<string, React.ReactNode> = {
 };
 
 const interestIcons: Record<string, React.ReactNode> = {
-  patientManagement: <ShieldCheck className="h-4 w-4" />,
-  predictiveAnalytics: <BrainCircuit className="h-4 w-4" />,
-  decisionSupport: <Lightbulb className="h-4 w-4" />,
-  patientExercises: <Dumbbell className="h-4 w-4" />,
-  teamCollaboration: <Users className="h-4 w-4" />,
-  reporting: <FileBarChart className="h-4 w-4" />,
+  patientManagement: <ShieldCheck className="h-5 w-5 shrink-0" />,
+  predictiveAnalytics: <BrainCircuit className="h-5 w-5 shrink-0" />,
+  decisionSupport: <Lightbulb className="h-5 w-5 shrink-0" />,
+  patientExercises: <Dumbbell className="h-5 w-5 shrink-0" />,
+  teamCollaboration: <Users className="h-5 w-5 shrink-0" />,
+  reporting: <FileBarChart className="h-5 w-5 shrink-0" />,
 };
 
 const ThankYou = () => {
@@ -83,7 +83,7 @@ const ThankYou = () => {
     "w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20";
 
   const chipClasses = (active: boolean) =>
-    `inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm cursor-pointer transition-all duration-200 ${
+    `inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm cursor-pointer transition-all duration-200 text-left ${
       active
         ? "border-primary bg-primary/10 text-foreground font-medium"
         : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:bg-muted"
@@ -111,10 +111,10 @@ const ThankYou = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8">
-      <div className="w-full max-w-4xl space-y-5">
+    <div className="flex min-h-screen items-start justify-center bg-background px-4 py-6">
+      <div className="w-full max-w-5xl space-y-4">
         {/* Header with logo */}
-        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--card-shadow)" }}>
           <Logo />
           <div className="flex-1">
             <h1 className="text-lg font-semibold text-foreground">
@@ -140,9 +140,8 @@ const ThankYou = () => {
           <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
         </div>
 
-        {/* Form card — 2 columns */}
-        <div className="rounded-xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Left column */}
             <div className="space-y-5">
               {/* Profile type */}
@@ -228,43 +227,40 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Free text — full width */}
-          <div className="mt-5 space-y-2 rounded-xl border border-border bg-muted/30 p-4">
-            <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
-            <p className="text-xs text-muted-foreground">
-              {t({ es: 'Cuéntanos qué funciones o características te gustaría ver', en: 'Tell us what features or capabilities you\'d like to see' })}
-            </p>
-            <textarea
-              value={otherText}
-              onChange={(e) => {
-                if (e.target.value.length <= 500) setOtherText(e.target.value);
-              }}
-              placeholder={t(ty.otherPlaceholder)}
-              rows={2}
-              className={inputClasses + " resize-none"}
-            />
-            <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
-          </div>
-
-          {/* Actions */}
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Button
-              onClick={handleSubmit}
-              variant="cta"
-              size="lg"
-              className="gap-2"
-              disabled={isSubmitting || (!profileType && !patients)}
-            >
-              <Sparkles className="h-4 w-4" />
-              {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
-            </Button>
-            <button
-              type="button"
-              onClick={() => navigate("/")}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t(ty.skipExtra)}
-            </button>
+          {/* Free text + actions — full width */}
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end">
+            <div className="space-y-1.5 rounded-xl border border-border bg-muted/30 p-4">
+              <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
+              <textarea
+                value={otherText}
+                onChange={(e) => {
+                  if (e.target.value.length <= 500) setOtherText(e.target.value);
+                }}
+                placeholder={t(ty.otherPlaceholder)}
+                rows={2}
+                className={inputClasses + " resize-none"}
+              />
+              <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Button
+                onClick={handleSubmit}
+                variant="cta"
+                size="lg"
+                className="gap-2"
+                disabled={isSubmitting || (!profileType && !patients)}
+              >
+                <Sparkles className="h-4 w-4" />
+                {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
+              </Button>
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t(ty.skipExtra)}
+              </button>
+            </div>
           </div>
         </div>
 
