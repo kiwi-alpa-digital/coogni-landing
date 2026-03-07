@@ -227,43 +227,40 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Free text — full width */}
-          <div className="mt-5 space-y-2 rounded-xl border border-border bg-muted/30 p-4">
-            <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
-            <p className="text-xs text-muted-foreground">
-              {t({ es: 'Cuéntanos qué funciones o características te gustaría ver', en: 'Tell us what features or capabilities you\'d like to see' })}
-            </p>
-            <textarea
-              value={otherText}
-              onChange={(e) => {
-                if (e.target.value.length <= 500) setOtherText(e.target.value);
-              }}
-              placeholder={t(ty.otherPlaceholder)}
-              rows={2}
-              className={inputClasses + " resize-none"}
-            />
-            <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
-          </div>
-
-          {/* Actions */}
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Button
-              onClick={handleSubmit}
-              variant="cta"
-              size="lg"
-              className="gap-2"
-              disabled={isSubmitting || (!profileType && !patients)}
-            >
-              <Sparkles className="h-4 w-4" />
-              {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
-            </Button>
-            <button
-              type="button"
-              onClick={() => navigate("/")}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t(ty.skipExtra)}
-            </button>
+          {/* Free text + actions — full width */}
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end">
+            <div className="space-y-1.5 rounded-xl border border-border bg-muted/30 p-4">
+              <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
+              <textarea
+                value={otherText}
+                onChange={(e) => {
+                  if (e.target.value.length <= 500) setOtherText(e.target.value);
+                }}
+                placeholder={t(ty.otherPlaceholder)}
+                rows={2}
+                className={inputClasses + " resize-none"}
+              />
+              <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Button
+                onClick={handleSubmit}
+                variant="cta"
+                size="lg"
+                className="gap-2"
+                disabled={isSubmitting || (!profileType && !patients)}
+              >
+                <Sparkles className="h-4 w-4" />
+                {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
+              </Button>
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t(ty.skipExtra)}
+              </button>
+            </div>
           </div>
         </div>
 
