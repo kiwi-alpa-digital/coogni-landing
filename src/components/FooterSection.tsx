@@ -28,11 +28,10 @@ function FooterSection() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">{t(f.links)}</h3>
             <nav className="flex flex-col space-y-2 text-sm">
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">{t(f.home)}</a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">{t(f.aboutUs)}</a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">{t(f.functionalitiesLink)}</a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">{t(f.research)}</a>
-              <a href="#waitlist" className="text-muted-foreground transition-colors hover:text-primary">{t(f.contact)}</a>
+              <a href="#problem" className="text-muted-foreground transition-colors hover:text-primary">{t(f.problem)}</a>
+              <a href="#features" className="text-muted-foreground transition-colors hover:text-primary">{t(f.functionalitiesLink)}</a>
+              <a href="#platform" className="text-muted-foreground transition-colors hover:text-primary">{t(f.platformLink)}</a>
+              <a href="#waitlist" className="text-muted-foreground transition-colors hover:text-primary">{t(f.freeTrial)}</a>
             </nav>
           </div>
 

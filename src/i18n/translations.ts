@@ -3,11 +3,10 @@ export type Locale = 'es' | 'en'
 export const translations = {
   // ---- Navbar ----
   nav: {
+    problem: { es: 'Problema', en: 'Problem' },
     features: { es: 'Funcionalidades', en: 'Features' },
     platform: { es: 'Plataforma', en: 'Platform' },
-    beta: { es: 'Beta Privada', en: 'Private Beta' },
-    about: { es: 'Nosotros', en: 'About' },
-    joinNow: { es: 'Solicita tu demo', en: 'Request your demo' },
+    joinNow: { es: 'Prueba Gratis', en: 'Free Trial' },
   },
 
   // ---- Hero ----
@@ -304,11 +303,10 @@ export const translations = {
     },
     emailPlaceholder: { es: 'tu@email.com', en: 'you@email.com' },
     links: { es: 'Enlaces', en: 'Links' },
-    home: { es: 'Inicio', en: 'Home' },
-    aboutUs: { es: 'Sobre Nosotros', en: 'About Us' },
+    problem: { es: 'Problema', en: 'Problem' },
     functionalitiesLink: { es: 'Funcionalidades', en: 'Features' },
-    research: { es: 'Investigación', en: 'Research' },
-    contact: { es: 'Contacto', en: 'Contact' },
+    platformLink: { es: 'Plataforma', en: 'Platform' },
+    freeTrial: { es: 'Prueba Gratis', en: 'Free Trial' },
     contactTitle: { es: 'Contacto', en: 'Contact' },
     followUs: { es: 'Síguenos', en: 'Follow Us' },
     copyright: { es: '© 2025 NeuroCDSS. Todos los derechos reservados.', en: '© 2025 NeuroCDSS. All rights reserved.' },
