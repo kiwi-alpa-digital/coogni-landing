@@ -3,11 +3,10 @@ export type Locale = 'es' | 'en'
 export const translations = {
   // ---- Navbar ----
   nav: {
+    problem: { es: 'Problema', en: 'Problem' },
     features: { es: 'Funcionalidades', en: 'Features' },
     platform: { es: 'Plataforma', en: 'Platform' },
-    beta: { es: 'Beta Privada', en: 'Private Beta' },
-    about: { es: 'Nosotros', en: 'About' },
-    joinNow: { es: 'Solicita tu demo', en: 'Request your demo' },
+    joinNow: { es: 'Prueba Gratis', en: 'Free Trial' },
   },
 
   // ---- Hero ----
