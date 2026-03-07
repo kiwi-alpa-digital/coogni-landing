@@ -153,10 +153,9 @@ const HeroHeader = () => {
   const { t, locale, setLocale } = useI18n()
 
   const menuItems = [
+    { name: t(translations.nav.problem), href: '#problem' },
     { name: t(translations.nav.features), href: '#features' },
     { name: t(translations.nav.platform), href: '#platform' },
-    { name: t(translations.nav.about), href: '#benefits' },
-    { name: t(translations.nav.beta), href: '#waitlist' },
   ]
 
   React.useEffect(() => {
