@@ -181,8 +181,10 @@ export const translations = {
   // ---- Benefits ----
   benefits: {
     title: {
-      es: 'Por qué evolucionar hacia el cuidado basado en datos.',
-      en: 'Why evolve towards data-driven care.',
+      es: 'Por qué evolucionar', en: 'Why evolve',
+    },
+    titleRest: {
+      es: 'hacia el cuidado basado en datos.', en: 'towards data-driven care.',
     },
     desc: {
       es: 'Enfermedades como el Alzheimer o el Parkinson no esperan. Nuestra plataforma elimina la incertidumbre clínica centralizando la información clave. Ahorra tiempo de consulta, reduce el estrés de tu equipo médico y toma decisiones clínicas justificadas y respaldadas por inteligencia de datos.',
