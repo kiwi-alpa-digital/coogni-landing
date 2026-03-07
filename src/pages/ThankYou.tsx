@@ -41,12 +41,12 @@ const profileIcons: Record<string, React.ReactNode> = {
 };
 
 const interestIcons: Record<string, React.ReactNode> = {
-  patientManagement: <ShieldCheck className="h-4 w-4" />,
-  predictiveAnalytics: <BrainCircuit className="h-4 w-4" />,
-  decisionSupport: <Lightbulb className="h-4 w-4" />,
-  patientExercises: <Dumbbell className="h-4 w-4" />,
-  teamCollaboration: <Users className="h-4 w-4" />,
-  reporting: <FileBarChart className="h-4 w-4" />,
+  patientManagement: <ShieldCheck className="h-5 w-5 shrink-0" />,
+  predictiveAnalytics: <BrainCircuit className="h-5 w-5 shrink-0" />,
+  decisionSupport: <Lightbulb className="h-5 w-5 shrink-0" />,
+  patientExercises: <Dumbbell className="h-5 w-5 shrink-0" />,
+  teamCollaboration: <Users className="h-5 w-5 shrink-0" />,
+  reporting: <FileBarChart className="h-5 w-5 shrink-0" />,
 };
 
 const ThankYou = () => {
