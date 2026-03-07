@@ -18,7 +18,7 @@ export function HeroSection() {
         <HeroHeader />
 
         <div className="flex min-h-screen items-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
-          <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
+          <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
             {/* Left: content */}
             <div className="max-w-xl flex-1">
               <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
