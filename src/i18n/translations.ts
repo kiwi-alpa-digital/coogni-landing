@@ -263,7 +263,7 @@ export const translations = {
       independent: { es: 'Profesional independiente', en: 'Independent professional' },
       clinic: { es: 'Clínica / Centro médico', en: 'Clinic / Medical center' },
     },
-    clinicNameLabel: { es: 'Nombre del centro (opcional)', en: 'Center name (optional)' },
+    clinicNameLabel: { es: 'Clínica / Centro (opcional)', en: 'Clinic / Center (optional)' },
     clinicNamePlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
     patientsLabel: { es: '¿Cuántos pacientes gestionas aproximadamente?', en: 'Approximately how many patients do you manage?' },
     patientsOptions: {
@@ -283,8 +283,8 @@ export const translations = {
     },
     otherLabel: { es: '¿Qué más te gustaría ver? (opcional)', en: 'What else would you like to see? (optional)' },
     otherPlaceholder: {
-      es: 'Ej: Me gustaría que pudiera recordarle tomar sus medicinas, o monitorizar aspectos básicos de su día a día...',
-      en: 'E.g.: I\'d like it to remind patients to take their medicines, or monitor basic daily aspects...',
+      es: 'Ej: Me interesaría detectar patrones de deterioro cognitivo temprano, o predecir la evolución del paciente a 6-12 meses...',
+      en: 'E.g.: I\'d be interested in detecting early cognitive decline patterns, or predicting patient progression over 6-12 months...',
     },
     submitExtra: { es: 'Desbloquear 5% extra', en: 'Unlock extra 5%' },
     skipExtra: { es: 'No gracias, continuar con 20%', en: 'No thanks, continue with 20%' },
