@@ -136,7 +136,7 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-      )
+      )}
 
       <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
