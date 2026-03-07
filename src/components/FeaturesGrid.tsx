@@ -10,6 +10,9 @@ export default function FeaturesGrid() {
     <section id="platform" className="overflow-hidden py-16 md:py-32">
       <div className="mx-auto space-y-8 px-6 md:space-y-12 md:px-12 lg:px-20">
         <div className="relative z-10 max-w-2xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+            {t({ es: 'Plataforma', en: 'Platform' })}
+          </p>
           <h2 className="text-4xl lg:text-5xl">
             <span className="font-bold italic">{t(fg.titleAccent)}</span>{' '}
             <span className="font-light">{t(fg.titleRest)}</span>
