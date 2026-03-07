@@ -17,66 +17,89 @@ export function HeroSection() {
       <ShaderBackground>
         <HeroHeader />
 
-        <div className="flex min-h-screen flex-col justify-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
-          <div className="max-w-3xl">
-            {/* Heading */}
-            <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
-              <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
-              <span className="font-light">{t(translations.hero.titleRest)}</span>
-            </h1>
+        <div className="flex min-h-screen items-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
+          <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
+            {/* Left: content */}
+            <div className="max-w-xl flex-1">
+              <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+                <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
+                <span className="font-light">{t(translations.hero.titleRest)}</span>
+              </h1>
 
-            {/* Description */}
-            <TextEffect
-              per="line"
-              as="p"
-              preset="fade"
-              delay={0.5}
-              className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
-            >
-              {t(translations.hero.subtitle)}
-            </TextEffect>
+              <TextEffect
+                per="line"
+                as="p"
+                preset="fade"
+                delay={0.5}
+                className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
+              >
+                {t(translations.hero.subtitle)}
+              </TextEffect>
 
-            {/* Inline waitlist form */}
-            <AnimatedGroup preset="blur-slide" className="mt-10">
-              <div className="max-w-lg">
-                {/* Discount badge */}
-                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(210_100%_35%/0.15)]">
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
-                    <Sparkles className="h-3 w-3 text-primary" />
+              <AnimatedGroup preset="blur-slide" className="mt-10">
+                <div className="max-w-lg">
+                  <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(210_100%_35%/0.15)]">
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
+                      <Sparkles className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-sm font-semibold text-foreground">
+                      {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
+                    </span>
                   </div>
-                  <span className="text-sm font-semibold text-foreground">
-                    {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
-                  </span>
-                </div>
 
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                    setModalOpen(true)
-                  }}
-                  className="flex flex-col gap-2 sm:flex-row"
-                >
-                  <input
-                    type="text"
-                    required
-                    placeholder={t(translations.waitlist.namePlaceholder)}
-                    className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
-                  />
-                  <input
-                    type="email"
-                    required
-                    placeholder={t(translations.waitlist.emailPlaceholder)}
-                    className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
-                  />
-                  <button
-                    type="submit"
-                    className="whitespace-nowrap rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      setModalOpen(true)
+                    }}
+                    className="flex flex-col gap-2 sm:flex-row"
                   >
-                    {t({ es: 'Unirme', en: 'Join' })}
-                  </button>
-                </form>
+                    <input
+                      type="text"
+                      required
+                      placeholder={t(translations.waitlist.namePlaceholder)}
+                      className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
+                    />
+                    <input
+                      type="email"
+                      required
+                      placeholder={t(translations.waitlist.emailPlaceholder)}
+                      className="flex-1 rounded-full border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
+                    />
+                    <button
+                      type="submit"
+                      className="whitespace-nowrap rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+                    >
+                      {t({ es: 'Unirme', en: 'Join' })}
+                    </button>
+                  </form>
+                </div>
+              </AnimatedGroup>
+            </div>
+
+            {/* Right: video */}
+            <div className="flex-1 lg:max-w-md xl:max-w-lg">
+              <div className="overflow-hidden rounded-2xl border border-border/50 bg-background/60 shadow-xl backdrop-blur-sm">
+                <div className="relative aspect-video w-full bg-muted/30">
+                  <video
+                    className="h-full w-full object-cover"
+                    poster=""
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 ml-0.5">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </AnimatedGroup>
+            </div>
           </div>
         </div>
       </ShaderBackground>
