@@ -12,12 +12,10 @@ const WaitlistSection = () => {
   const w = translations.waitlist;
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "", email: "", specialty: "", clinic: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -27,7 +25,7 @@ const WaitlistSection = () => {
     setTimeout(() => {
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
       const name = formData.name;
-      setFormData({ name: "", email: "", specialty: "", clinic: "" });
+      setFormData({ name: "", email: "" });
       setIsSubmitting(false);
       navigate("/gracias-lista-espera", { state: { name } });
     }, 1000);
@@ -49,8 +47,10 @@ const WaitlistSection = () => {
             </div>
             <div className="flex flex-col gap-3">
               <h2 className="max-w-xl text-4xl tracking-tight text-foreground lg:text-5xl">
+                <span className="font-light">{t(w.titlePre)}</span>{' '}
                 <span className="font-bold italic">{t(w.titleAccent)}</span>{' '}
-                <span className="font-light">{t(w.titleRest)}</span>
+                <span className="font-light">{t(w.titleMid)}</span>{' '}
+                <span className="font-bold italic">{t(w.titleAccent2)}</span>
               </h2>
               <p className="max-w-xl text-lg text-muted-foreground">{t(w.desc)}</p>
             </div>
@@ -65,20 +65,6 @@ const WaitlistSection = () => {
               <div>
                 <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.emailLabel)}</label>
                 <input id="email" name="email" type="email" required value={formData.email} onChange={handleChange} placeholder={t(w.emailPlaceholder)} className={inputClasses} />
-              </div>
-              <div>
-                <label htmlFor="specialty" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.specialtyLabel)}</label>
-                <select id="specialty" name="specialty" required value={formData.specialty} onChange={handleChange} className={inputClasses}>
-                  <option value="" disabled>{t(w.specialtyPlaceholder)}</option>
-                  <option value="neurologo">{t(w.specialtyOptions.neurologo)}</option>
-                  <option value="psicologo">{t(w.specialtyOptions.psicologo)}</option>
-                  <option value="director">{t(w.specialtyOptions.director)}</option>
-                  <option value="otro">{t(w.specialtyOptions.otro)}</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="clinic" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.clinicLabel)}</label>
-                <input id="clinic" name="clinic" type="text" required value={formData.clinic} onChange={handleChange} placeholder={t(w.clinicPlaceholder)} className={inputClasses} />
               </div>
               <Button type="submit" variant="cta" size="lg" className="w-full gap-2 py-6 text-base" disabled={isSubmitting}>
                 {isSubmitting ? t(w.submitting) : t(w.submit)}
