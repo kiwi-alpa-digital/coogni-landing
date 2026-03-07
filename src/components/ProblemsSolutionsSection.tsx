@@ -19,7 +19,7 @@ const ProblemsSolutionsSection = () => {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden">
+    <section id="problem" className="relative w-full py-16 md:py-24 overflow-hidden">
       <div className="mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <motion.div
