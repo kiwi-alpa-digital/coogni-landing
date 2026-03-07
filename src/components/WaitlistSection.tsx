@@ -66,20 +66,6 @@ const WaitlistSection = () => {
                 <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.emailLabel)}</label>
                 <input id="email" name="email" type="email" required value={formData.email} onChange={handleChange} placeholder={t(w.emailPlaceholder)} className={inputClasses} />
               </div>
-              <div>
-                <label htmlFor="specialty" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.specialtyLabel)}</label>
-                <select id="specialty" name="specialty" required value={formData.specialty} onChange={handleChange} className={inputClasses}>
-                  <option value="" disabled>{t(w.specialtyPlaceholder)}</option>
-                  <option value="neurologo">{t(w.specialtyOptions.neurologo)}</option>
-                  <option value="psicologo">{t(w.specialtyOptions.psicologo)}</option>
-                  <option value="director">{t(w.specialtyOptions.director)}</option>
-                  <option value="otro">{t(w.specialtyOptions.otro)}</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="clinic" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.clinicLabel)}</label>
-                <input id="clinic" name="clinic" type="text" required value={formData.clinic} onChange={handleChange} placeholder={t(w.clinicPlaceholder)} className={inputClasses} />
-              </div>
               <Button type="submit" variant="cta" size="lg" className="w-full gap-2 py-6 text-base" disabled={isSubmitting}>
                 {isSubmitting ? t(w.submitting) : t(w.submit)}
                 <MoveRight className="h-4 w-4" />
