@@ -11,6 +11,7 @@ import { ShaderBackground } from '@/components/ui/shaders-hero-section'
 export function HeroSection() {
   const { t } = useI18n()
   const [modalOpen, setModalOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(false)
 
   return (
     <>
@@ -85,13 +86,15 @@ export function HeroSection() {
                     className="h-full w-full object-cover"
                     poster=""
                     muted
-                    loop
                     playsInline
                   >
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
                   </video>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110 cursor-pointer">
+                  <div
+                    className="absolute inset-0 flex cursor-pointer items-center justify-center"
+                    onClick={() => setVideoOpen(true)}
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm transition-transform hover:scale-110">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 ml-0.5">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -103,6 +106,37 @@ export function HeroSection() {
           </div>
         </div>
       </ShaderBackground>
+
+      {/* Video fullscreen modal */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setVideoOpen(false)}
+        >
+          <button
+            onClick={() => setVideoOpen(false)}
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            aria-label="Close video"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div
+            className="w-full max-w-5xl px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="aspect-video w-full overflow-hidden rounded-xl">
+              <video
+                className="h-full w-full object-contain"
+                autoPlay
+                controls
+                playsInline
+              >
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
 
       <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
