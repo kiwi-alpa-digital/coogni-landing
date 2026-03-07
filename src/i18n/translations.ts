@@ -154,7 +154,8 @@ export const translations = {
 
   // ---- Features Grid ----
   featuresGrid: {
-    title: { es: 'Diseñado para equipos clínicos multidisciplinares', en: 'Built for multidisciplinary clinical teams' },
+    titleAccent: { es: 'Diseñado', en: 'Built' },
+    titleRest: { es: 'para equipos clínicos multidisciplinares', en: 'for multidisciplinary clinical teams' },
     subtitle: {
       es: 'Adapta los flujos de trabajo a las necesidades de cada profesional, desde neurólogos hasta terapeutas ocupacionales, con una plataforma que escala con tu equipo.',
       en: 'Adapt workflows to each professional\'s needs, from neurologists to occupational therapists, with a platform that scales with your team.',
