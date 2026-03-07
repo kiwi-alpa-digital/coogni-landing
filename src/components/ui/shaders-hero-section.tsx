@@ -53,7 +53,7 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
       </svg>
 
       {/* Background Shaders - subtle on light bg */}
-      <div className="absolute inset-0 z-0 opacity-15">
+      <div className="absolute inset-0 z-0 opacity-10">
         <MeshGradient
           style={{ width: "100%", height: "100%" }}
           colors={["#0A2818", "#1A8F6A", "#2E7D5B", "#0D4735"]}
