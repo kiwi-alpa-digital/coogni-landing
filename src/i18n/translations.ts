@@ -75,8 +75,10 @@ export const translations = {
   // ---- Features Section (Bento Grid) ----
   features: {
     title: {
-      es: 'Herramientas diseñadas para la precisión clínica y la colaboración.',
-      en: 'Tools designed for clinical precision and collaboration.',
+      es: 'Herramientas diseñadas', en: 'Tools designed',
+    },
+    titleRest: {
+      es: 'para la precisión clínica y la colaboración.', en: 'for clinical precision and collaboration.',
     },
     map: {
       title: { es: 'Distribución de Pacientes', en: 'Patient Distribution' },
