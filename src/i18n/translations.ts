@@ -180,7 +180,7 @@ export const translations = {
 
   // ---- Benefits ----
   benefits: {
-    title: {
+    titleAccent: {
       es: 'Por qué evolucionar', en: 'Why evolve',
     },
     titleRest: {
