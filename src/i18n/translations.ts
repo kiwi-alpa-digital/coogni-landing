@@ -231,7 +231,7 @@ export const translations = {
     },
     clinicLabel: { es: 'Nombre del Centro / Clínica', en: 'Center / Clinic Name' },
     clinicPlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
-    submit: { es: 'Solicitar demo gratuita — 20% dto.', en: 'Request free demo — 20% off' },
+    submit: { es: 'Solicitar demo gratuita + 20% dto.', en: 'Request free demo + 20% off' },
     submitting: { es: 'Enviando...', en: 'Submitting...' },
     privacy: {
       es: 'Tus datos están protegidos. Cero spam, solo te avisaremos cuando estemos listos para ti.',
