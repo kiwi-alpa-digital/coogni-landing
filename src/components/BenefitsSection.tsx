@@ -7,7 +7,7 @@ const BenefitsSection = () => {
   const b = translations.benefits
 
   return (
-    <section id="benefits" className="relative overflow-hidden py-16 md:py-20">
+    <section id="benefits" className="relative overflow-hidden py-8 md:py-10">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-card to-background" />
       <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.06),transparent)]" />
 
