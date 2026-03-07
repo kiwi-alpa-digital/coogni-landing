@@ -203,10 +203,15 @@ const ThankYou = () => {
             <div className="space-y-5">
               {/* Interests (multi-select) */}
               <div className="space-y-2.5">
-                <label className="block text-sm font-medium text-foreground">
-                  {t(ty.interestsLabel)}
-                </label>
-                <div className="grid grid-cols-1 gap-2">
+                <div>
+                  <label className="block text-sm font-medium text-foreground">
+                    {t(ty.interestsLabel)}
+                  </label>
+                  <span className="text-xs text-muted-foreground">
+                    {t({ es: 'Selección múltiple', en: 'Multiple selection' })}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {interestOptions.map(([key, val]) => (
                     <button
                       key={key}
