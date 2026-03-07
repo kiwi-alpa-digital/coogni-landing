@@ -239,7 +239,7 @@ export const translations = {
     },
     successTitle: { es: '¡Te has unido a la lista de espera!', en: "You've joined the waitlist!" },
     successDesc: { es: 'Te avisaremos cuando estemos listos.', en: "We'll notify you when we're ready." },
-    discountBadge: { es: '🎁 20% de descuento asegurado', en: '🎁 20% discount locked in' },
+    discountBadge: { es: '20% de descuento asegurado', en: '20% discount locked in' },
   },
 
   // ---- Thank you page ----
