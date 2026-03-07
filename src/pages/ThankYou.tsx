@@ -83,7 +83,7 @@ const ThankYou = () => {
     "w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20";
 
   const chipClasses = (active: boolean) =>
-    `inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm cursor-pointer transition-all duration-200 ${
+    `inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm cursor-pointer transition-all duration-200 text-left ${
       active
         ? "border-primary bg-primary/10 text-foreground font-medium"
         : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:bg-muted"
