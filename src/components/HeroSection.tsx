@@ -11,6 +11,7 @@ import { ShaderBackground } from '@/components/ui/shaders-hero-section'
 export function HeroSection() {
   const { t } = useI18n()
   const [modalOpen, setModalOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(false)
 
   return (
     <>
