@@ -183,7 +183,7 @@ const HeroHeader = () => {
               </div>
 
               {/* Desktop nav */}
-              <div className="hidden lg:flex lg:items-center">
+              <div className="absolute left-1/2 hidden -translate-x-1/2 lg:flex lg:items-center">
                 <ul className="flex items-center gap-8 text-sm">
                   {menuItems.map((item) => (
                     <li key={item.name}>
