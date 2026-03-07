@@ -286,7 +286,7 @@ export const translations = {
       es: 'Ej: Me gustaría que pudiera recordarle tomar sus medicinas, o monitorizar aspectos básicos de su día a día...',
       en: 'E.g.: I\'d like it to remind patients to take their medicines, or monitor basic daily aspects...',
     },
-    submitExtra: { es: 'Desbloquear 5% extra 🎁', en: 'Unlock extra 5% 🎁' },
+    submitExtra: { es: 'Desbloquear 5% extra', en: 'Unlock extra 5%' },
     skipExtra: { es: 'No gracias, continuar con 20%', en: 'No thanks, continue with 20%' },
     submittingExtra: { es: 'Guardando...', en: 'Saving...' },
     finalTitle: { es: '¡Listo! Tu descuento del 25% está asegurado.', en: 'Done! Your 25% discount is locked in.' },
