@@ -17,12 +17,10 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
   const w = translations.waitlist;
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "", email: "", specialty: "", clinic: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -31,7 +29,7 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
     setIsSubmitting(true);
     setTimeout(() => {
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
-      setFormData({ name: "", email: "", specialty: "", clinic: "" });
+      setFormData({ name: "", email: "" });
       setIsSubmitting(false);
       onOpenChange(false);
       navigate("/gracias-lista-espera", { state: { name: formData.name } });
@@ -70,20 +68,6 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
           <div>
             <label htmlFor="modal-email" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.emailLabel)}</label>
             <input id="modal-email" name="email" type="email" required value={formData.email} onChange={handleChange} placeholder={t(w.emailPlaceholder)} className={inputClasses} />
-          </div>
-          <div>
-            <label htmlFor="modal-specialty" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.specialtyLabel)}</label>
-            <select id="modal-specialty" name="specialty" required value={formData.specialty} onChange={handleChange} className={inputClasses}>
-              <option value="" disabled>{t(w.specialtyPlaceholder)}</option>
-              <option value="neurologo">{t(w.specialtyOptions.neurologo)}</option>
-              <option value="psicologo">{t(w.specialtyOptions.psicologo)}</option>
-              <option value="director">{t(w.specialtyOptions.director)}</option>
-              <option value="otro">{t(w.specialtyOptions.otro)}</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="modal-clinic" className="mb-1.5 block text-sm font-medium text-foreground">{t(w.clinicLabel)}</label>
-            <input id="modal-clinic" name="clinic" type="text" required value={formData.clinic} onChange={handleChange} placeholder={t(w.clinicPlaceholder)} className={inputClasses} />
           </div>
           <Button type="submit" variant="cta" size="lg" className="w-full gap-2 py-6 text-base" disabled={isSubmitting}>
             {isSubmitting ? t(w.submitting) : t(w.submit)}
