@@ -114,7 +114,7 @@ const ThankYou = () => {
     <div className="flex min-h-screen items-start justify-center bg-background px-4 py-6">
       <div className="w-full max-w-5xl space-y-4">
         {/* Header with logo */}
-        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--card-shadow)" }}>
           <Logo />
           <div className="flex-1">
             <h1 className="text-lg font-semibold text-foreground">
