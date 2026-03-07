@@ -112,7 +112,7 @@ const ThankYou = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8">
-      <div className="w-full max-w-3xl space-y-5">
+      <div className="w-full max-w-4xl space-y-5">
         {/* Header with logo */}
         <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
           <Logo />
@@ -203,10 +203,15 @@ const ThankYou = () => {
             <div className="space-y-5">
               {/* Interests (multi-select) */}
               <div className="space-y-2.5">
-                <label className="block text-sm font-medium text-foreground">
-                  {t(ty.interestsLabel)}
-                </label>
-                <div className="grid grid-cols-1 gap-2">
+                <div>
+                  <label className="block text-sm font-medium text-foreground">
+                    {t(ty.interestsLabel)}
+                  </label>
+                  <span className="text-xs text-muted-foreground">
+                    {t({ es: 'Selección múltiple', en: 'Multiple selection' })}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {interestOptions.map(([key, val]) => (
                     <button
                       key={key}
