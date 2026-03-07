@@ -12,9 +12,7 @@ const WaitlistSection = () => {
   const w = translations.waitlist;
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "", email: "", specialty: "", clinic: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
