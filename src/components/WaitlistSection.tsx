@@ -25,7 +25,7 @@ const WaitlistSection = () => {
     setTimeout(() => {
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
       const name = formData.name;
-      setFormData({ name: "", email: "", specialty: "", clinic: "" });
+      setFormData({ name: "", email: "" });
       setIsSubmitting(false);
       navigate("/gracias-lista-espera", { state: { name } });
     }, 1000);
