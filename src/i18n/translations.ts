@@ -263,7 +263,7 @@ export const translations = {
       independent: { es: 'Profesional independiente', en: 'Independent professional' },
       clinic: { es: 'Clínica / Centro médico', en: 'Clinic / Medical center' },
     },
-    clinicNameLabel: { es: 'Nombre del centro (opcional)', en: 'Center name (optional)' },
+    clinicNameLabel: { es: 'Clínica / Centro (opcional)', en: 'Clinic / Center (optional)' },
     clinicNamePlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
     patientsLabel: { es: '¿Cuántos pacientes gestionas aproximadamente?', en: 'Approximately how many patients do you manage?' },
     patientsOptions: {
