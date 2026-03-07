@@ -32,7 +32,8 @@ export const translations = {
   // ---- Problems & Solutions ----
   problemsSolutions: {
     badge: { es: 'El problema', en: 'The problem' },
-    title: { es: 'Tu clínica merece mejor que hojas de cálculo y suposiciones.', en: 'Your clinic deserves better than spreadsheets and guesswork.' },
+    titleAccent: { es: 'Tu clínica', en: 'Your clinic' },
+    titleRest: { es: 'merece mejor que hojas de cálculo y suposiciones.', en: 'deserves better than spreadsheets and guesswork.' },
     subtitle: {
       es: 'Los equipos clínicos pierden tiempo, precisión y coordinación con herramientas que no fueron diseñadas para el manejo neurodegenerativo.',
       en: 'Clinical teams lose time, accuracy, and coordination with tools not designed for neurodegenerative care.',
