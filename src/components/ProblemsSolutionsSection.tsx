@@ -29,13 +29,9 @@ const ProblemsSolutionsSection = () => {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-3xl text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-destructive/20 bg-destructive/5 px-4 py-1.5 text-xs font-medium text-destructive mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-destructive/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-destructive" />
-            </span>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-destructive">
             {t(ps.badge)}
-          </span>
+          </p>
           <h2 className="text-4xl tracking-tight text-foreground lg:text-5xl">
             <span className="font-bold italic">{t(ps.titleAccent)}</span>{' '}
             <span className="font-light">{t(ps.titleRest)}</span>
