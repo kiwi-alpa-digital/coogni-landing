@@ -140,9 +140,8 @@ const ThankYou = () => {
           <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
         </div>
 
-        {/* Form card — 2 columns */}
-        <div className="rounded-xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Left column */}
             <div className="space-y-5">
               {/* Profile type */}
