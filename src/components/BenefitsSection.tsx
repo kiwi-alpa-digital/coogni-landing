@@ -31,8 +31,9 @@ const BenefitsSection = () => {
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
             {t({ es: 'El porqué', en: 'The why' })}
           </p>
-          <h2 className="text-4xl font-semibold text-foreground lg:text-5xl">
-            {t(b.title)}
+          <h2 className="text-4xl text-foreground lg:text-5xl">
+            <span className="font-bold italic">{t(b.titleAccent)}</span>{' '}
+            <span className="font-light">{t(b.titleRest)}</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             {t(b.desc)}

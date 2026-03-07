@@ -32,7 +32,8 @@ export const translations = {
   // ---- Problems & Solutions ----
   problemsSolutions: {
     badge: { es: 'El problema', en: 'The problem' },
-    title: { es: 'Tu clínica merece mejor que hojas de cálculo y suposiciones.', en: 'Your clinic deserves better than spreadsheets and guesswork.' },
+    titleAccent: { es: 'Tu clínica', en: 'Your clinic' },
+    titleRest: { es: 'merece mejor que hojas de cálculo y suposiciones.', en: 'deserves better than spreadsheets and guesswork.' },
     subtitle: {
       es: 'Los equipos clínicos pierden tiempo, precisión y coordinación con herramientas que no fueron diseñadas para el manejo neurodegenerativo.',
       en: 'Clinical teams lose time, accuracy, and coordination with tools not designed for neurodegenerative care.',
@@ -74,8 +75,10 @@ export const translations = {
   // ---- Features Section (Bento Grid) ----
   features: {
     title: {
-      es: 'Herramientas diseñadas para la precisión clínica y la colaboración.',
-      en: 'Tools designed for clinical precision and collaboration.',
+      es: 'Herramientas diseñadas', en: 'Tools designed',
+    },
+    titleRest: {
+      es: 'para la precisión clínica y la colaboración.', en: 'for clinical precision and collaboration.',
     },
     map: {
       title: { es: 'Distribución de Pacientes', en: 'Patient Distribution' },
@@ -151,7 +154,8 @@ export const translations = {
 
   // ---- Features Grid ----
   featuresGrid: {
-    title: { es: 'Diseñado para equipos clínicos multidisciplinares', en: 'Built for multidisciplinary clinical teams' },
+    titleAccent: { es: 'Diseñado', en: 'Built' },
+    titleRest: { es: 'para equipos clínicos multidisciplinares', en: 'for multidisciplinary clinical teams' },
     subtitle: {
       es: 'Adapta los flujos de trabajo a las necesidades de cada profesional, desde neurólogos hasta terapeutas ocupacionales, con una plataforma que escala con tu equipo.',
       en: 'Adapt workflows to each professional\'s needs, from neurologists to occupational therapists, with a platform that scales with your team.',
@@ -176,9 +180,11 @@ export const translations = {
 
   // ---- Benefits ----
   benefits: {
-    title: {
-      es: 'Por qué evolucionar hacia el cuidado basado en datos.',
-      en: 'Why evolve towards data-driven care.',
+    titleAccent: {
+      es: 'Por qué evolucionar', en: 'Why evolve',
+    },
+    titleRest: {
+      es: 'hacia el cuidado basado en datos.', en: 'towards data-driven care.',
     },
     desc: {
       es: 'Enfermedades como el Alzheimer o el Parkinson no esperan. Nuestra plataforma elimina la incertidumbre clínica centralizando la información clave. Ahorra tiempo de consulta, reduce el estrés de tu equipo médico y toma decisiones clínicas justificadas y respaldadas por inteligencia de datos.',
@@ -205,7 +211,8 @@ export const translations = {
   // ---- Waitlist ----
   waitlist: {
     badge: { es: 'Beta Privada', en: 'Private Beta' },
-    title: { es: 'Solicita tu demo gratuita y consigue un 20% de descuento', en: 'Request your free demo and get 20% off' },
+    titleAccent: { es: 'Solicita tu demo', en: 'Request your demo' },
+    titleRest: { es: 'gratuita y consigue un 20% de descuento', en: 'for free and get 20% off' },
     desc: {
       es: 'Reserva tu plaza en nuestra beta privada. Accede antes que nadie y asegura un 20% de descuento exclusivo en el lanzamiento.',
       en: 'Reserve your spot in our private beta. Get early access and lock in an exclusive 20% discount at launch.',
