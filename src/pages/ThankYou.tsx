@@ -1,10 +1,53 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Gift, ArrowLeft } from "lucide-react";
+import {
+  CheckCircle2,
+  Gift,
+  ArrowLeft,
+  User,
+  Building2,
+  ShieldCheck,
+  BrainCircuit,
+  Lightbulb,
+  Dumbbell,
+  Users,
+  FileBarChart,
+  Sparkles,
+} from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
+import { cn } from "@/lib/utils";
+
+const Logo = ({ className }: { className?: string }) => (
+  <svg className={cn("text-primary", className)} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 120 120" fill="none">
+    <rect width="120" height="120" rx="24" fill="currentColor" />
+    <g clipPath="url(#clip-ty)">
+      <path d="M33.75 78.75L60 52.5L86.25 78.75" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M33.75 52.5L60 26.25L86.25 52.5" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+    </g>
+    <defs>
+      <clipPath id="clip-ty">
+        <rect width="67.5" height="67.5" fill="white" transform="translate(26.25 18.75)" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+const profileIcons: Record<string, React.ReactNode> = {
+  independent: <User className="h-4 w-4" />,
+  clinic: <Building2 className="h-4 w-4" />,
+};
+
+const interestIcons: Record<string, React.ReactNode> = {
+  patientManagement: <ShieldCheck className="h-4 w-4" />,
+  predictiveAnalytics: <BrainCircuit className="h-4 w-4" />,
+  decisionSupport: <Lightbulb className="h-4 w-4" />,
+  patientExercises: <Dumbbell className="h-4 w-4" />,
+  teamCollaboration: <Users className="h-4 w-4" />,
+  reporting: <FileBarChart className="h-4 w-4" />,
+};
 
 const ThankYou = () => {
   const { t } = useI18n();
@@ -68,109 +111,122 @@ const ThankYou = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-      <div className="w-full max-w-xl space-y-6">
-        {/* Header */}
-        <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/15">
-            <CheckCircle2 className="h-5 w-5 text-accent" />
-          </div>
-          <div>
-            <h1 className="text-xl font-semibold text-foreground">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8">
+      <div className="w-full max-w-3xl space-y-5">
+        {/* Header with logo */}
+        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <Logo />
+          <div className="flex-1">
+            <h1 className="text-lg font-semibold text-foreground">
               {userName ? `${t(ty.title).replace("!", `, ${userName}!`)}` : t(ty.title)}
             </h1>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t(ty.subtitle)}
-            </p>
+            <p className="text-sm text-muted-foreground mt-0.5">{t(ty.subtitle)}</p>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2">
+            <Gift className="h-4 w-4 text-accent shrink-0" />
+            <div>
+              <span className="text-sm font-semibold text-foreground">{t(ty.extraBanner)}</span>
+              <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
+            </div>
           </div>
         </div>
 
-        {/* Extra discount banner */}
-        <div className="rounded-xl border border-accent/30 bg-accent/5 p-5">
+        {/* Mobile banner */}
+        <div className="sm:hidden rounded-xl border border-accent/30 bg-accent/5 p-4">
           <div className="flex items-center gap-2 mb-1">
             <Gift className="h-4 w-4 text-accent" />
-            <span className="font-semibold text-foreground">{t(ty.extraBanner)}</span>
+            <span className="font-semibold text-sm text-foreground">{t(ty.extraBanner)}</span>
           </div>
-          <p className="text-sm text-muted-foreground">{t(ty.extraBannerDesc)}</p>
+          <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
         </div>
 
-        {/* Form card */}
-        <div className="rounded-xl border border-border bg-card p-6 space-y-6" style={{ boxShadow: "var(--card-shadow)" }}>
-          {/* Profile type */}
-          <div className="space-y-3">
-            <label className="block text-sm font-medium text-foreground">
-              {t(ty.profileTypeLabel)} <span className="text-destructive">*</span>
-            </label>
-            <div className="flex flex-wrap gap-3">
-              {Object.entries(translations.thankYou.profileOptions).map(([key, val]) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setProfileType(key)}
-                  className={chipClasses(profileType === key)}
-                >
-                  {t(val)}
-                </button>
-              ))}
+        {/* Form card — 2 columns */}
+        <div className="rounded-xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Left column */}
+            <div className="space-y-5">
+              {/* Profile type */}
+              <div className="space-y-2.5">
+                <label className="block text-sm font-medium text-foreground">
+                  {t(ty.profileTypeLabel)} <span className="text-destructive">*</span>
+                </label>
+                <div className="flex flex-col gap-2">
+                  {Object.entries(translations.thankYou.profileOptions).map(([key, val]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setProfileType(key)}
+                      className={chipClasses(profileType === key)}
+                    >
+                      {profileIcons[key]}
+                      {t(val)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Clinic name (conditional) */}
+              {profileType === "clinic" && (
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-foreground">{t(ty.clinicNameLabel)}</label>
+                  <input
+                    type="text"
+                    value={clinicName}
+                    onChange={(e) => setClinicName(e.target.value)}
+                    placeholder={t(ty.clinicNamePlaceholder)}
+                    className={inputClasses}
+                  />
+                </div>
+              )}
+
+              {/* Number of patients */}
+              <div className="space-y-2.5">
+                <label className="block text-sm font-medium text-foreground">
+                  {t(ty.patientsLabel)} <span className="text-destructive">*</span>
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {patientOptions.map(([key, val]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setPatients(key)}
+                      className={chipClasses(patients === key)}
+                    >
+                      {t(val)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right column */}
+            <div className="space-y-5">
+              {/* Interests (multi-select) */}
+              <div className="space-y-2.5">
+                <label className="block text-sm font-medium text-foreground">
+                  {t(ty.interestsLabel)}
+                </label>
+                <div className="grid grid-cols-1 gap-2">
+                  {interestOptions.map(([key, val]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => toggleInterest(key)}
+                      className={chipClasses(interests.includes(key))}
+                    >
+                      {interestIcons[key]}
+                      {t(val)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Clinic name (conditional) */}
-          {profileType === "clinic" && (
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-foreground">{t(ty.clinicNameLabel)}</label>
-              <input
-                type="text"
-                value={clinicName}
-                onChange={(e) => setClinicName(e.target.value)}
-                placeholder={t(ty.clinicNamePlaceholder)}
-                className={inputClasses}
-              />
-            </div>
-          )}
-
-          {/* Number of patients */}
-          <div className="space-y-3">
-            <label className="block text-sm font-medium text-foreground">
-              {t(ty.patientsLabel)} <span className="text-destructive">*</span>
-            </label>
-            <div className="flex flex-wrap gap-3">
-              {patientOptions.map(([key, val]) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setPatients(key)}
-                  className={chipClasses(patients === key)}
-                >
-                  {t(val)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Interests (multi-select) */}
-          <div className="space-y-3">
-            <label className="block text-sm font-medium text-foreground">
-              {t(ty.interestsLabel)}
-            </label>
-            <div className="flex flex-wrap gap-3">
-              {interestOptions.map(([key, val]) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => toggleInterest(key)}
-                  className={chipClasses(interests.includes(key))}
-                >
-                  {t(val)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Free text */}
-          <div className="space-y-2 rounded-xl border border-border bg-muted/30 p-5">
+          {/* Free text — full width */}
+          <div className="mt-5 space-y-2 rounded-xl border border-border bg-muted/30 p-4">
             <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
-            <p className="text-xs text-muted-foreground mb-2">
+            <p className="text-xs text-muted-foreground">
               {t({ es: 'Cuéntanos qué funciones o características te gustaría ver', en: 'Tell us what features or capabilities you\'d like to see' })}
             </p>
             <textarea
@@ -179,14 +235,14 @@ const ThankYou = () => {
                 if (e.target.value.length <= 500) setOtherText(e.target.value);
               }}
               placeholder={t(ty.otherPlaceholder)}
-              rows={3}
+              rows={2}
               className={inputClasses + " resize-none"}
             />
             <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
           </div>
 
           {/* Actions */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <Button
               onClick={handleSubmit}
               variant="cta"
@@ -194,6 +250,7 @@ const ThankYou = () => {
               className="gap-2"
               disabled={isSubmitting || (!profileType && !patients)}
             >
+              <Sparkles className="h-4 w-4" />
               {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
             </Button>
             <button
