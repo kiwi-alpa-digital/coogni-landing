@@ -68,8 +68,10 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
               </span>
             </div>
             <DialogTitle className="text-xl text-foreground">
+              <span className="font-light">{t(w.titlePre)}</span>{' '}
               <span className="font-bold italic">{t(w.titleAccent)}</span>{' '}
-              <span className="font-light">{t(w.titleRest)}</span>
+              <span className="font-light">{t(w.titleMid)}</span>{' '}
+              <span className="font-bold italic">{t(w.titleAccent2)}</span>
             </DialogTitle>
             <DialogDescription className="text-muted-foreground text-sm">
               {t(w.desc)}
