@@ -1,8 +1,6 @@
 import * as React from "react";
-import { Brain, ArrowRight, Users, ShieldCheck, Activity, MapPin } from "lucide-react";
+import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import DottedMap from "dotted-map";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
 
@@ -15,62 +13,78 @@ const fadeUp = {
   }),
 };
 
-// ---- Map Component ----
-const map = new DottedMap({ height: 55, grid: "diagonal" });
-const points = map.getPoints();
-
-const MapVisualization = () => (
-  <svg viewBox="0 0 120 55" className="w-full h-full" style={{ background: "transparent" }}>
-    {points.map((point, i) => (
-      <circle key={i} cx={point.x} cy={point.y} r={0.3} className="fill-primary/20" />
-    ))}
-    <circle cx={25} cy={20} r={1.5} className="fill-primary animate-pulse" />
-    <circle cx={50} cy={25} r={1.2} className="fill-accent animate-pulse" />
-    <circle cx={75} cy={30} r={1} className="fill-primary/70 animate-pulse" />
-  </svg>
-);
-
-// ---- Chart Component ----
-function CognitiveChart() {
-  const { locale } = useI18n();
-  const months = translations.months;
-  const chartData = [
-    { month: months.jan[locale], mmse: 28, moca: 26 },
-    { month: months.feb[locale], mmse: 27, moca: 25 },
-    { month: months.mar[locale], mmse: 26, moca: 24 },
-    { month: months.apr[locale], mmse: 25, moca: 22 },
-    { month: months.may[locale], mmse: 23, moca: 20 },
-    { month: months.jun[locale], mmse: 22, moca: 18 },
+// ---- Exercise Categories Visual ----
+function ExerciseCategoriesVisual() {
+  const { t } = useI18n();
+  const cats = translations.features.exercises.categories;
+  const catList = [
+    { key: cats.memory, icon: "🧠", progress: 85, color: "from-primary to-accent" },
+    { key: cats.attention, icon: "🎯", progress: 72, color: "from-amber-400 to-orange-500" },
+    { key: cats.language, icon: "💬", progress: 68, color: "from-sky-400 to-primary" },
+    { key: cats.executive, icon: "⚡", progress: 55, color: "from-violet-400 to-purple-600" },
+    { key: cats.orientation, icon: "🧭", progress: 90, color: "from-emerald-400 to-teal-600" },
+    { key: cats.calculation, icon: "🔢", progress: 62, color: "from-rose-400 to-pink-600" },
   ];
 
   return (
-    <ResponsiveContainer width="100%" height={180}>
-      <AreaChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
-        <defs>
-          <linearGradient id="colorMmse" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="hsl(210, 100%, 35%)" stopOpacity={0.3} />
-            <stop offset="95%" stopColor="hsl(210, 100%, 35%)" stopOpacity={0} />
-          </linearGradient>
-          <linearGradient id="colorMoca" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="hsl(174, 62%, 40%)" stopOpacity={0.3} />
-            <stop offset="95%" stopColor="hsl(174, 62%, 40%)" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 20%, 90%)" />
-        <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(215, 12%, 50%)" }} axisLine={false} tickLine={false} />
-        <YAxis tick={{ fontSize: 11, fill: "hsl(215, 12%, 50%)" }} axisLine={false} tickLine={false} domain={[15, 30]} />
-        <Tooltip
-          contentStyle={{
-            background: "hsl(0, 0%, 100%)",
-            border: "1px solid hsl(210, 20%, 90%)",
-            borderRadius: "8px",
-            fontSize: "12px",
-          }}
-        />
-        <Area type="monotone" dataKey="mmse" stroke="hsl(210, 100%, 35%)" fill="url(#colorMmse)" strokeWidth={2} />
-        <Area type="monotone" dataKey="moca" stroke="hsl(174, 62%, 40%)" fill="url(#colorMoca)" strokeWidth={2} />
-      </AreaChart>
-    </ResponsiveContainer>
+    <div className="space-y-2.5">
+      {catList.map((cat, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: i * 0.06 }}
+          className="flex items-center gap-3 rounded-lg bg-muted/50 px-3 py-2 transition-colors hover:bg-muted"
+        >
+          <span className="text-base">{cat.icon}</span>
+          <span className="text-xs font-medium text-foreground flex-1">{t(cat.key)}</span>
+          <div className="h-1.5 w-20 rounded-full bg-border overflow-hidden">
+            <motion.div
+              className={`h-full rounded-full bg-gradient-to-r ${cat.color}`}
+              initial={{ width: 0 }}
+              whileInView={{ width: `${cat.progress}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 + i * 0.06 }}
+            />
+          </div>
+          <span className="text-[10px] text-muted-foreground font-medium w-8 text-right">{cat.progress}%</span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+// ---- AI Features Visual ----
+function AIFeaturesVisual() {
+  const { t } = useI18n();
+  const feats = translations.features.analytics.features;
+  const items = [
+    { label: t(feats.detection), icon: Activity, delay: 0 },
+    { label: t(feats.prediction), icon: Brain, delay: 0.1 },
+    { label: t(feats.clustering), icon: Users, delay: 0.2 },
+    { label: t(feats.recommendations), icon: Sparkles, delay: 0.3 },
+  ];
+
+  return (
+    <div className="grid grid-cols-2 gap-2 mt-3">
+      {items.map((item, i) => {
+        const Icon = item.icon;
+        return (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: item.delay }}
+            className="flex items-center gap-2 rounded-lg border border-border bg-muted/30 px-3 py-2.5 transition-colors hover:border-primary/30 hover:bg-primary/5"
+          >
+            <Icon className="h-3.5 w-3.5 text-primary shrink-0" />
+            <span className="text-[11px] font-medium text-foreground">{item.label}</span>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -81,17 +95,16 @@ function AlertsFeed() {
   const colors = [
     "from-red-400 to-orange-500",
     "from-primary to-accent",
-    "from-accent to-emerald-500",
-    "from-amber-400 to-red-500",
     "from-sky-400 to-primary",
+    "from-amber-400 to-red-500",
     "from-emerald-400 to-teal-600",
   ];
 
   return (
     <div className="relative h-full overflow-hidden">
-      <div className="absolute inset-x-0 top-0 z-10 h-8 bg-gradient-to-b from-card to-transparent pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 z-10 h-12 bg-gradient-to-t from-card to-transparent pointer-events-none" />
-      <div className="space-y-3 overflow-hidden px-1 py-2">
+      <div className="absolute inset-x-0 top-0 z-10 h-6 bg-gradient-to-b from-card to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 z-10 h-10 bg-gradient-to-t from-card to-transparent pointer-events-none" />
+      <div className="space-y-2.5 overflow-hidden px-1 py-2">
         {alertItems.map((msg, i) => (
           <motion.div
             key={i}
@@ -101,13 +114,13 @@ function AlertsFeed() {
             transition={{ duration: 0.4, delay: i * 0.08 }}
             className="flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-muted/50"
           >
-            <div className={`mt-0.5 h-8 w-8 shrink-0 rounded-full bg-gradient-to-br ${colors[i]} opacity-80`} />
+            <div className={`mt-0.5 h-7 w-7 shrink-0 rounded-full bg-gradient-to-br ${colors[i]} opacity-80`} />
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-sm font-semibold text-foreground">{t(msg.title)}</span>
+                <span className="text-xs font-semibold text-foreground">{t(msg.title)}</span>
                 <span className="shrink-0 text-[10px] text-muted-foreground">{t(msg.time)}</span>
               </div>
-              <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{t(msg.content)}</p>
+              <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground">{t(msg.content)}</p>
             </div>
           </motion.div>
         ))}
@@ -174,39 +187,69 @@ export default function FeaturesSection() {
         </motion.div>
 
         <div className="space-y-4">
-          {/* Row 1 */}
+          {/* Row 1: Ejercicios GRATIS (destacado) + Analytics IA */}
           <div className="grid gap-4 md:grid-cols-2">
+            {/* Ejercicios Cognitivos GRATIS — tarjeta estrella */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               custom={0}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
+              className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-primary/30 bg-card p-6 transition-shadow duration-300 hover:shadow-lg"
+              style={{ boxShadow: "0 0 40px -10px hsl(var(--primary) / 0.15)" }}
             >
-              <div className="mb-2 flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold text-foreground">{t(f.map.title)}</span>
+              {/* Badge GRATIS flotante */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="absolute top-4 right-4 z-10"
+              >
+                <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-primary to-accent px-3 py-1.5 text-[11px] font-bold text-primary-foreground shadow-md">
+                  {t(f.exercises.badge)}
+                </span>
+              </motion.div>
+
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                  <Dumbbell className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    {t(f.exercises.title)}{" "}
+                    <span className="text-primary">{t(f.exercises.titleHighlight)}</span>
+                  </h3>
+                </div>
               </div>
-              <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
-                {t(f.map.desc)}{" "}
-                <span className="text-foreground font-medium">{t(f.map.descBold)}</span>
-              </p>
-              <div className="relative flex-1 min-h-[160px]">
-                <MapVisualization />
-                <div className="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-full bg-card/90 px-3 py-1.5 text-[10px] font-medium text-muted-foreground shadow-sm border border-border backdrop-blur-sm">
-                  {t(f.map.badge)}
+
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{t(f.exercises.desc)}</p>
+
+              <ExerciseCategoriesVisual />
+
+              {/* Mini stats */}
+              <div className="mt-4 flex items-center gap-4 border-t border-border pt-3">
+                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                  <span className="font-medium">{t(f.exercises.routineLabel)}</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                  <Activity className="h-3.5 w-3.5 text-accent" />
+                  <span className="font-medium">{t(f.exercises.statsLabel)}</span>
                 </div>
               </div>
             </motion.div>
 
+            {/* Analytics IA */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               custom={1}
-              className="flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-md"
+              style={{ boxShadow: "var(--card-shadow)" }}
             >
               <div className="mb-3">
                 <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
@@ -217,54 +260,38 @@ export default function FeaturesSection() {
                   <span className="text-muted-foreground font-normal text-base">{t(f.analytics.titleSuffix)}</span>
                 </h3>
               </div>
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{t(f.analytics.desc)}</p>
-              <div className="flex-1">
+              <p className="text-sm leading-relaxed text-muted-foreground">{t(f.analytics.desc)}</p>
+
+              <AIFeaturesVisual />
+
+              <div className="flex-1 mt-3">
                 <AlertsFeed />
               </div>
             </motion.div>
           </div>
 
-          {/* Row 2 */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
-          >
-            <div className="mb-2 flex items-center gap-2">
-              <Activity className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground">{t(f.chart.title)}</span>
-            </div>
-            <p className="mb-4 text-xs leading-relaxed text-muted-foreground">
-              {t(f.chart.desc)}{" "}
-              <span className="text-foreground font-medium">{t(f.chart.descBold)}</span>
-            </p>
-            <div className="flex-1 min-h-[180px]">
-              <CognitiveChart />
-            </div>
-            <div className="mt-2 flex items-center gap-4 text-[11px] text-muted-foreground">
-              <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary" /> MMSE</span>
-              <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-accent" /> MoCA</span>
-            </div>
-          </motion.div>
-
-          {/* Row 3 */}
-          <div className="grid gap-4 md:grid-cols-2">
+          {/* Row 2: Tres tarjetas iguales */}
+          <div className="grid gap-4 md:grid-cols-3">
             <FeatureCard
-              icon={<Users className="h-5 w-5 text-primary" />}
-              title={t(f.roles.title)}
-              subtitle={t(f.roles.subtitle)}
-              description={t(f.roles.desc)}
+              icon={<FileText className="h-5 w-5 text-primary" />}
+              title={t(f.patientRecord.title)}
+              subtitle={t(f.patientRecord.subtitle)}
+              description={t(f.patientRecord.desc)}
               index={0}
             />
             <FeatureCard
-              icon={<ShieldCheck className="h-5 w-5 text-primary" />}
-              title={t(f.messaging.title)}
-              subtitle={t(f.messaging.subtitle)}
-              description={t(f.messaging.desc)}
+              icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
+              title={t(f.dashboard.title)}
+              subtitle={t(f.dashboard.subtitle)}
+              description={t(f.dashboard.desc)}
               index={1}
+            />
+            <FeatureCard
+              icon={<Building2 className="h-5 w-5 text-primary" />}
+              title={t(f.organizations.title)}
+              subtitle={t(f.organizations.subtitle)}
+              description={t(f.organizations.desc)}
+              index={2}
             />
           </div>
         </div>

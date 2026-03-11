@@ -82,24 +82,44 @@ export const translations = {
   // ---- Features Section (Bento Grid) ----
   features: {
     title: {
-      es: 'Herramientas diseñadas', en: 'Tools designed',
+      es: 'Todo lo que necesitas', en: 'Everything you need',
     },
     titleRest: {
-      es: 'para la precisión clínica y la colaboración.', en: 'for clinical precision and collaboration.',
+      es: 'para transformar tu práctica clínica.', en: 'to transform your clinical practice.',
     },
-    map: {
-      title: { es: 'Distribución de Pacientes', en: 'Patient Distribution' },
-      desc: { es: 'Visualiza la distribución geográfica de pacientes.', en: 'Visualize the geographic distribution of patients.' },
-      descBold: { es: 'Monitoriza tendencias regionales en tiempo real.', en: 'Monitor regional trends in real time.' },
-      badge: { es: '🌍 342 pacientes activos en seguimiento', en: '🌍 342 active patients under follow-up' },
+    exercises: {
+      badge: { es: '🎉 GRATIS para todos los pacientes', en: '🎉 FREE for all patients' },
+      title: { es: 'Ejercicios Cognitivos', en: 'Cognitive Exercises' },
+      titleHighlight: { es: 'Gratis', en: 'Free' },
+      desc: {
+        es: 'Tus pacientes acceden sin coste a un catálogo completo de ejercicios de estimulación cognitiva organizados por categoría. Rutinas diarias personalizadas que trabajan entre consultas.',
+        en: 'Your patients get free access to a complete catalog of cognitive stimulation exercises organized by category. Personalized daily routines that work between appointments.',
+      },
+      categories: {
+        memory: { es: 'Memoria', en: 'Memory' },
+        attention: { es: 'Atención', en: 'Attention' },
+        language: { es: 'Lenguaje', en: 'Language' },
+        executive: { es: 'Funciones ejecutivas', en: 'Executive functions' },
+        orientation: { es: 'Orientación', en: 'Orientation' },
+        calculation: { es: 'Cálculo', en: 'Calculation' },
+      },
+      routineLabel: { es: 'Rutina diaria completada', en: 'Daily routine completed' },
+      progressLabel: { es: 'Progreso semanal', en: 'Weekly progress' },
+      statsLabel: { es: 'Estadísticas de evolución', en: 'Progress statistics' },
     },
     analytics: {
       badge: { es: 'Core — Análisis Cognitivo con IA', en: 'Core — AI Cognitive Analysis' },
-      title: { es: 'Análisis Cognitivo y Detección Temprana', en: 'Cognitive Analysis & Early Detection' },
-      titleSuffix: { es: '— El motor de tu clínica', en: '— The engine of your clinic' },
+      title: { es: 'IA que anticipa el deterioro', en: 'AI that anticipates decline' },
+      titleSuffix: { es: 'antes de que sea visible', en: 'before it becomes visible' },
       desc: {
-        es: 'Nuestro motor de IA analiza trayectorias cognitivas, agrupa pacientes por patrones similares (clustering) y genera recomendaciones clínicas automáticas. Detecta puntos de inflexión antes de que sean visibles y te alerta en tiempo real.',
-        en: 'Our AI engine analyzes cognitive trajectories, groups patients by similar patterns (clustering), and generates automatic clinical recommendations. It detects inflection points before they become visible and alerts you in real time.',
+        es: 'Nuestro motor de IA analiza trayectorias cognitivas, agrupa pacientes por patrones similares y genera recomendaciones clínicas automáticas con alertas en tiempo real.',
+        en: 'Our AI engine analyzes cognitive trajectories, groups patients by similar patterns, and generates automatic clinical recommendations with real-time alerts.',
+      },
+      features: {
+        detection: { es: 'Detección temprana', en: 'Early detection' },
+        prediction: { es: 'Predicción de trayectorias', en: 'Trajectory prediction' },
+        clustering: { es: 'Clustering de pacientes', en: 'Patient clustering' },
+        recommendations: { es: 'Recomendaciones automáticas', en: 'Auto recommendations' },
       },
     },
     alerts: {
@@ -112,49 +132,47 @@ export const translations = {
         {
           title: { es: 'Ejercicio Completado', en: 'Exercise Completed' },
           time: { es: 'hace 3m', en: '3m ago' },
-          content: { es: 'Paciente María G. completó rutina diaria de memoria con puntuación 85%. Tendencia positiva en últimas 2 semanas.', en: 'Patient María G. completed daily memory routine with 85% score. Positive trend over last 2 weeks.' },
-        },
-        {
-          title: { es: 'Nuevo Miembro', en: 'New Member' },
-          time: { es: 'hace 6m', en: '6m ago' },
-          content: { es: 'Dra. García se unió a la organización "Centro Neurológico Norte". 12 pacientes compartidos asignados.', en: 'Dr. García joined organization "Northern Neurology Center". 12 shared patients assigned.' },
+          content: { es: 'Paciente María G. completó rutina diaria de memoria con puntuación 85%. Tendencia positiva.', en: 'Patient María G. completed daily memory routine with 85% score. Positive trend.' },
         },
         {
           title: { es: 'Clustering IA', en: 'AI Clustering' },
-          time: { es: 'hace 10m', en: '10m ago' },
-          content: { es: 'Nuevo grupo de riesgo identificado: 8 pacientes con trayectoria similar requieren seguimiento prioritario.', en: 'New risk group identified: 8 patients with similar trajectory require priority follow-up.' },
+          time: { es: 'hace 6m', en: '6m ago' },
+          content: { es: 'Nuevo grupo de riesgo identificado: 8 pacientes con trayectoria similar requieren seguimiento.', en: 'New risk group identified: 8 patients with similar trajectory require follow-up.' },
         },
         {
           title: { es: 'Alerta Dashboard', en: 'Dashboard Alert' },
-          time: { es: 'hace 12m', en: '12m ago' },
-          content: { es: '3 recomendaciones clínicas pendientes de revisión. 2 alertas críticas sin atender en las últimas 24h.', en: '3 clinical recommendations pending review. 2 critical alerts unattended in the last 24h.' },
+          time: { es: 'hace 10m', en: '10m ago' },
+          content: { es: '3 recomendaciones clínicas pendientes. 2 alertas críticas sin atender en 24h.', en: '3 clinical recommendations pending. 2 critical alerts unattended in 24h.' },
         },
         {
           title: { es: 'Ficha Actualizada', en: 'Record Updated' },
           time: { es: 'hace 15m', en: '15m ago' },
-          content: { es: 'Historia clínica del paciente #1523 actualizada con nuevos resultados de exploración y pruebas complementarias.', en: 'Clinical history for patient #1523 updated with new examination results and complementary tests.' },
+          content: { es: 'Historia clínica del paciente #1523 actualizada con nuevos resultados de exploración.', en: 'Clinical history for patient #1523 updated with new examination results.' },
         },
       ],
     },
-    chart: {
-      title: { es: 'Portal del Paciente', en: 'Patient Portal' },
-      desc: { es: 'Ejercicios cognitivos organizados por categoría: memoria, atención, lenguaje, funciones ejecutivas.', en: 'Cognitive exercises organized by category: memory, attention, language, executive functions.' },
-      descBold: { es: 'Rutinas diarias personalizadas con seguimiento de progreso y estadísticas.', en: 'Personalized daily routines with progress tracking and statistics.' },
-    },
-    roles: {
-      title: { es: 'Organizaciones Multidisciplinares', en: 'Multidisciplinary Organizations' },
-      subtitle: { es: 'Gestión de equipos.', en: 'Team management.' },
+    patientRecord: {
+      title: { es: 'Ficha Clínica Digital', en: 'Digital Clinical Record' },
+      subtitle: { es: 'Todo en un solo lugar.', en: 'All in one place.' },
       desc: {
-        es: 'Crea organizaciones clínicas, invita profesionales con roles diferenciados y comparte pacientes entre neurólogos, neuropsicólogos, terapeutas y gestores. Cada uno ve exactamente lo que necesita.',
-        en: 'Create clinical organizations, invite professionals with differentiated roles, and share patients between neurologists, neuropsychologists, therapists, and managers. Each sees exactly what they need.',
+        es: 'Historia clínica, antecedentes, exploración, diagnóstico, plan terapéutico y pruebas complementarias unificados en una ficha digital completa y segura.',
+        en: 'Medical history, background, examination, diagnosis, treatment plan, and complementary tests unified in a complete and secure digital record.',
       },
     },
-    messaging: {
-      title: { es: 'Dashboard y Alertas', en: 'Dashboard & Alerts' },
-      subtitle: { es: 'Monitorización en tiempo real.', en: 'Real-time monitoring.' },
+    dashboard: {
+      title: { es: 'Dashboard Clínico', en: 'Clinical Dashboard' },
+      subtitle: { es: 'Alertas multinivel en tiempo real.', en: 'Real-time multi-level alerts.' },
       desc: {
-        es: 'Panel centralizado con métricas clave: pacientes activos, alertas multinivel (crítica, urgente, atención, info), recomendaciones clínicas pendientes y actividad de ejercicios de tus pacientes.',
-        en: 'Centralized panel with key metrics: active patients, multi-level alerts (critical, urgent, attention, info), pending clinical recommendations, and patient exercise activity.',
+        es: 'Panel centralizado con pacientes activos, alertas multinivel (crítica, urgente, atención), recomendaciones pendientes y actividad de ejercicios de tus pacientes.',
+        en: 'Centralized panel with active patients, multi-level alerts (critical, urgent, attention), pending recommendations, and patient exercise activity.',
+      },
+    },
+    organizations: {
+      title: { es: 'Organizaciones', en: 'Organizations' },
+      subtitle: { es: 'Equipos multidisciplinares.', en: 'Multidisciplinary teams.' },
+      desc: {
+        es: 'Crea centros clínicos, invita profesionales con roles diferenciados y comparte pacientes entre neurólogos, terapeutas y gestores.',
+        en: 'Create clinical centers, invite professionals with differentiated roles, and share patients between neurologists, therapists, and managers.',
       },
     },
   },
