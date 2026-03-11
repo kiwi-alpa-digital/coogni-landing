@@ -13,20 +13,7 @@ interface WaitlistModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const Logo = ({ className }: { className?: string }) => (
-  <svg className={cn("text-primary", className)} xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 120 120" fill="none">
-    <rect width="120" height="120" rx="24" fill="currentColor" />
-    <g clipPath="url(#clip-modal)">
-      <path d="M33.75 78.75L60 52.5L86.25 78.75" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M33.75 52.5L60 26.25L86.25 52.5" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-    </g>
-    <defs>
-      <clipPath id="clip-modal">
-        <rect width="67.5" height="67.5" fill="white" transform="translate(26.25 18.75)" />
-      </clipPath>
-    </defs>
-  </svg>
-);
+import logoCoogni from '@/assets/logo-coogni.png';
 
 const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
   const { t } = useI18n();
