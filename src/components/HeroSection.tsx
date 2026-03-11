@@ -180,8 +180,8 @@ const HeroHeader = () => {
           >
             <div className="relative flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <a href="/" aria-label="home" className="flex shrink-0 items-center space-x-2">
-                  <Logo />
+                <a href="/" aria-label="home" className="flex shrink-0 items-center">
+                  <img src={logoCoogni} alt="Coogni" className="h-7" />
                 </a>
                 <button
                   onClick={() => setMenuState(!menuState)}
