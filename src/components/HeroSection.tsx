@@ -7,6 +7,7 @@ import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import WaitlistModal from '@/components/WaitlistModal'
 import { ShaderBackground } from '@/components/ui/shaders-hero-section'
+import logoCoogni from '@/assets/logo-coogni.png'
 
 export function HeroSection() {
   const { t } = useI18n()
