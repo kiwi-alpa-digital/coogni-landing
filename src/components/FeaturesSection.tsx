@@ -279,22 +279,19 @@ export default function FeaturesSection() {
             <FeatureCard
               icon={<FileText className="h-5 w-5 text-primary" />}
               title={t(f.patientRecord.title)}
-              subtitle={t(f.patientRecord.subtitle)}
-              description={t(f.patientRecord.desc)}
+              bullets={f.patientRecord.bullets.map(b => t(b))}
               index={0}
             />
             <FeatureCard
               icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
               title={t(f.dashboard.title)}
-              subtitle={t(f.dashboard.subtitle)}
-              description={t(f.dashboard.desc)}
+              bullets={f.dashboard.bullets.map(b => t(b))}
               index={1}
             />
             <FeatureCard
               icon={<Building2 className="h-5 w-5 text-primary" />}
               title={t(f.organizations.title)}
-              subtitle={t(f.organizations.subtitle)}
-              description={t(f.organizations.desc)}
+              bullets={f.organizations.bullets.map(b => t(b))}
               index={2}
             />
           </div>
