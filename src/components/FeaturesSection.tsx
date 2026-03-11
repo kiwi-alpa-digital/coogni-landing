@@ -277,25 +277,31 @@ export default function FeaturesSection() {
             </motion.div>
           </div>
 
-          {/* Row 2: Tres tarjetas iguales */}
-          <div className="grid gap-4 md:grid-cols-3">
+          {/* Row 2: Cuatro tarjetas */}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <FeatureCard
+              icon={<TrendingUp className="h-5 w-5 text-primary" />}
+              title={t(f.evolutionChart.title)}
+              bullets={f.evolutionChart.bullets.map(b => t(b))}
+              index={0}
+            />
             <FeatureCard
               icon={<FileText className="h-5 w-5 text-primary" />}
               title={t(f.patientRecord.title)}
               bullets={f.patientRecord.bullets.map(b => t(b))}
-              index={0}
+              index={1}
             />
             <FeatureCard
               icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
               title={t(f.dashboard.title)}
               bullets={f.dashboard.bullets.map(b => t(b))}
-              index={1}
+              index={2}
             />
             <FeatureCard
               icon={<Building2 className="h-5 w-5 text-primary" />}
               title={t(f.organizations.title)}
               bullets={f.organizations.bullets.map(b => t(b))}
-              index={2}
+              index={3}
             />
           </div>
         </div>
