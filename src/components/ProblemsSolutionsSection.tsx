@@ -12,8 +12,8 @@ const ProblemsSolutionsSection = () => {
   const items = [
     { icon: FileWarning, problem: t(ps.items.fragmented.problem), solution: t(ps.items.fragmented.solution) },
     { icon: Clock, problem: t(ps.items.reactive.problem), solution: t(ps.items.reactive.solution) },
-    { icon: Users, problem: t(ps.items.silos.problem), solution: t(ps.items.silos.solution) },
-    { icon: Brain, problem: t(ps.items.subjective.problem), solution: t(ps.items.subjective.solution) },
+    { icon: Users, problem: t(ps.items.insecure.problem), solution: t(ps.items.insecure.solution) },
+    { icon: Brain, problem: t(ps.items.silos.problem), solution: t(ps.items.silos.solution) },
   ];
 
   return (
