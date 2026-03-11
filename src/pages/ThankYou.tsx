@@ -102,7 +102,7 @@ const ThankYou = () => {
       <div className="w-full max-w-5xl space-y-4">
         {/* Header with logo */}
         <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--card-shadow)" }}>
-          <Logo />
+          <img src={logoCoogni} alt="Coogni" className="h-8" />
           <div className="flex-1">
             <h1 className="text-lg font-semibold text-foreground">
               {userName ? `${t(ty.title).replace("!", `, ${userName}!`)}` : t(ty.title)}

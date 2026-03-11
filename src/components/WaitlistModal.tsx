@@ -47,7 +47,7 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
       <DialogContent className="sm:max-w-md p-0 overflow-hidden border-border/50">
         <div className="px-6 pt-8 pb-4">
           <DialogHeader className="items-center text-center">
-            <Logo className="mb-3" />
+            <img src={logoCoogni} alt="Coogni" className="h-8 mb-3" />
             <div className="mb-2">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                 <BadgePercent className="h-3.5 w-3.5" />
