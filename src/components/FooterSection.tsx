@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
+import { motion } from "framer-motion"
 import { useI18n } from "@/i18n/context"
 import { translations } from "@/i18n/translations"
 
@@ -11,7 +12,13 @@ function FooterSection() {
   const f = translations.footer
 
   return (
-    <footer className="relative border-t border-border bg-card text-foreground">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="relative border-t border-border bg-card text-foreground"
+    >
       <div className="mx-auto px-6 py-12 md:px-12 md:py-16 lg:px-20">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
@@ -67,7 +74,7 @@ function FooterSection() {
           </nav>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
 

@@ -1,9 +1,19 @@
 import * as React from "react";
 import { Brain, ArrowRight, Users, ShieldCheck, Activity, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 import DottedMap from "dotted-map";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  }),
+};
 
 // ---- Map Component ----
 const map = new DottedMap({ height: 55, grid: "diagonal" });
@@ -83,7 +93,14 @@ function AlertsFeed() {
       <div className="absolute inset-x-0 bottom-0 z-10 h-12 bg-gradient-to-t from-card to-transparent pointer-events-none" />
       <div className="space-y-3 overflow-hidden px-1 py-2">
         {alertItems.map((msg, i) => (
-          <div key={i} className="flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-muted/50">
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.08 }}
+            className="flex items-start gap-3 rounded-lg p-2.5 transition-colors hover:bg-muted/50"
+          >
             <div className={`mt-0.5 h-8 w-8 shrink-0 rounded-full bg-gradient-to-br ${colors[i]} opacity-80`} />
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
@@ -92,7 +109,7 @@ function AlertsFeed() {
               </div>
               <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{t(msg.content)}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -101,12 +118,20 @@ function AlertsFeed() {
 
 // ---- Feature Card ----
 function FeatureCard({
-  icon, title, subtitle, description,
+  icon, title, subtitle, description, index,
 }: {
-  icon: React.ReactNode; title: string; subtitle: string; description: string;
+  icon: React.ReactNode; title: string; subtitle: string; description: string; index: number;
 }) {
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      custom={index}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+    >
       <div>
         <div className="mb-3 flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">{icon}</div>
@@ -120,7 +145,7 @@ function FeatureCard({
       <div className="mt-4 flex justify-end">
         <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -132,7 +157,13 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="overflow-hidden bg-background py-16 md:py-32">
       <div className="mx-auto px-6 md:px-12 lg:px-20">
-        <div className="mb-12 max-w-2xl md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 max-w-2xl md:mb-16"
+        >
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
             {t({ es: 'Funcionalidades', en: 'Features' })}
           </p>
@@ -140,12 +171,19 @@ export default function FeaturesSection() {
             <span className="font-bold italic">{t(f.title)}</span>{' '}
             <span className="font-light">{t(f.titleRest)}</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {/* Row 1 */}
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0}
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
+            >
               <div className="mb-2 flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span className="text-sm font-semibold text-foreground">{t(f.map.title)}</span>
@@ -160,9 +198,16 @@ export default function FeaturesSection() {
                   {t(f.map.badge)}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={1}
+              className="flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
+            >
               <div className="mb-3">
                 <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
                   {t(f.analytics.badge)}
@@ -176,11 +221,18 @@ export default function FeaturesSection() {
               <div className="flex-1">
                 <AlertsFeed />
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Row 2 */}
-          <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300" style={{ boxShadow: "var(--card-shadow)" }}
+          >
             <div className="mb-2 flex items-center gap-2">
               <Activity className="h-4 w-4 text-primary" />
               <span className="text-sm font-semibold text-foreground">{t(f.chart.title)}</span>
@@ -196,7 +248,7 @@ export default function FeaturesSection() {
               <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary" /> MMSE</span>
               <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-accent" /> MoCA</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Row 3 */}
           <div className="grid gap-4 md:grid-cols-2">
@@ -205,12 +257,14 @@ export default function FeaturesSection() {
               title={t(f.roles.title)}
               subtitle={t(f.roles.subtitle)}
               description={t(f.roles.desc)}
+              index={0}
             />
             <FeatureCard
               icon={<ShieldCheck className="h-5 w-5 text-primary" />}
               title={t(f.messaging.title)}
               subtitle={t(f.messaging.subtitle)}
               description={t(f.messaging.desc)}
+              index={1}
             />
           </div>
         </div>
