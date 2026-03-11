@@ -141,31 +141,36 @@ export const translations = {
         },
       ],
     },
+    evolutionChart: {
+      title: { es: 'Gráfico Evolutivo', en: 'Evolution Chart' },
+      bullets: [
+        { es: 'Visualiza la **trayectoria cognitiva** en el tiempo', en: 'Visualize **cognitive trajectory** over time' },
+        { es: 'Detecta **patrones de deterioro** o mejora', en: 'Detect **deterioration** or improvement patterns' },
+        { es: 'Compara **períodos y tratamientos**', en: 'Compare **periods and treatments**' },
+      ],
+    },
     patientRecord: {
       title: { es: 'Información del Paciente', en: 'Patient Information' },
       bullets: [
-        { es: 'Toda la información clínica centralizada', en: 'All clinical information centralized' },
-        { es: 'Gráfico evolutivo del estado cognitivo', en: 'Cognitive status evolution chart' },
-        { es: 'Historial de ejercicios y resultados', en: 'Exercise history and results' },
-        { es: 'Plan terapéutico y seguimiento', en: 'Treatment plan and follow-up' },
+        { es: 'Toda la **información clínica** centralizada', en: 'All **clinical information** centralized' },
+        { es: '**Historial** de ejercicios y resultados', en: 'Exercise **history** and results' },
+        { es: '**Plan terapéutico** y seguimiento', en: '**Treatment plan** and follow-up' },
       ],
     },
     dashboard: {
       title: { es: 'Dashboard Clínico', en: 'Clinical Dashboard' },
       bullets: [
-        { es: 'Alertas multinivel en tiempo real', en: 'Real-time multi-level alerts' },
-        { es: 'Detección temprana de deterioro', en: 'Early deterioration detection' },
-        { es: 'Recomendaciones clínicas automáticas', en: 'Automatic clinical recommendations' },
-        { es: 'Métricas de actividad por paciente', en: 'Per-patient activity metrics' },
+        { es: '**Alertas multinivel** en tiempo real', en: 'Real-time **multi-level alerts**' },
+        { es: '**Detección temprana** de deterioro', en: '**Early detection** of deterioration' },
+        { es: '**Recomendaciones** clínicas automáticas', en: 'Automatic clinical **recommendations**' },
       ],
     },
     organizations: {
       title: { es: 'Organizaciones', en: 'Organizations' },
       bullets: [
-        { es: 'Equipos multidisciplinares con roles', en: 'Multidisciplinary teams with roles' },
-        { es: 'Pacientes compartidos entre profesionales', en: 'Patients shared between professionals' },
-        { es: 'Gestión de centros clínicos', en: 'Clinical center management' },
-        { es: 'Cumplimiento RGPD integrado', en: 'Built-in GDPR compliance' },
+        { es: 'Equipos **multidisciplinares** con roles', en: '**Multidisciplinary** teams with roles' },
+        { es: 'Pacientes **compartidos** entre profesionales', en: 'Patients **shared** between professionals' },
+        { es: 'Gestión de **centros clínicos**', en: '**Clinical center** management' },
       ],
     },
   },

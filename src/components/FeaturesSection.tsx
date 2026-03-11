@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2 } from "lucide-react";
+import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
@@ -129,6 +129,18 @@ function AlertsFeed() {
   );
 }
 
+// ---- Bold text parser ----
+function BoldText({ text }: { text: string }) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part
+      )}
+    </>
+  );
+}
+
 // ---- Feature Card ----
 function FeatureCard({
   icon, title, bullets, index,
@@ -146,15 +158,15 @@ function FeatureCard({
       className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
     >
       <div>
-        <div className="mb-3 flex items-center gap-3">
+        <div className="mb-4 flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">{icon}</div>
           <span className="text-sm font-bold text-foreground">{title}</span>
         </div>
-        <ul className="space-y-1.5">
+        <ul className="space-y-2.5">
           {bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-              <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-primary" />
-              <span>{b}</span>
+            <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+              <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <span><BoldText text={b} /></span>
             </li>
           ))}
         </ul>
@@ -265,25 +277,31 @@ export default function FeaturesSection() {
             </motion.div>
           </div>
 
-          {/* Row 2: Tres tarjetas iguales */}
-          <div className="grid gap-4 md:grid-cols-3">
+          {/* Row 2: Cuatro tarjetas */}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <FeatureCard
+              icon={<TrendingUp className="h-5 w-5 text-primary" />}
+              title={t(f.evolutionChart.title)}
+              bullets={f.evolutionChart.bullets.map(b => t(b))}
+              index={0}
+            />
             <FeatureCard
               icon={<FileText className="h-5 w-5 text-primary" />}
               title={t(f.patientRecord.title)}
               bullets={f.patientRecord.bullets.map(b => t(b))}
-              index={0}
+              index={1}
             />
             <FeatureCard
               icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
               title={t(f.dashboard.title)}
               bullets={f.dashboard.bullets.map(b => t(b))}
-              index={1}
+              index={2}
             />
             <FeatureCard
               icon={<Building2 className="h-5 w-5 text-primary" />}
               title={t(f.organizations.title)}
               bullets={f.organizations.bullets.map(b => t(b))}
-              index={2}
+              index={3}
             />
           </div>
         </div>
