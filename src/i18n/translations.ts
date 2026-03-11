@@ -309,7 +309,7 @@ export const translations = {
     freeTrial: { es: 'Prueba Gratis', en: 'Free Trial' },
     contactTitle: { es: 'Contacto', en: 'Contact' },
     followUs: { es: 'Síguenos', en: 'Follow Us' },
-    copyright: { es: '© 2025 NeuroCDSS. Todos los derechos reservados.', en: '© 2025 NeuroCDSS. All rights reserved.' },
+    copyright: { es: '© 2025 Coogni. Todos los derechos reservados.', en: '© 2025 Coogni. All rights reserved.' },
     privacy: { es: 'Política de Privacidad', en: 'Privacy Policy' },
     terms: { es: 'Términos de Servicio', en: 'Terms of Service' },
     cookies: { es: 'Cookies', en: 'Cookies' },

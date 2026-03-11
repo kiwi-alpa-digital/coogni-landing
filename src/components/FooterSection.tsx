@@ -41,7 +41,7 @@ function FooterSection() {
               <p>Parque Científico de Madrid</p>
               <p>28049 Madrid, España</p>
               <p>Tel: +34 91 000 0000</p>
-              <p>info@neuroCDSS.com</p>
+              <p>info@coogni.com</p>
             </div>
           </div>
 
