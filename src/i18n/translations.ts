@@ -102,8 +102,8 @@ export const translations = {
       title: { es: 'IA que anticipa el deterioro', en: 'AI that anticipates decline' },
       titleSuffix: { es: 'antes de que sea visible', en: 'before it becomes visible' },
       desc: {
-        es: 'Nuestro motor de IA analiza trayectorias cognitivas, agrupa pacientes por patrones similares y genera recomendaciones clínicas automáticas con alertas en tiempo real.',
-        en: 'Our AI engine analyzes cognitive trajectories, groups patients by similar patterns, and generates automatic clinical recommendations with real-time alerts.',
+        es: 'Coogni analiza trayectorias cognitivas, agrupa pacientes por patrones similares y genera recomendaciones clínicas automáticas con alertas en tiempo real.',
+        en: 'Coogni analyzes cognitive trajectories, groups patients by similar patterns, and generates automatic clinical recommendations with real-time alerts.',
       },
       features: {
         detection: { es: 'Detección temprana', en: 'Early detection' },
