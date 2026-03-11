@@ -129,6 +129,18 @@ function AlertsFeed() {
   );
 }
 
+// ---- Bold text parser ----
+function BoldText({ text }: { text: string }) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part
+      )}
+    </>
+  );
+}
+
 // ---- Feature Card ----
 function FeatureCard({
   icon, title, bullets, index,
@@ -146,15 +158,15 @@ function FeatureCard({
       className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md"
     >
       <div>
-        <div className="mb-3 flex items-center gap-3">
+        <div className="mb-4 flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">{icon}</div>
           <span className="text-sm font-bold text-foreground">{title}</span>
         </div>
-        <ul className="space-y-1.5">
+        <ul className="space-y-2.5">
           {bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-              <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-primary" />
-              <span>{b}</span>
+            <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+              <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <span><BoldText text={b} /></span>
             </li>
           ))}
         </ul>
