@@ -142,28 +142,31 @@ export const translations = {
       ],
     },
     patientRecord: {
-      title: { es: 'Ficha Clínica Digital', en: 'Digital Clinical Record' },
-      subtitle: { es: 'Todo en un solo lugar.', en: 'All in one place.' },
-      desc: {
-        es: 'Historia clínica, antecedentes, exploración, diagnóstico, plan terapéutico y pruebas complementarias unificados en una ficha digital completa y segura.',
-        en: 'Medical history, background, examination, diagnosis, treatment plan, and complementary tests unified in a complete and secure digital record.',
-      },
+      title: { es: 'Información del Paciente', en: 'Patient Information' },
+      bullets: [
+        { es: 'Toda la información clínica centralizada', en: 'All clinical information centralized' },
+        { es: 'Gráfico evolutivo del estado cognitivo', en: 'Cognitive status evolution chart' },
+        { es: 'Historial de ejercicios y resultados', en: 'Exercise history and results' },
+        { es: 'Plan terapéutico y seguimiento', en: 'Treatment plan and follow-up' },
+      ],
     },
     dashboard: {
       title: { es: 'Dashboard Clínico', en: 'Clinical Dashboard' },
-      subtitle: { es: 'Alertas multinivel en tiempo real.', en: 'Real-time multi-level alerts.' },
-      desc: {
-        es: 'Panel centralizado con pacientes activos, alertas multinivel (crítica, urgente, atención), recomendaciones pendientes y actividad de ejercicios de tus pacientes.',
-        en: 'Centralized panel with active patients, multi-level alerts (critical, urgent, attention), pending recommendations, and patient exercise activity.',
-      },
+      bullets: [
+        { es: 'Alertas multinivel en tiempo real', en: 'Real-time multi-level alerts' },
+        { es: 'Detección temprana de deterioro', en: 'Early deterioration detection' },
+        { es: 'Recomendaciones clínicas automáticas', en: 'Automatic clinical recommendations' },
+        { es: 'Métricas de actividad por paciente', en: 'Per-patient activity metrics' },
+      ],
     },
     organizations: {
       title: { es: 'Organizaciones', en: 'Organizations' },
-      subtitle: { es: 'Equipos multidisciplinares.', en: 'Multidisciplinary teams.' },
-      desc: {
-        es: 'Crea centros clínicos, invita profesionales con roles diferenciados y comparte pacientes entre neurólogos, terapeutas y gestores.',
-        en: 'Create clinical centers, invite professionals with differentiated roles, and share patients between neurologists, therapists, and managers.',
-      },
+      bullets: [
+        { es: 'Equipos multidisciplinares con roles', en: 'Multidisciplinary teams with roles' },
+        { es: 'Pacientes compartidos entre profesionales', en: 'Patients shared between professionals' },
+        { es: 'Gestión de centros clínicos', en: 'Clinical center management' },
+        { es: 'Cumplimiento RGPD integrado', en: 'Built-in GDPR compliance' },
+      ],
     },
   },
 

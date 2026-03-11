@@ -131,9 +131,9 @@ function AlertsFeed() {
 
 // ---- Feature Card ----
 function FeatureCard({
-  icon, title, subtitle, description, index,
+  icon, title, bullets, index,
 }: {
-  icon: React.ReactNode; title: string; subtitle: string; description: string; index: number;
+  icon: React.ReactNode; title: string; bullets: string[]; index: number;
 }) {
   return (
     <motion.div
@@ -150,10 +150,14 @@ function FeatureCard({
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">{icon}</div>
           <span className="text-sm font-bold text-foreground">{title}</span>
         </div>
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          <span className="font-semibold text-foreground">{subtitle} </span>
-          {description}
-        </p>
+        <ul className="space-y-1.5">
+          {bullets.map((b, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+              <CheckCircle2 className="h-3.5 w-3.5 mt-0.5 shrink-0 text-primary" />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="mt-4 flex justify-end">
         <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary" />
