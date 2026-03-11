@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2 } from "lucide-react";
+import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
