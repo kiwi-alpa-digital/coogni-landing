@@ -79,8 +79,8 @@ export const translations = {
     },
     exercises: {
       badge: { es: '🎉 GRATIS para todos los pacientes', en: '🎉 FREE for all patients' },
-      title: { es: 'Ejercicios Cognitivos', en: 'Cognitive Exercises' },
-      titleHighlight: { es: 'Gratis', en: 'Free' },
+      title: { es: 'Ejercicios Cognitivos Gratis para', en: 'Free Cognitive Exercises for' },
+      titleHighlight: { es: 'TODOS', en: 'EVERYONE' },
       desc: {
         es: 'Tus pacientes acceden sin coste a un catálogo completo de ejercicios de estimulación cognitiva organizados por categoría. Rutinas diarias personalizadas que trabajan entre consultas.',
         en: 'Your patients get free access to a complete catalog of cognitive stimulation exercises organized by category. Personalized daily routines that work between appointments.',
