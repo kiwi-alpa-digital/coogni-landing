@@ -1,0 +1,103 @@
+import { useI18n } from '@/i18n/context'
+import { translations } from '@/i18n/translations'
+import { AnimatedGroup } from '@/components/ui/animated-group'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
+
+const PricingSection = () => {
+  const { t } = useI18n()
+  const p = translations.pricing
+
+  const plans = [
+    { key: 'free' as const, cta: p.ctaFree, highlighted: false },
+    { key: 'pro' as const, cta: p.cta, highlighted: false },
+    { key: 'clinic' as const, cta: p.cta, highlighted: true },
+    { key: 'enterprise' as const, cta: p.ctaEnterprise, highlighted: false },
+  ]
+
+  return (
+    <section id="pricing" className="relative overflow-hidden py-20 md:py-28">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-card to-background" />
+      <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.06),transparent)]" />
+
+      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
+        <AnimatedGroup preset="blur-slide" className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+            {t(p.badge)}
+          </p>
+          <h2 className="text-4xl text-foreground lg:text-5xl">
+            <span className="font-bold italic">{t(p.titleAccent)}</span>{' '}
+            <span className="font-light">{t(p.titleRest)}</span>
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            {t(p.subtitle)}
+          </p>
+        </AnimatedGroup>
+
+        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {plans.map(({ key, cta, highlighted }) => {
+            const plan = p.plans[key]
+            return (
+              <Card
+                key={key}
+                className={`relative flex flex-col transition-all duration-300 hover:shadow-[var(--card-shadow-hover)] ${
+                  highlighted
+                    ? 'border-2 border-primary shadow-[var(--card-shadow-hover)] scale-[1.02]'
+                    : 'border shadow-[var(--card-shadow)]'
+                }`}
+              >
+                {highlighted && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
+                      {t(p.recommended)}
+                    </span>
+                  </div>
+                )}
+                <CardHeader className="pb-4">
+                  <CardDescription className="text-sm font-medium text-muted-foreground">
+                    {t(plan.desc)}
+                  </CardDescription>
+                  <CardTitle className="text-xl font-bold text-foreground">
+                    {t(plan.name)}
+                  </CardTitle>
+                  <div className="mt-2">
+                    {key === 'enterprise' ? (
+                      <span className="text-3xl font-bold text-foreground">{t(p.custom)}</span>
+                    ) : (
+                      <>
+                        <span className="text-4xl font-bold text-foreground">{t(plan.price)}</span>
+                        {key !== 'free' && (
+                          <span className="text-sm text-muted-foreground">{t(p.monthly)}</span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col">
+                  <ul className="mb-8 flex-1 space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        {t(feature)}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    asChild
+                    variant={highlighted ? 'default' : 'outline'}
+                    className={`w-full ${highlighted ? 'bg-primary text-primary-foreground hover:bg-primary/90' : ''}`}
+                  >
+                    <a href="#waitlist">{t(cta)}</a>
+                  </Button>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default PricingSection
