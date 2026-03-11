@@ -341,4 +341,71 @@ export const translations = {
     may: { es: 'May', en: 'May' },
     jun: { es: 'Jun', en: 'Jun' },
   },
+
+  // ---- Pricing ----
+  pricing: {
+    badge: { es: 'Precios', en: 'Pricing' },
+    titleAccent: { es: 'Planes', en: 'Plans' },
+    titleRest: { es: 'para cada etapa de tu práctica.', en: 'for every stage of your practice.' },
+    subtitle: {
+      es: 'Ejercicios cognitivos gratuitos para todos. Herramientas clínicas avanzadas e IA predictiva para profesionales.',
+      en: 'Free cognitive exercises for everyone. Advanced clinical tools and predictive AI for professionals.',
+    },
+    monthly: { es: '/mes', en: '/mo' },
+    custom: { es: 'A medida', en: 'Custom' },
+    recommended: { es: 'Recomendado', en: 'Recommended' },
+    cta: { es: 'Solicitar demo', en: 'Request demo' },
+    ctaFree: { es: 'Empezar gratis', en: 'Start free' },
+    ctaEnterprise: { es: 'Contactar', en: 'Contact us' },
+    plans: {
+      free: {
+        name: { es: 'Gratis', en: 'Free' },
+        price: { es: '0€', en: '€0' },
+        desc: { es: 'Para pacientes y cuidadores', en: 'For patients and caregivers' },
+        features: [
+          { es: 'Ejercicios cognitivos ilimitados', en: 'Unlimited cognitive exercises' },
+          { es: 'Rutinas diarias personalizadas', en: 'Personalized daily routines' },
+          { es: 'Estadísticas de progreso', en: 'Progress statistics' },
+          { es: 'Portal del paciente', en: 'Patient portal' },
+        ],
+      },
+      pro: {
+        name: { es: 'Pro', en: 'Pro' },
+        price: { es: '39€', en: '€39' },
+        desc: { es: 'Para profesionales independientes', en: 'For independent professionals' },
+        features: [
+          { es: 'Fichas clínicas digitales', en: 'Digital clinical records' },
+          { es: 'Dashboard clínico en tiempo real', en: 'Real-time clinical dashboard' },
+          { es: 'Gráfico evolutivo del paciente', en: 'Patient evolution chart' },
+          { es: 'Hasta 100 pacientes', en: 'Up to 100 patients' },
+          { es: 'Alertas básicas', en: 'Basic alerts' },
+        ],
+      },
+      clinic: {
+        name: { es: 'Clínica', en: 'Clinic' },
+        price: { es: '99€', en: '€99' },
+        desc: { es: 'Para centros y equipos clínicos', en: 'For centers and clinical teams' },
+        features: [
+          { es: 'Todo lo de Pro', en: 'Everything in Pro' },
+          { es: 'IA predictiva y detección temprana', en: 'Predictive AI & early detection' },
+          { es: 'Clustering de pacientes', en: 'Patient clustering' },
+          { es: 'Recomendaciones automáticas', en: 'Automatic recommendations' },
+          { es: 'Equipos multidisciplinares', en: 'Multidisciplinary teams' },
+          { es: 'Pacientes ilimitados', en: 'Unlimited patients' },
+        ],
+      },
+      enterprise: {
+        name: { es: 'Enterprise', en: 'Enterprise' },
+        price: { es: '', en: '' },
+        desc: { es: 'Para hospitales y grandes centros', en: 'For hospitals and large centers' },
+        features: [
+          { es: 'Todo lo de Clínica', en: 'Everything in Clinic' },
+          { es: 'Profesionales ilimitados', en: 'Unlimited professionals' },
+          { es: 'Integraciones HL7/FHIR', en: 'HL7/FHIR integrations' },
+          { es: 'Soporte dedicado', en: 'Dedicated support' },
+          { es: 'SLA personalizado', en: 'Custom SLA' },
+        ],
+      },
+    },
+  },
 } as const
