@@ -20,20 +20,7 @@ import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
 import { cn } from "@/lib/utils";
 
-const Logo = ({ className }: { className?: string }) => (
-  <svg className={cn("text-primary", className)} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 120 120" fill="none">
-    <rect width="120" height="120" rx="24" fill="currentColor" />
-    <g clipPath="url(#clip-ty)">
-      <path d="M33.75 78.75L60 52.5L86.25 78.75" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M33.75 52.5L60 26.25L86.25 52.5" stroke="white" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-    </g>
-    <defs>
-      <clipPath id="clip-ty">
-        <rect width="67.5" height="67.5" fill="white" transform="translate(26.25 18.75)" />
-      </clipPath>
-    </defs>
-  </svg>
-);
+import logoCoogni from '@/assets/logo-coogni.png';
 
 const profileIcons: Record<string, React.ReactNode> = {
   independent: <User className="h-4 w-4" />,
