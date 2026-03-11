@@ -223,10 +223,6 @@ export default function FeaturesSection() {
                   <h3 className="text-lg font-bold text-foreground">
                     {t(f.exercises.title)}{" "}
                     <span className="text-primary">{t(f.exercises.titleHighlight)}</span>
-                    {" "}
-                    <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-primary to-accent px-2.5 py-0.5 text-[10px] font-bold text-primary-foreground align-middle">
-                      {t(f.exercises.badge)}
-                    </span>
                   </h3>
                 </div>
               </div>
