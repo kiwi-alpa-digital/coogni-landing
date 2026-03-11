@@ -347,7 +347,7 @@ export default function FeaturesSection() {
                 </div>
                 <h3 className="text-lg font-bold text-foreground">
                   {t(f.analytics.title)}{" "}
-                  <span className="text-muted-foreground font-normal text-base">{t(f.analytics.titleSuffix)}</span>
+                  <span className="font-bold text-primary">{t(f.analytics.titleSuffix)}</span>
                 </h3>
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground">{t(f.analytics.desc)}</p>
