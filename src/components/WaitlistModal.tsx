@@ -6,7 +6,7 @@ import { MoveRight, BadgePercent, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
-import { cn } from "@/lib/utils";
+
 
 interface WaitlistModalProps {
   open: boolean;
