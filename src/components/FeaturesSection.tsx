@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
@@ -126,6 +127,92 @@ function AlertsFeed() {
         ))}
       </div>
     </div>
+  );
+}
+
+// ---- Evolution Chart Card ----
+const evolutionData = [
+  { month: 'Ene', score: 72, prediction: null },
+  { month: 'Feb', score: 70, prediction: null },
+  { month: 'Mar', score: 74, prediction: null },
+  { month: 'Abr', score: 68, prediction: null },
+  { month: 'May', score: 71, prediction: null },
+  { month: 'Jun', score: 65, prediction: null },
+  { month: 'Jul', score: 67, prediction: 67 },
+  { month: 'Ago', score: null, prediction: 63 },
+  { month: 'Sep', score: null, prediction: 60 },
+  { month: 'Oct', score: null, prediction: 58 },
+];
+
+function EvolutionChartCard() {
+  const { t } = useI18n();
+  const f = translations.features;
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      custom={0}
+      className="overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-md"
+    >
+      <div className="flex flex-col md:flex-row md:items-start md:gap-8">
+        <div className="mb-6 md:mb-0 md:w-1/3 md:shrink-0">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+              <TrendingUp className="h-5 w-5 text-primary" />
+            </div>
+            <h3 className="text-lg font-bold text-foreground">{t(f.evolutionChart.title)}</h3>
+          </div>
+          <ul className="space-y-2.5">
+            {f.evolutionChart.bullets.map((b, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                <span><BoldText text={t(b)} /></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex-1 h-52 md:h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={evolutionData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
+              <defs>
+                <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="predictionGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.15} />
+                  <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} axisLine={false} tickLine={false} />
+              <YAxis domain={[50, 80]} tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} axisLine={false} tickLine={false} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: '8px',
+                  fontSize: '12px',
+                }}
+              />
+              <Area type="monotone" dataKey="score" stroke="hsl(var(--primary))" strokeWidth={2.5} fill="url(#scoreGradient)" dot={{ r: 3, fill: 'hsl(var(--primary))' }} connectNulls={false} name="Score real" />
+              <Area type="monotone" dataKey="prediction" stroke="hsl(var(--accent))" strokeWidth={2} strokeDasharray="6 3" fill="url(#predictionGradient)" dot={{ r: 3, fill: 'hsl(var(--accent))' }} connectNulls={false} name="Predicción IA" />
+            </AreaChart>
+          </ResponsiveContainer>
+          <div className="mt-2 flex items-center justify-center gap-6 text-[11px] text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-5 rounded-full bg-primary" /> Score real
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-5 rounded-full bg-accent" /> Predicción IA
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -273,31 +360,28 @@ export default function FeaturesSection() {
             </motion.div>
           </div>
 
-          {/* Row 2: Cuatro tarjetas */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <FeatureCard
-              icon={<TrendingUp className="h-5 w-5 text-primary" />}
-              title={t(f.evolutionChart.title)}
-              bullets={f.evolutionChart.bullets.map(b => t(b))}
-              index={0}
-            />
+          {/* Row 2: Gráfico Evolutivo — fila independiente */}
+          <EvolutionChartCard />
+
+          {/* Row 3: Tres tarjetas */}
+          <div className="grid gap-4 md:grid-cols-3">
             <FeatureCard
               icon={<FileText className="h-5 w-5 text-primary" />}
               title={t(f.patientRecord.title)}
               bullets={f.patientRecord.bullets.map(b => t(b))}
-              index={1}
+              index={0}
             />
             <FeatureCard
               icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
               title={t(f.dashboard.title)}
               bullets={f.dashboard.bullets.map(b => t(b))}
-              index={2}
+              index={1}
             />
             <FeatureCard
               icon={<Building2 className="h-5 w-5 text-primary" />}
               title={t(f.organizations.title)}
               bullets={f.organizations.bullets.map(b => t(b))}
-              index={3}
+              index={2}
             />
           </div>
         </div>
