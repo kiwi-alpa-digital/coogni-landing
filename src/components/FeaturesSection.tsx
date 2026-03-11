@@ -246,11 +246,11 @@ export default function FeaturesSection() {
               className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-md"
               style={{ boxShadow: "var(--card-shadow)" }}
             >
-              <div className="mb-3">
-                <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
-                  {t(f.analytics.badge)}
-                </span>
-                <h3 className="mt-3 text-lg font-bold leading-tight text-foreground md:text-xl">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                  <Brain className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">
                   {t(f.analytics.title)}{" "}
                   <span className="text-muted-foreground font-normal text-base">{t(f.analytics.titleSuffix)}</span>
                 </h3>
