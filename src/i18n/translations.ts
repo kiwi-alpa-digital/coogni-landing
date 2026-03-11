@@ -28,8 +28,8 @@ export const translations = {
       en: 'it becomes visible',
     },
     subtitle: {
-      es: 'Plataforma clínica con IA predictiva que centraliza fichas de pacientes, analiza trayectorias cognitivas, gestiona ejercicios de estimulación y conecta equipos multidisciplinares en un único entorno seguro.',
-      en: 'Clinical platform with predictive AI that centralizes patient records, analyzes cognitive trajectories, manages stimulation exercises, and connects multidisciplinary teams in a single secure environment.',
+      es: 'Ejercitación cognitiva gratuita para tus pacientes, predicción de trayectorias con IA y alertas automáticas que te permiten tomar decisiones clínicas anticipadas antes de que el deterioro sea irreversible.',
+      en: 'Free cognitive exercises for your patients, AI-powered trajectory prediction, and automatic alerts that enable you to make anticipatory clinical decisions before decline becomes irreversible.',
     },
     trustedBy: { es: 'Confían en nosotros', en: 'Trusted by' },
     formTitle: { es: 'Solicita tu demo gratuita', en: 'Request your free demo' },
