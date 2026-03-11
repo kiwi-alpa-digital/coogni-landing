@@ -203,19 +203,6 @@ export default function FeaturesSection() {
               className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-primary/30 bg-card p-6 transition-shadow duration-300 hover:shadow-lg"
               style={{ boxShadow: "0 0 40px -10px hsl(var(--primary) / 0.15)" }}
             >
-              {/* Badge GRATIS flotante */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="absolute top-4 right-4 z-10"
-              >
-                <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-primary to-accent px-3 py-1.5 text-[11px] font-bold text-primary-foreground shadow-md">
-                  {t(f.exercises.badge)}
-                </span>
-              </motion.div>
-
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                   <Dumbbell className="h-5 w-5 text-primary" />
@@ -224,6 +211,10 @@ export default function FeaturesSection() {
                   <h3 className="text-lg font-bold text-foreground">
                     {t(f.exercises.title)}{" "}
                     <span className="text-primary">{t(f.exercises.titleHighlight)}</span>
+                    {" "}
+                    <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-primary to-accent px-2.5 py-0.5 text-[10px] font-bold text-primary-foreground align-middle">
+                      {t(f.exercises.badge)}
+                    </span>
                   </h3>
                 </div>
               </div>
