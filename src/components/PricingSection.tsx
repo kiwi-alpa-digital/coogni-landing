@@ -3,7 +3,7 @@ import { translations } from '@/i18n/translations'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Check } from 'lucide-react'
+import { Check, Gift, Shield } from 'lucide-react'
 
 const PricingSection = () => {
   const { t } = useI18n()
@@ -33,11 +33,17 @@ const PricingSection = () => {
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             {t(p.subtitle)}
           </p>
+          {/* Risk reversal badge */}
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
+            <Shield className="h-4 w-4" />
+            <span>{t(p.riskReversal)}</span>
+          </div>
         </AnimatedGroup>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
           {plans.map(({ key, cta, highlighted }) => {
             const plan = p.plans[key]
+            const hasBonus = 'bonus' in plan && plan.bonus
             return (
               <Card
                 key={key}
@@ -58,12 +64,12 @@ const PricingSection = () => {
                   <CardDescription className="text-sm font-medium text-muted-foreground">
                     {t(plan.desc)}
                   </CardDescription>
-                  <CardTitle className="text-xl font-bold text-foreground">
+                  <CardTitle className="pt-2 text-xl font-bold text-foreground">
                     {t(plan.name)}
                   </CardTitle>
                   <div className="mt-2">
                     {key === 'enterprise' ? (
-                      <span className="text-3xl font-bold text-foreground">{t(p.custom)}</span>
+                      <span className="text-2xl font-bold text-foreground">{t(p.custom)}</span>
                     ) : (
                       <>
                         <span className="text-4xl font-bold text-foreground">{t(plan.price)}</span>
@@ -73,9 +79,15 @@ const PricingSection = () => {
                       </>
                     )}
                   </div>
+                  {hasBonus && (
+                    <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-500 border border-amber-500/20">
+                      <Gift className="h-3 w-3" />
+                      <span>{t((plan as any).bonus)}</span>
+                    </div>
+                  )}
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col">
-                  <ul className="mb-8 flex-1 space-y-3">
+                  <ul className="mb-6 flex-1 space-y-3">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />

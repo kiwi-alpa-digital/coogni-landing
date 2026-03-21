@@ -6,6 +6,8 @@ import BenefitsSection from "@/components/BenefitsSection";
 import PricingSection from "@/components/PricingSection";
 import WaitlistSection from "@/components/WaitlistSection";
 import FooterSection from "@/components/FooterSection";
+import FaqSection from "@/components/FaqSection";
+import { StickyCta } from "@/components/StickyCta";
 
 const Index = () => {
   return (
@@ -14,10 +16,12 @@ const Index = () => {
       <ProblemsSolutionsSection />
       <FeaturesSection />
       <FeaturesGrid />
+      <FaqSection />
       <BenefitsSection />
       <PricingSection />
       <WaitlistSection />
       <FooterSection />
+      <StickyCta />
     </main>
   );
 };

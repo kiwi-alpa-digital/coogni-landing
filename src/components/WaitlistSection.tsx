@@ -9,7 +9,7 @@ import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
 
 const WaitlistSection = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const w = translations.waitlist;
   const navigate = useNavigate();
 
@@ -64,7 +64,17 @@ const WaitlistSection = () => {
                 <span className="font-light">{t(w.titleMid)}</span>{' '}
                 <span className="font-bold italic">{t(w.titleAccent2)}</span>
               </h2>
-              <p className="max-w-xl text-lg text-muted-foreground">{t(w.desc)}</p>
+              <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t(w.desc)}</p>
+              <div className="flex flex-col gap-1">
+                {[
+                  { es: '✅ Fichas clínicas digitales', en: '✅ Digital clinical records' },
+                  { es: '✅ Dashboard con IA predictiva', en: '✅ AI predictive dashboard' },
+                  { es: '✅ Ejercicios cognitivos gratis para pacientes', en: '✅ Free cognitive exercises for patients' },
+                  { es: '✅ IA que detecta deterioro 3× antes', en: '✅ AI detects decline 3× earlier' },
+                ].map((item, i) => (
+                  <p key={i} className="text-sm text-muted-foreground">{item[locale as 'es'|'en']}</p>
+                ))}
+              </div>
             </div>
           </div>
 

@@ -35,19 +35,38 @@ export function HeroSection() {
                 as="p"
                 preset="fade"
                 delay={0.5}
-                className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
+                className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
               >
                 {t(translations.hero.subtitle)}
               </TextEffect>
 
-              <AnimatedGroup preset="blur-slide" className="mt-10">
-                <div className="max-w-lg">
-                  <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(210_100%_35%/0.15)]">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
-                      <Sparkles className="h-3 w-3 text-primary" />
+              {/* Social proof strip */}
+              <AnimatedGroup preset="blur-slide" delay={0.7} className="mt-8">
+                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="flex -space-x-2">
+                      {['MG','JG','AR','CL'].map((i) => (
+                        <div key={i} className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary border border-primary/20">{i}</div>
+                      ))}
                     </div>
-                    <span className="text-sm font-semibold text-foreground">
-                      {t({ es: '20% de descuento exclusivo al unirte ahora', en: '20% exclusive discount when you join now' })}
+                    <span className="text-xs">{t({ es: '+200 profesionales en lista de espera', en: '+200 professionals on waitlist' })}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-amber-400">★★★★★</span>
+                    <span className="text-xs">{t({ es: '4.9/5 en satisfacción clínica', en: '4.9/5 clinical satisfaction' })}</span>
+                  </div>
+                </div>
+              </AnimatedGroup>
+
+              <AnimatedGroup preset="blur-slide" className="mt-10">
+                <div className="max-w-xl">
+                  {/* Urgency badge */}
+                  <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-5 py-2 backdrop-blur-sm shadow-[0_0_20px_hsl(45_100%_50%/0.1)]">
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/20">
+                      <Sparkles className="h-3 w-3 text-amber-400" />
+                    </div>
+                    <span className="text-sm font-semibold text-amber-400">
+                      {t({ es: '🎫 Beta privada — Plazas limitadas. 20% dto. lanzamiento.', en: '🎫 Private beta — Limited spots. 20% off at launch.' })}
                     </span>
                   </div>
 
@@ -72,11 +91,14 @@ export function HeroSection() {
                     />
                     <button
                       type="submit"
-                      className="whitespace-nowrap rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+                      className="whitespace-nowrap rounded-full bg-gradient-to-r from-primary to-cyan-400 px-8 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
                     >
-                      {t({ es: 'Unirme', en: 'Join' })}
+                      {t({ es: 'Reservar mi plaza →', en: 'Reserve my spot →' })}
                     </button>
                   </form>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {t({ es: '⏱ Beta privada · Plazas limitadas · 20% dto. lanzamiento · Cancela cuando quieras', en: '⏱ Private beta · Limited spots · 20% off launch · Cancel anytime' })}
+                  </p>
                 </div>
               </AnimatedGroup>
             </div>

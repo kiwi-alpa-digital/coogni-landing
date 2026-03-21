@@ -14,12 +14,16 @@ import {
   Users,
   FileBarChart,
   Sparkles,
+  Download,
+  TrendingUp,
+  AlertTriangle,
+  Clock,
+  Zap,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
 import { cn } from "@/lib/utils";
-
 import logoCoogni from '@/assets/logo-coogni.png';
 
 const profileIcons: Record<string, React.ReactNode> = {
@@ -37,8 +41,9 @@ const interestIcons: Record<string, React.ReactNode> = {
 };
 
 const ThankYou = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const ty = translations.thankYou;
+  const w = translations.waitlist;
   const navigate = useNavigate();
   const location = useLocation();
   const userName = (location.state as any)?.name || "";
@@ -50,6 +55,7 @@ const ThankYou = () => {
   const [otherText, setOtherText] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDone, setIsDone] = useState(false);
+  const [guideDownloaded, setGuideDownloaded] = useState(false);
 
   const toggleInterest = (key: string) => {
     setInterests((prev) =>
@@ -98,36 +104,178 @@ const ThankYou = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-start justify-center bg-background px-4 py-6">
-      <div className="w-full max-w-5xl space-y-4">
-        {/* Header with logo */}
+    <div className="flex min-h-screen flex-col items-center bg-background px-4 py-8">
+      {/* Header */}
+      <div className="w-full max-w-5xl">
         <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--card-shadow)" }}>
           <img src={logoCoogni} alt="Coogni" className="h-8" />
           <div className="flex-1">
             <h1 className="text-lg font-semibold text-foreground">
-              {userName ? `${t(ty.title).replace("!", `, ${userName}!`)}` : t(ty.title)}
+              {userName
+                ? `${t({ es: '¡Bienvenido/a', en: 'Welcome' }).replace('{name}', userName)}, ${userName}!`
+                : t({ es: '¡Bienvenido/a a Coogni!', en: 'Welcome to Coogni!' })}
             </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">{t(ty.subtitle)}</p>
+            <p className="text-sm text-muted-foreground mt-0.5">
+              {t({ es: 'Revisa tu email — tienes algo esperándote.', en: 'Check your email — something is waiting for you.' })}
+            </p>
           </div>
           <div className="hidden sm:flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2">
             <Gift className="h-4 w-4 text-accent shrink-0" />
             <div>
-              <span className="text-sm font-semibold text-foreground">{t(ty.extraBanner)}</span>
-              <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
+              <span className="text-sm font-semibold text-foreground">{t(w.discountBadge)}</span>
+              <p className="text-xs text-muted-foreground">{t({ es: 'Bloqueado en tu email', en: 'Locked in your email' })}</p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile banner */}
-        <div className="sm:hidden rounded-xl border border-accent/30 bg-accent/5 p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Gift className="h-4 w-4 text-accent" />
-            <span className="font-semibold text-sm text-foreground">{t(ty.extraBanner)}</span>
+      {/* Lead Magnet Hero */}
+      <div className="mt-6 w-full max-w-5xl">
+        <div className="overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/5 via-card to-background" style={{ boxShadow: "var(--card-shadow)" }}>
+          <div className="p-6 md:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center">
+              {/* Left: book mockup */}
+              <div className="flex-shrink-0 flex justify-center">
+                <div className="relative w-40 h-56 rounded-lg shadow-2xl bg-gradient-to-br from-primary/20 to-cyan-400/20 border border-primary/20 flex flex-col items-center justify-center p-4 text-center">
+                  <div className="text-[9px] font-bold uppercase tracking-widest text-primary mb-1">Coogni · Guía clínica</div>
+                  <div className="text-lg font-black text-foreground leading-tight mb-1">7 Señales</div>
+                  <div className="text-xs font-semibold text-muted-foreground mb-3">de deterioro cognitivo</div>
+                  <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3" />
+                  <div className="text-[9px] text-muted-foreground">Lo que los tests clínicos no detectan</div>
+                  <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground text-[9px] font-bold px-2 py-0.5 rounded-full rotate-3">GRATIS</div>
+                </div>
+              </div>
+
+              {/* Right: offer */}
+              <div className="flex-1 space-y-4">
+                <div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-500">
+                    <Gift className="h-3 w-3" />
+                    {locale === 'es' ? 'OFERTA EXCLUSIVA — Guía valorada en €47' : 'EXCLUSIVE OFFER — Guide valued at €47'}
+                  </span>
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground">
+                  {locale === 'es'
+                    ? 'Descarga gratis: "7 Señales de Deterioro Cognitivo que los Tests Clínicos No Detectan"'
+                    : 'Free download: "7 Signs of Cognitive Decline That Clinical Tests Don\'t Detect"'}
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {locale === 'es'
+                    ? 'La guía que todo neurólogo, neuropsicólogo y terapeuta debería tener. 12 páginas con señales clínicas concretas que permiten anticipar el deterioro antes de que sea visible en las pruebas tradicionales.'
+                    : 'The guide every neurologist, neuropsychologist, and therapist should have. 12 pages with specific clinical indicators that allow you to anticipate decline before it becomes visible in traditional tests.' }
+                </p>
+                <ul className="space-y-1.5">
+                  {(locale === 'es'
+                    ? [
+                        '✓ Las 7 señales que la literatura científica reconoce como predictores',
+                        '✓ Por qué el MMSE puede ser normal mientras el deterioro avanza',
+                        '✓ Cuándo derivar a evaluación neuropsicológica formal',
+                        '✓ Qué hacer cuando detectas una señal de alerta',
+                      ]
+                    : [
+                        '✓ The 7 signs that scientific literature recognizes as predictors',
+                        '✓ Why MMSE can be normal while decline advances',
+                        '✓ When to refer for formal neuropsychological evaluation',
+                        '✓ What to do when you detect a warning sign',
+                      ]
+                  ).map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-col gap-3">
+                  <Button
+                    onClick={() => {
+                      setGuideDownloaded(true)
+                      toast.success(locale === 'es' ? '¡Descarga iniciada!' : 'Download started!')
+                    }}
+                    className="gap-2 bg-gradient-to-r from-primary to-cyan-400 font-bold hover:shadow-lg hover:shadow-primary/20"
+                  >
+                    <Download className="h-4 w-4" />
+                    {locale === 'es' ? 'Descargar guía gratis →' : 'Download free guide →'}
+                  </Button>
+                  <p className="text-center text-xs text-muted-foreground">
+                    {locale === 'es' ? 'PDF · 12 páginas · Envío instantáneo por email' : 'PDF · 12 pages · Instant delivery by email'}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-muted-foreground">{t(ty.extraBannerDesc)}</p>
         </div>
+      </div>
 
-        <div className="rounded-xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+      {/* Vision / Dream section */}
+      <div className="mt-4 w-full max-w-5xl">
+        <div className="rounded-2xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
+            {locale === 'es' ? '🎯 Imagina esto dentro de 6 meses' : '🎯 Imagine this in 6 months'}
+          </h3>
+          <div className="grid gap-4 md:grid-cols-3">
+            {(locale === 'es'
+              ? [
+                  { icon: TrendingUp, title: 'Cada mañana', desc: 'Ves la trayectoria cognitiva de tus 40 pacientes más frágiles en tu dashboard antes de la primera consulta.' },
+                  { icon: AlertTriangle, title: 'Alerta automática', desc: 'Recibes: "Paciente #2847 — patrón de deterioro acelerado. Recomendación: aumentar estimulación a 5 sesiones/semana."' },
+                  { icon: Clock, title: '18 meses antes', desc: 'Detectas deterioro cognitivo en un paciente que con seguimiento tradicional no se habría identificado hasta 18 meses después.' },
+                ]
+              : [
+                  { icon: TrendingUp, title: 'Every morning', desc: "You see the cognitive trajectory of your 40 most fragile patients on your dashboard before the first consultation." },
+                  { icon: AlertTriangle, title: 'Automatic alert', desc: 'You receive: "Patient #2847 — accelerated decline pattern detected. Recommendation: increase stimulation to 5 sessions/week."' },
+                  { icon: Clock, title: '18 months earlier', desc: "You detect cognitive decline in a patient that with traditional follow-up wouldn't have been identified for another 18 months." },
+                ]
+            ).map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div key={i} className="flex gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="h-4 w-4 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Social proof strip */}
+      <div className="mt-4 w-full max-w-5xl">
+        <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground" style={{ boxShadow: "var(--card-shadow)" }}>
+          <span className="flex items-center gap-1.5 font-medium text-foreground">
+            <span className="text-amber-400">★★★★★</span>
+            <span>4.9/5 {locale === 'es' ? 'satisfacción clínica' : 'clinical satisfaction'}</span>
+          </span>
+          <span>·</span>
+          <span>+200 {locale === 'es' ? 'profesionales en lista de espera' : 'professionals on waitlist'}</span>
+          <span>·</span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-green-500" />
+            RGPD {locale === 'es' ? 'Compatible' : 'Compliant'}
+          </span>
+        </div>
+      </div>
+
+      {/* Survey form — beta extra discount */}
+      <div className="mt-6 w-full max-w-5xl">
+        <div className="rounded-2xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <div className="mb-5 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
+              <Zap className="h-5 w-5 text-accent" />
+            </div>
+            <div>
+              <h3 className="font-bold text-foreground">
+                {t(ty.extraBanner)}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {t(ty.extraBannerDesc)}
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Left column */}
             <div className="space-y-5">
@@ -214,7 +362,7 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Free text — full width */}
+          {/* Free text */}
           <div className="mt-4 space-y-1.5 rounded-xl border border-border bg-muted/30 p-4">
             <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
             <textarea
@@ -250,7 +398,10 @@ const ThankYou = () => {
             </button>
           </div>
         </div>
+      </div>
 
+      {/* Footer note */}
+      <div className="mt-6 w-full max-w-5xl pb-8">
         <p className="text-center text-xs text-muted-foreground">
           {t({ es: 'Tus respuestas nos ayudan a crear un mejor servicio para ti y tus pacientes.', en: 'Your answers help us build a better service for you and your patients.' })}
         </p>
