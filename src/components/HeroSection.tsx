@@ -128,7 +128,7 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative flex justify-start px-6 py-24 lg:px-20 lg:py-32">
+      <div className="relative flex justify-start px-6 py-32 lg:px-20 lg:py-40">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
