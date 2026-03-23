@@ -1,413 +1,173 @@
-import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import {
-  CheckCircle2,
-  Gift,
-  ArrowLeft,
-  User,
-  Building2,
-  ShieldCheck,
-  BrainCircuit,
-  Lightbulb,
-  Dumbbell,
-  Users,
-  FileBarChart,
-  Sparkles,
-  Download,
-  TrendingUp,
-  AlertTriangle,
-  Clock,
-  Zap,
-} from "lucide-react";
-import { toast } from "sonner";
-import { useI18n } from "@/i18n/context";
-import { translations } from "@/i18n/translations";
-import { cn } from "@/lib/utils";
-import logoCoogni from '@/assets/logo-coogni.png';
+import { useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useI18n } from '@/i18n/context'
+import { translations } from '@/i18n/translations'
+import logoCoogni from '@/assets/logo-coogni.png'
+import { BrainCircuit, TrendingUp, Clock, BarChart3, Star, Users, Gift, X } from 'lucide-react'
+import { BadgePercent, ShieldCheck, Check } from 'lucide-react'
 
-const profileIcons: Record<string, React.ReactNode> = {
-  independent: <User className="h-4 w-4" />,
-  clinic: <Building2 className="h-4 w-4" />,
-};
+const INTEREST_OPTIONS = [
+  { id: 'patientManagement', icon: Users, es: 'Gestión de pacientes', en: 'Patient management' },
+  { id: 'predictiveAnalytics', icon: BrainCircuit, es: 'Analítica predictiva', en: 'Predictive analytics' },
+  { id: 'decisionSupport', icon: TrendingUp, es: 'Soporte en decisiones clínicas', en: 'Clinical decision support' },
+  { id: 'patientExercises', icon: BarChart3, es: 'Ejercicios cognitivos', en: 'Cognitive exercises' },
+  { id: 'teamCollaboration', icon: Users, es: 'Colaboración en equipo', en: 'Team collaboration' },
+  { id: 'reporting', icon: BarChart3, es: 'Reporting y dashboards', en: 'Reporting & dashboards' },
+]
 
-const interestIcons: Record<string, React.ReactNode> = {
-  patientManagement: <ShieldCheck className="h-5 w-5 shrink-0" />,
+const INTEREST_ICONS = {
+  patientManagement: <Users className="h-5 w-5 shrink-0" />,
   predictiveAnalytics: <BrainCircuit className="h-5 w-5 shrink-0" />,
-  decisionSupport: <Lightbulb className="h-5 w-5 shrink-0" />,
-  patientExercises: <Dumbbell className="h-5 w-5 shrink-0" />,
+  decisionSupport: <TrendingUp className="h-5 w-5 shrink-0" />,
+  patientExercises: <BarChart3 className="h-5 w-5 shrink-0" />,
   teamCollaboration: <Users className="h-5 w-5 shrink-0" />,
-  reporting: <FileBarChart className="h-5 w-5 shrink-0" />,
-};
+  reporting: <BarChart3 className="h-5 w-5 shrink-0" />,
+}
 
-const ThankYou = () => {
-  const { t, locale } = useI18n();
-  const ty = translations.thankYou;
-  const w = translations.waitlist;
-  const navigate = useNavigate();
-  const location = useLocation();
-  const userName = (location.state as any)?.name || "";
+export default function ThankYou() {
+  const { t, locale, setLocale } = useI18n()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const name = location.state?.name || ''
+  const firstName = name.split(' ')[0] || (locale === 'es' ? 'doctor' : 'doctor')
+  const es = locale === 'es'
 
-  const [profileType, setProfileType] = useState<string>("");
-  const [clinicName, setClinicName] = useState("");
-  const [patients, setPatients] = useState("");
-  const [interests, setInterests] = useState<string[]>([]);
-  const [otherText, setOtherText] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-  const [guideDownloaded, setGuideDownloaded] = useState(false);
+  const [interests, setInterests] = useState<string[]>([])
+  const [submitted, setSubmitted] = useState(false)
 
-  const toggleInterest = (key: string) => {
+  const toggleInterest = (id: string) => {
     setInterests((prev) =>
-      prev.includes(key) ? prev.filter((i) => i !== key) : [...prev, key]
-    );
-  };
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    )
+  }
 
-  const handleSubmit = () => {
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsDone(true);
-      toast.success(t(ty.finalTitle));
-    }, 1000);
-  };
-
-  const inputClasses =
-    "w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20";
-
-  const chipClasses = (active: boolean) =>
-    `inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm cursor-pointer transition-all duration-200 text-left ${
-      active
-        ? "border-primary bg-primary/10 text-foreground font-medium"
-        : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:bg-muted"
-    }`;
-
-  const interestOptions = Object.entries(translations.thankYou.interests) as [string, Record<'es' | 'en', string>][];
-  const patientOptions = Object.entries(translations.thankYou.patientsOptions) as [string, Record<'es' | 'en', string>][];
-
-  if (isDone) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background px-4">
-        <div className="w-full max-w-lg text-center space-y-6">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
-            <CheckCircle2 className="h-8 w-8 text-accent" />
-          </div>
-          <h1 className="text-3xl font-semibold text-foreground">{t(ty.finalTitle)}</h1>
-          <p className="text-muted-foreground">{t(ty.finalDesc)}</p>
-          <Button variant="outline" className="gap-2" onClick={() => navigate("/")}>
-            <ArrowLeft className="h-4 w-4" />
-            {t(ty.backHome)}
-          </Button>
-        </div>
-      </div>
-    );
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-background px-4 py-8">
+    <main className="relative min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Background */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
+      <div className="fixed inset-0 -z-10 [background:radial-gradient(ellipse_80%_50%_at_50%_20%,hsl(215,60%,50%/0.06),transparent)]" />
+
       {/* Header */}
-      <div className="w-full max-w-5xl">
-        <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--card-shadow)" }}>
-          <img src={logoCoogni} alt="Coogni" className="h-8" />
-          <div className="flex-1">
-            <h1 className="text-lg font-semibold text-foreground">
-              {userName
-                ? `${t({ es: '¡Bienvenido/a', en: 'Welcome' }).replace('{name}', userName)}, ${userName}!`
-                : t({ es: '¡Bienvenido/a a Coogni!', en: 'Welcome to Coogni!' })}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              {t({ es: 'Revisa tu email — tienes algo esperándote.', en: 'Check your email — something is waiting for you.' })}
-            </p>
-          </div>
-          <div className="hidden sm:flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2">
-            <Gift className="h-4 w-4 text-accent shrink-0" />
-            <div>
-              <span className="text-sm font-semibold text-foreground">{t(w.discountBadge)}</span>
-              <p className="text-xs text-muted-foreground">{t({ es: 'Bloqueado en tu email', en: 'Locked in your email' })}</p>
-            </div>
-          </div>
+      <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+        <div className="flex h-14 items-center gap-8 rounded-full border border-border/50 bg-background/90 px-5 shadow-sm shadow-black/5 backdrop-blur-md lg:gap-12 lg:px-6">
+          <a href="/" className="flex items-center gap-2 shrink-0 pt-4">
+            <img src={logoCoogni} alt="Coogni" className="h-7" />
+          </a>
+          <button
+            onClick={() => setLocale(es ? 'en' : 'es')}
+            className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            {locale}
+          </button>
         </div>
-      </div>
+      </header>
 
-      {/* Lead Magnet Hero */}
-      <div className="mt-6 w-full max-w-5xl">
-        <div className="overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/5 via-card to-background" style={{ boxShadow: "var(--card-shadow)" }}>
-          <div className="p-6 md:p-8">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center">
-              {/* Left: book mockup */}
-              <div className="flex-shrink-0 flex justify-center">
-                <div className="relative w-40 h-56 rounded-lg shadow-2xl bg-gradient-to-br from-primary/20 to-cyan-400/20 border border-primary/20 flex flex-col items-center justify-center p-4 text-center">
-                  <div className="text-[9px] font-bold uppercase tracking-widest text-primary mb-1">Coogni · Guía clínica</div>
-                  <div className="text-lg font-black text-foreground leading-tight mb-1">7 Señales</div>
-                  <div className="text-xs font-semibold text-muted-foreground mb-3">de deterioro cognitivo</div>
-                  <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-3" />
-                  <div className="text-[9px] text-muted-foreground">Lo que los tests clínicos no detectan</div>
-                  <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground text-[9px] font-bold px-2 py-0.5 rounded-full rotate-3">GRATIS</div>
-                </div>
+      {/* Main content */}
+      <div className="flex min-h-screen flex-col items-center justify-center px-6 py-32">
+        <div className="w-full max-w-xl">
+
+          {/* Badge */}
+          <div className="mb-6 flex justify-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5">
+              <Gift className="h-3.5 w-3.5 text-amber-400" />
+              <span className="text-xs font-semibold text-amber-400">{t(translations.waitlist.discountBadge)}</span>
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="mb-3 text-center text-2xl font-bold text-foreground sm:text-3xl">
+            {es
+              ? <>¿Quieres un <span className="italic text-primary">5% extra</span> de descuento?</>
+              : <>Want a <span className="italic text-primary">5% extra</span> discount?</>
+            }
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mb-8 text-center text-base text-muted-foreground">
+            {es
+              ? 'Completa esta breve encuesta y te envíaos un código de descuento adicional del 5%.'
+              : 'Fill out this short survey and we\'ll send you an additional 5% discount code.'
+            }
+          </p>
+
+          {/* Survey form */}
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card p-6 shadow-lg">
+              <p className="mb-4 text-sm font-medium text-foreground">
+                {es ? '¿Qué funcionalidades te interesan más?' : 'What features interest you most?'}
+              </p>
+
+              <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {INTEREST_OPTIONS.map((opt) => {
+                  const Icon = INTEREST_ICONS[opt.id as keyof typeof INTEREST_ICONS]
+                  const selected = interests.includes(opt.id)
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => toggleInterest(opt.id)}
+                      className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition-all ${
+                        selected
+                          ? 'border-primary/40 bg-primary/10 text-primary'
+                          : 'border-border bg-background text-muted-foreground hover:border-border/80 hover:text-foreground'
+                      }`}
+                    >
+                      {Icon}
+                      <span>{es ? opt.es : opt.en}</span>
+                      {selected && <Check className="ml-auto h-4 w-4 shrink-0" />}
+                    </button>
+                  )
+                })}
               </div>
 
-              {/* Right: offer */}
-              <div className="flex-1 space-y-4">
-                <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-500">
-                    <Gift className="h-3 w-3" />
-                    {locale === 'es' ? 'OFERTA EXCLUSIVA — Guía valorada en €47' : 'EXCLUSIVE OFFER — Guide valued at €47'}
-                  </span>
-                </div>
-                <h2 className="text-xl md:text-2xl font-bold text-foreground">
-                  {locale === 'es'
-                    ? 'Descarga gratis: "7 Señales de Deterioro Cognitivo que los Tests Clínicos No Detectan"'
-                    : 'Free download: "7 Signs of Cognitive Decline That Clinical Tests Don\'t Detect"'}
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {locale === 'es'
-                    ? 'La guía que todo neurólogo, neuropsicólogo y terapeuta debería tener. 12 páginas con señales clínicas concretas que permiten anticipar el deterioro antes de que sea visible en las pruebas tradicionales.'
-                    : 'The guide every neurologist, neuropsychologist, and therapist should have. 12 pages with specific clinical indicators that allow you to anticipate decline before it becomes visible in traditional tests.' }
-                </p>
-                <ul className="space-y-1.5">
-                  {(locale === 'es'
-                    ? [
-                        '✓ Las 7 señales que la literatura científica reconoce como predictores',
-                        '✓ Por qué el MMSE puede ser normal mientras el deterioro avanza',
-                        '✓ Cuándo derivar a evaluación neuropsicológica formal',
-                        '✓ Qué hacer cuando detectas una señal de alerta',
-                      ]
-                    : [
-                        '✓ The 7 signs that scientific literature recognizes as predictors',
-                        '✓ Why MMSE can be normal while decline advances',
-                        '✓ When to refer for formal neuropsychological evaluation',
-                        '✓ What to do when you detect a warning sign',
-                      ]
-                  ).map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-col gap-3">
-                  <Button
-                    onClick={() => {
-                      setGuideDownloaded(true)
-                      toast.success(locale === 'es' ? '¡Descarga iniciada!' : 'Download started!')
-                    }}
-                    className="gap-2 bg-gradient-to-r from-primary to-cyan-400 font-bold hover:shadow-lg hover:shadow-primary/20"
-                  >
-                    <Download className="h-4 w-4" />
-                    {locale === 'es' ? 'Descargar guía gratis →' : 'Download free guide →'}
-                  </Button>
-                  <p className="text-center text-xs text-muted-foreground">
-                    {locale === 'es' ? 'PDF · 12 páginas · Envío instantáneo por email' : 'PDF · 12 pages · Instant delivery by email'}
-                  </p>
-                </div>
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+              >
+                {es ? 'Enviar y obtener mi 5% →' : 'Send and get my 5% →'}
+              </button>
+
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                {es
+                  ? 'Sin spam. Solo te envíaos tu código.'
+                  : 'No spam. We only send your code.'
+                }
+              </p>
+            </form>
+          ) : (
+            <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
+                <Check className="h-6 w-6 text-primary" />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Vision / Dream section */}
-      <div className="mt-4 w-full max-w-5xl">
-        <div className="rounded-2xl border border-border bg-card p-6" style={{ boxShadow: "var(--card-shadow)" }}>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
-            {locale === 'es' ? '🎯 Imagina esto dentro de 6 meses' : '🎯 Imagine this in 6 months'}
-          </h3>
-          <div className="grid gap-4 md:grid-cols-3">
-            {(locale === 'es'
-              ? [
-                  { icon: TrendingUp, title: 'Cada mañana', desc: 'Ves la trayectoria cognitiva de tus 40 pacientes más frágiles en tu dashboard antes de la primera consulta.' },
-                  { icon: AlertTriangle, title: 'Alerta automática', desc: 'Recibes: "Paciente #2847 — patrón de deterioro acelerado. Recomendación: aumentar estimulación a 5 sesiones/semana."' },
-                  { icon: Clock, title: '18 meses antes', desc: 'Detectas deterioro cognitivo en un paciente que con seguimiento tradicional no se habría identificado hasta 18 meses después.' },
-                ]
-              : [
-                  { icon: TrendingUp, title: 'Every morning', desc: "You see the cognitive trajectory of your 40 most fragile patients on your dashboard before the first consultation." },
-                  { icon: AlertTriangle, title: 'Automatic alert', desc: 'You receive: "Patient #2847 — accelerated decline pattern detected. Recommendation: increase stimulation to 5 sessions/week."' },
-                  { icon: Clock, title: '18 months earlier', desc: "You detect cognitive decline in a patient that with traditional follow-up wouldn't have been identified for another 18 months." },
-                ]
-            ).map((item, i) => {
-              const Icon = item.icon
-              return (
-                <div key={i} className="flex gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{item.title}</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Social proof strip */}
-      <div className="mt-4 w-full max-w-5xl">
-        <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground" style={{ boxShadow: "var(--card-shadow)" }}>
-          <span className="flex items-center gap-1.5 font-medium text-foreground">
-            <span className="text-amber-400">★★★★★</span>
-            <span>4.9/5 {locale === 'es' ? 'satisfacción clínica' : 'clinical satisfaction'}</span>
-          </span>
-          <span>·</span>
-          <span>+200 {locale === 'es' ? 'profesionales en lista de espera' : 'professionals on waitlist'}</span>
-          <span>·</span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-green-500" />
-            RGPD {locale === 'es' ? 'Compatible' : 'Compliant'}
-          </span>
-        </div>
-      </div>
-
-      {/* Survey form — beta extra discount */}
-      <div className="mt-6 w-full max-w-5xl">
-        <div className="rounded-2xl border border-border bg-card p-5" style={{ boxShadow: "var(--card-shadow)" }}>
-          <div className="mb-5 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
-              <Zap className="h-5 w-5 text-accent" />
-            </div>
-            <div>
-              <h3 className="font-bold text-foreground">
-                {t(ty.extraBanner)}
-              </h3>
+              <h2 className="mb-2 text-xl font-bold text-foreground">
+                {es ? '¡Listo! Revisa tu email' : 'Done! Check your email'}
+              </h2>
               <p className="text-sm text-muted-foreground">
-                {t(ty.extraBannerDesc)}
+                {es
+                  ? 'Te envíaos tu código del 5% extra a tu email.'
+                  : 'We\'re sending your extra 5% code to your email.'
+                }
               </p>
             </div>
-          </div>
+          )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Left column */}
-            <div className="space-y-5">
-              {/* Profile type */}
-              <div className="space-y-2.5">
-                <label className="block text-sm font-medium text-foreground">
-                  {t(ty.profileTypeLabel)} <span className="text-destructive">*</span>
-                </label>
-                <div className="flex flex-col gap-2">
-                  {Object.entries(translations.thankYou.profileOptions).map(([key, val]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => setProfileType(key)}
-                      className={chipClasses(profileType === key)}
-                    >
-                      {profileIcons[key]}
-                      {t(val)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Clinic name (conditional) */}
-              {profileType === "clinic" && (
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-foreground">{t(ty.clinicNameLabel)}</label>
-                  <input
-                    type="text"
-                    value={clinicName}
-                    onChange={(e) => setClinicName(e.target.value)}
-                    placeholder={t(ty.clinicNamePlaceholder)}
-                    className={inputClasses}
-                  />
-                </div>
-              )}
-
-              {/* Number of patients */}
-              <div className="space-y-2.5">
-                <label className="block text-sm font-medium text-foreground">
-                  {t(ty.patientsLabel)} <span className="text-destructive">*</span>
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {patientOptions.map(([key, val]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => setPatients(key)}
-                      className={chipClasses(patients === key)}
-                    >
-                      {t(val)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right column */}
-            <div className="space-y-5">
-              {/* Interests (multi-select) */}
-              <div className="space-y-2.5">
-                <div>
-                  <label className="block text-sm font-medium text-foreground">
-                    {t(ty.interestsLabel)}
-                  </label>
-                  <span className="text-xs text-muted-foreground">
-                    {t({ es: 'Selección múltiple', en: 'Multiple selection' })}
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {interestOptions.map(([key, val]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => toggleInterest(key)}
-                      className={chipClasses(interests.includes(key))}
-                    >
-                      {interestIcons[key]}
-                      {t(val)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Free text */}
-          <div className="mt-4 space-y-1.5 rounded-xl border border-border bg-muted/30 p-4">
-            <label className="block text-sm font-medium text-foreground">{t(ty.otherLabel)}</label>
-            <textarea
-              value={otherText}
-              onChange={(e) => {
-                if (e.target.value.length <= 500) setOtherText(e.target.value);
-              }}
-              placeholder={t(ty.otherPlaceholder)}
-              rows={2}
-              className={inputClasses + " resize-none"}
-            />
-            <p className="text-right text-xs text-muted-foreground">{otherText.length}{t(ty.charCount)}</p>
-          </div>
-
-          {/* Actions */}
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Button
-              onClick={handleSubmit}
-              variant="cta"
-              size="lg"
-              className="gap-2"
-              disabled={isSubmitting || (!profileType && !patients)}
-            >
-              <Sparkles className="h-4 w-4" />
-              {isSubmitting ? t(ty.submittingExtra) : t(ty.submitExtra)}
-            </Button>
-            <button
-              type="button"
-              onClick={() => navigate("/")}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t(ty.skipExtra)}
-            </button>
+          {/* Privacy note */}
+          <div className="mt-6 flex items-center justify-center gap-1.5 text-center">
+            <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-muted-foreground/60" />
+            <p className="text-xs text-muted-foreground/60">
+              {es
+                ? 'Tus datos están seguros. Nunca compartimos información con terceros.'
+                : 'Your data is safe. We never share information with third parties.'
+              }
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Footer note */}
-      <div className="mt-6 w-full max-w-5xl pb-8">
-        <p className="text-center text-xs text-muted-foreground">
-          {t({ es: 'Tus respuestas nos ayudan a crear un mejor servicio para ti y tus pacientes.', en: 'Your answers help us build a better service for you and your patients.' })}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default ThankYou;
+    </main>
+  )
+}
