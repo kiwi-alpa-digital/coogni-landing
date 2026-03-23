@@ -30,7 +30,7 @@ function HeroHeader() {
       <div className="flex h-14 items-center gap-8 rounded-full border border-border/50 bg-background/90 px-5 shadow-sm shadow-black/5 backdrop-blur-md lg:gap-12 lg:px-6">
 
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 shrink-0 pt-0.5">
+        <a href="/" className="flex items-center gap-2 shrink-0 pt-4">
           <img src={logoCoogni} alt="Coogni" className="h-7" />
         </a>
 
