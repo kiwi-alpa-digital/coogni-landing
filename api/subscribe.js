@@ -1,104 +1,107 @@
+// Minimal serverless function - no dependencies
 module.exports = async function handler(req, res) {
-  console.log('[Coogni] Request received:', req.method, JSON.stringify(req.body || {}))
+  console.log('[Coogni] subscribe called, method:', req.method)
 
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
   if (req.method === 'OPTIONS') {
-    return res.status(200).end()
+    res.status(200).end()
+    return
   }
 
-  // Health check
   if (req.method === 'GET') {
-    return res.status(200).json({
-      status: 'ok',
-      apiKeySet: !!process.env.VITE_RESEND_API_KEY,
-      audienceId: process.env.VITE_RESEND_AUDIENCE_ID || 'NOT SET',
+    res.status(200).json({
+      ok: true,
+      env: {
+        RESEND_API_KEY: process.env.RESEND_API_KEY ? 'SET' : 'MISSING',
+        RESEND_AUDIENCE_ID: process.env.RESEND_AUDIENCE_ID || 'MISSING',
+      },
       timestamp: new Date().toISOString(),
+      nodeVersion: process.version,
     })
+    return
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
+    res.status(405).end('Method not allowed')
+    return
   }
 
   try {
-    const { name, email } = req.body || {}
-    console.log('[Coogni] name:', name, 'email:', email)
+    const body = req.body
+    console.log('[Coogni] body:', JSON.stringify(body))
 
-    if (!email || !email.includes('@')) {
-      return res.status(400).json({ error: 'Email inválido' })
+    if (!body || !body.email) {
+      res.status(400).json({ error: 'Email requerido' })
+      return
     }
 
-    const firstName = (name || '').split(' ')[0] || ''
-    const lastName = (name || '').split(' ').slice(1).join(' ') || ''
+    const email = (body.email || '').toLowerCase()
+    if (!email.includes('@')) {
+      res.status(400).json({ error: 'Email inválido' })
+      return
+    }
+
     const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('[Coogni] RESEND_API_KEY missing!')
+      res.status(500).json({ error: 'Server config error: missing API key' })
+      return
+    }
+
     const audienceId = process.env.RESEND_AUDIENCE_ID
 
-    console.log('[Coogni] apiKey:', apiKey ? 'SET' : 'MISSING', 'audienceId:', audienceId || 'MISSING')
-
-    if (!apiKey) {
-      return res.status(500).json({ error: 'Server configuration error: missing API key' })
+    // Step 1: Create contact
+    if (audienceId) {
+      console.log('[Coogni] Creating contact in audience:', audienceId)
+      const contactResponse = await fetch(
+        'https://api.resend.com/audiences/' + audienceId + '/contacts',
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + apiKey,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            unsubscribed: false,
+          }),
+        }
+      )
+      const contactData = await contactResponse.json().catch(function() { return {} })
+      console.log('[Coogni] Contact status:', contactResponse.status, JSON.stringify(contactData))
     }
 
-    const headers = {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    }
-
-    // 1. Create contact in Resend Audience
-    if (audienceId && audienceId !== 'YOUR_RESEND_AUDIENCE_ID') {
-      try {
-        const contactRes = await fetch(
-          `https://api.resend.com/audiences/${audienceId}/contacts`,
-          {
-            method: 'POST',
-            headers,
-            body: JSON.stringify({
-              email: email.toLowerCase(),
-              first_name: firstName,
-              last_name: lastName,
-              unsubscribed: false,
-            }),
-          }
-        )
-        const contactData = await contactRes.json().catch(() => ({}))
-        console.log('[Coogni] Contact result:', contactRes.status, JSON.stringify(contactData))
-      } catch (e) {
-        console.error('[Coogni] Contact fetch error:', e)
-      }
-    } else {
-      console.log('[Coogni] Skipping contact creation (no audienceId)')
-    }
-
-    // 2. Send welcome email
-    const emailBody = {
-      from: 'Coogni <hola@coogni.es>',
-      to: [email.toLowerCase()],
-      subject: firstName
-        ? 'Bienvenido/a a Coogni, ' + firstName + ' — tu guía te espera'
-        : 'Bienvenido/a a Coogni — tu guía te espera',
-      html: '<div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #1e293b;"><div style="text-align: center; margin-bottom: 32px;"><h1 style="color: #0d9488; font-size: 28px; margin: 0;">Coogni</h1><p style="color: #64748b; font-size: 14px;">Neurociencia clínica con IA predictiva</p></div><div style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 24px;"><h2 style="color: #1e293b; font-size: 24px; margin: 0 0 16px;">' + (firstName ? '¡Bienvenido/a, ' + firstName + '!' : '¡Bienvenido/a a Coogni!') + '</h2><p style="color: #475569; font-size: 16px; line-height: 1.6; margin: 0 0 20px;">Te has unido a más de <strong>200 profesionales</strong> que ya están anticipándose al deterioro cognitivo.</p><div style="background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px;"><p style="color: #0d9488; font-size: 13px; font-weight: 700; margin: 0 0 12px;">🎁 Tu primer recurso gratuito</p><p style="color: #1e293b; font-size: 15px; line-height: 1.5; margin: 0 0 16px;">Descarga la <strong>Guía: 7 Señales de Deterioro Cognitivo que los Tests Clínicos No Detectan</strong>.</p><a href="https://coogni.com/guia-deterioro-cognitivo.pdf" style="display: inline-block; background: #0d9488; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">Descargar guía gratis →</a></div><p style="color: #475569; font-size: 15px; line-height: 1.6;"><strong>¿Qué viene ahora?</strong><br/>Te avisaremos cuando la beta privada esté lista con un <strong>20% de descuento exclusivo</strong>.</p></div><div style="text-align: center; padding: 20px;"><p style="color: #94a3b8; font-size: 13px; margin: 0;"><a href="https://coogni.com" style="color: #0d9488;">coogni.com</a> · hello@coogni.com</p></div></div>',
-    }
-
-    const emailRes = await fetch('https://api.resend.com/emails', {
+    // Step 2: Send welcome email
+    console.log('[Coogni] Sending welcome email to:', email)
+    const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers,
-      body: JSON.stringify(emailBody),
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Coogni <hola@coogni.es>',
+        to: [email],
+        subject: 'Bienvenido/a a Coogni — tu guía te espera',
+        html: '<p>¡Gracias por unirte a Coogni!</p><p>Te avisaremos cuando la beta esté lista.</p>',
+      }),
     })
 
-    const emailData = await emailRes.json().catch(() => ({}))
-    console.log('[Coogni] Email result:', emailRes.status, JSON.stringify(emailData))
+    const emailData = await emailResponse.json().catch(function() { return {} })
+    console.log('[Coogni] Email status:', emailResponse.status, JSON.stringify(emailData))
 
-    if (!emailRes.ok) {
-      return res.status(500).json({ error: 'Error enviando email', details: emailData })
+    if (!emailResponse.ok) {
+      res.status(500).json({ error: 'Failed to send email', details: emailData })
+      return
     }
 
-    console.log('[Coogni] Success for:', email)
-    return res.status(200).json({ success: true })
+    console.log('[Coogni] Success!')
+    res.status(200).json({ success: true })
   } catch (err) {
-    console.error('[Coogni] Handler error:', err?.message || err, err?.stack || '')
-    return res.status(500).json({ error: 'Error interno', details: String(err) })
+    console.error('[Coogni] Error:', err.message || String(err))
+    res.status(500).json({ error: 'Internal error', details: err.message || String(err) })
   }
 }
