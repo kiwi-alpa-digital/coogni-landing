@@ -24,44 +24,48 @@ function HeroHeader() {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-md shadow-sm"
+      className="fixed inset-x-0 top-4 z-50 flex justify-center px-4"
       style={{ backdropFilter: 'blur(12px)' }}
     >
-      <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-6 md:px-12 lg:px-20">
-        <a href="/" className="flex items-center gap-2">
+      <div className="flex h-14 items-center gap-8 rounded-full border border-border/50 bg-background/90 px-5 shadow-sm shadow-black/5 backdrop-blur-md lg:gap-12 lg:px-6">
+
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-2 shrink-0">
           <img src={logoCoogni} alt="Coogni" className="h-7" />
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        {/* Nav links */}
+        <nav className="hidden items-center gap-1 lg:flex">
           {menuItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="px-4 py-2 text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        {/* Right side */}
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-            className="rounded-lg px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted hover:text-foreground border border-border"
+            className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             {locale}
           </button>
 
           <button
             onClick={() => window.dispatchEvent(new Event('openWaitlistModal'))}
-            className="hidden rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:block"
+            className="rounded-full border border-foreground/80 bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5"
           >
             {t(translations.nav.joinNow)}
           </button>
 
           <button
             onClick={() => setMenuState(!menuState)}
-            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
+            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:hidden"
             aria-label="Toggle menu"
           >
             <ChevronRight className={`h-5 w-5 transition-transform ${menuState ? 'rotate-90' : ''}`} />
@@ -69,22 +73,23 @@ function HeroHeader() {
         </div>
       </div>
 
+      {/* Mobile menu */}
       {menuState && (
-        <div className="absolute left-0 right-0 top-full border-b border-border bg-background/95 px-6 pb-6 pt-4 backdrop-blur-md md:hidden">
+        <div className="absolute left-4 right-4 top-full mt-2 rounded-2xl border border-border bg-background/95 px-5 pb-5 pt-4 backdrop-blur-md lg:hidden">
           <nav className="flex flex-col gap-1">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setMenuState(false)}
-                className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className="px-4 py-3 text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.name}
               </a>
             ))}
             <button
               onClick={() => { setMenuState(false); window.dispatchEvent(new Event('openWaitlistModal')) }}
-              className="mt-2 flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
+              className="mt-2 flex items-center justify-center rounded-full border border-foreground/80 bg-transparent px-5 py-3 text-sm font-medium text-foreground"
             >
               {t(translations.nav.joinNow)}
             </button>
