@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/subscribe.js" }
+  "rewrites": [
+    { "source": "/api/subscribe", "destination": "/api/subscribe.js" }
   ]
 }
