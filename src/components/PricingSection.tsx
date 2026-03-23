@@ -84,11 +84,11 @@ const PricingSection = () => {
                     ))}
                   </ul>
                   <Button
-                    asChild
                     variant={highlighted ? 'default' : 'outline'}
                     className={`w-full ${highlighted ? 'bg-primary text-primary-foreground hover:bg-primary/90' : ''}`}
+                    onClick={() => window.dispatchEvent(new Event('openWaitlistModal'))}
                   >
-                    <a href="#waitlist">{t(cta)}</a>
+                    {t(cta)}
                   </Button>
                 </CardContent>
               </Card>

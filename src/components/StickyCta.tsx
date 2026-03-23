@@ -31,13 +31,12 @@ export function StickyCta() {
             {es ? '+200 profesionales ya se han unido' : '+200 professionals already joined'}
           </p>
         </div>
-        <a
-          href="#waitlist"
+        <button
           className="shrink-0 rounded-full bg-gradient-to-r from-primary to-cyan-400 px-5 py-2.5 text-xs font-bold text-primary-foreground shadow-lg"
-          onClick={() => setDismissed(true)}
+          onClick={() => { setDismissed(true); window.dispatchEvent(new Event('openWaitlistModal')) }}
         >
           {es ? 'Unirme →' : 'Join →'}
-        </a>
+        </button>
         <button
           onClick={() => setDismissed(true)}
           className="shrink-0 p-1.5 rounded-full text-muted-foreground hover:text-foreground transition-colors"

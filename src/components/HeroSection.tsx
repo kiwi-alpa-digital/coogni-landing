@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
@@ -96,7 +97,31 @@ function HeroHeader() {
 /* ─── Hero Content ─── */
 export function HeroSection() {
   const { t } = useI18n()
+  const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Listen for openWaitlistModal events from other components (PricingSection, StickyCta)
+  useEffect(() => {
+    const handler = () => setModalOpen(true)
+    window.addEventListener('openWaitlistModal', handler)
+    return () => window.removeEventListener('openWaitlistModal', handler)
+  }, [])
+
+  const handleHeroSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+    } catch {}
+    setFormData({ name: '', email: '' })
+    navigate('/gracias-lista-espera')
+  }
 
   return (
     <>
@@ -157,29 +182,31 @@ export function HeroSection() {
               </div>
 
               <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  setModalOpen(true)
-                }}
+                onSubmit={handleHeroSubmit}
                 className="flex flex-col gap-2.5"
               >
                 <input
                   type="text"
                   required
                   placeholder="Tu nombre"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full rounded-xl border border-border bg-background/80 px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                 />
                 <input
                   type="email"
                   required
                   placeholder="Tu email profesional"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full rounded-xl border border-border bg-background/80 px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                 />
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-gradient-to-r from-primary to-cyan-400 px-8 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 mt-1"
+                  disabled={isSubmitting}
+                  className="w-full rounded-xl bg-gradient-to-r from-primary to-cyan-400 px-8 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 mt-1 disabled:opacity-60"
                 >
-                  Reservar mi plaza →
+                  {isSubmitting ? 'Enviando...' : 'Reservar mi plaza →'}
                 </button>
               </form>
               <p className="mt-2.5 text-xs text-muted-foreground text-center">
