@@ -134,12 +134,12 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative flex flex-col lg:flex-row items-start px-6 py-40 lg:px-20 lg:py-72 gap-12 xl:gap-16">
+      <div className="relative flex flex-col lg:flex-row items-start px-6 py-40 lg:px-20 lg:py-56 gap-8 xl:gap-12">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
         {/* Left: text content */}
-        <AnimatedGroup preset="fade" className="flex-1 min-w-0">
+        <AnimatedGroup preset="fade" className="flex-1 min-w-0 max-w-2xl">
 
           {/* Headline */}
           <motion.h1

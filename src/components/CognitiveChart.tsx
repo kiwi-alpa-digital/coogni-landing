@@ -6,7 +6,7 @@ export function CognitiveChart() {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-      className="hidden lg:flex flex-col items-center justify-center w-full"
+      className="hidden lg:flex flex-col items-center justify-center w-full max-w-md xl:max-w-lg"
     >
       {/* Chart card */}
       <div className="relative w-full rounded-2xl border border-border bg-card/90 backdrop-blur-sm overflow-hidden">
