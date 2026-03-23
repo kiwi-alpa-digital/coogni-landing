@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
-import { CognitiveChart } from '@/components/CognitiveChart'
+import CoogniImpactChart from '@/components/CoogniImpactChart'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import WaitlistModal from '@/components/WaitlistModal'
@@ -225,7 +225,9 @@ export function HeroSection() {
         </AnimatedGroup>
 
         {/* Right: cognitive decline chart */}
-        <CognitiveChart />
+        <div className="w-full lg:flex-1 lg:flex lg:justify-center">
+          <CoogniImpactChart />
+        </div>
 
       </div>
 
