@@ -6,7 +6,7 @@ export function CognitiveChart() {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
-      className="hidden lg:flex flex-col justify-between w-full min-h-0"
+      className="hidden lg:flex flex-col items-center justify-start w-full max-w-sm xl:max-w-md"
     >
       {/* Chart card */}
       <div className="relative w-full rounded-2xl border border-border bg-card/90 backdrop-blur-sm overflow-hidden">
@@ -19,8 +19,8 @@ export function CognitiveChart() {
         </div>
 
         {/* Chart */}
-        <div className="px-5 py-4 flex-1">
-          <div className="relative h-full min-h-[160px] w-full">
+        <div className="px-5 py-4">
+          <div className="relative h-40 w-full">
 
             {/* Y-axis labels */}
             <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-[7px] text-muted-foreground/50">
@@ -180,7 +180,7 @@ export function CognitiveChart() {
 
       {/* Impact stat */}
       <motion.div
-        className="rounded-xl border border-border bg-card/90 backdrop-blur-sm px-4 py-3 shrink-0"
+        className="mt-3 rounded-xl border border-border bg-card/90 backdrop-blur-sm px-4 py-3"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.8, duration: 0.4 }}
