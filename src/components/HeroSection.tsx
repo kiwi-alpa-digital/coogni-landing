@@ -134,7 +134,7 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_480px] items-start px-6 py-40 lg:px-20 lg:py-56 gap-8 xl:gap-12">
+      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1fr] items-start px-6 py-40 lg:px-20 lg:py-56 gap-8 xl:gap-12">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
@@ -225,7 +225,7 @@ export function HeroSection() {
         </AnimatedGroup>
 
         {/* Right: cognitive decline chart */}
-        <div className="w-full lg:flex-1 lg:flex lg:justify-center">
+        <div className="w-full">
           <CoogniImpactChart />
         </div>
 
