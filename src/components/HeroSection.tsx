@@ -58,7 +58,7 @@ function HeroHeader() {
 
           <button
             onClick={() => window.dispatchEvent(new Event('openWaitlistModal'))}
-            className="rounded-full border border-foreground/80 bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5"
+            className="hidden lg:inline-flex rounded-full border border-foreground/80 bg-transparent px-5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5"
           >
             {t(translations.nav.joinNow)}
           </button>
@@ -174,18 +174,18 @@ export function HeroSection() {
                     <div key={i} className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary border border-primary/20">{i}</div>
                   ))}
                 </div>
-                <span className="text-xs">+200 profesionales en lista de espera</span>
+                <span className="text-xs">{t(translations.hero.socialProof)}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="text-amber-400">★★★★★</span>
-                <span className="text-xs">4.9/5 en satisfacción clínica</span>
+                <span className="text-xs">{t(translations.hero.rating)}</span>
               </div>
             </div>
           </AnimatedGroup>
 
           {/* Form CTA */}
           <p className="mt-10 text-base font-medium text-foreground">
-            Únete a la lista de espera y consigue un <span className="text-primary font-bold">20% de descuento</span>
+            {t(translations.hero.formCta)}
           </p>
 
           {/* Inline form */}
@@ -196,30 +196,30 @@ export function HeroSection() {
             <input
               type="text"
               required
-              placeholder="Tu nombre"
+              placeholder={locale === 'es' ? 'Tu nombre' : 'Your name'}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="flex-1 h-11 rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+              className="flex-1 h-12 sm:h-11 rounded-xl border border-input bg-background px-4 text-base sm:text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
             />
             <input
               type="email"
               required
-              placeholder="Tu email profesional"
+              placeholder={locale === 'es' ? 'Tu email profesional' : 'Your work email'}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="flex-1 h-11 rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+              className="flex-1 h-12 sm:h-11 rounded-xl border border-input bg-background px-4 text-base sm:text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="h-11 shrink-0 rounded-xl bg-primary text-primary-foreground text-sm font-medium shadow-sm shadow-black/5 transition-all hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none px-6"
+              className="h-12 sm:h-11 shrink-0 rounded-xl bg-primary text-primary-foreground text-sm font-medium shadow-sm shadow-black/5 transition-all hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none px-6"
             >
-              {isSubmitting ? 'Enviando...' : 'Reservar mi plaza →'}
+              {isSubmitting ? t(translations.hero.submitting) : t(translations.hero.submitButton)}
             </button>
           </form>
 
           <p className="mt-3 text-xs text-muted-foreground/70">
-            Únete gratis hoy. Sin tarjeta · Sin compromiso
+            {t(translations.hero.submitNote)}
           </p>
 
         </AnimatedGroup>

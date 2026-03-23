@@ -34,6 +34,12 @@ export const translations = {
     trustedBy: { es: 'Confían en nosotros', en: 'Trusted by' },
     formTitle: { es: 'Solicita tu demo gratuita', en: 'Request your free demo' },
     formSubtitle: { es: 'y consigue un 20% de descuento en el lanzamiento', en: 'and get 20% off at launch' },
+    socialProof: { es: '+200 profesionales en lista de espera', en: '+200 professionals on the waitlist' },
+    rating: { es: '4.9/5 en satisfacción clínica', en: '4.9/5 clinical satisfaction' },
+    formCta: { es: 'Únete a la lista de espera y consigue un 20% de descuento', en: 'Join the waitlist and get 20% off' },
+    submitButton: { es: 'Reservar mi plaza →', en: 'Reserve my spot →' },
+    submitting: { es: 'Enviando...', en: 'Sending...' },
+    submitNote: { es: 'Únete gratis hoy. Sin tarjeta · Sin compromiso', en: 'Join free today. No card · No commitment' },
   },
 
   // ---- Problems & Solutions ----
