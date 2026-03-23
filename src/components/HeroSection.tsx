@@ -173,7 +173,7 @@ export function HeroSection() {
 
           {/* Right: form */}
           <div className="w-full lg:flex-1 lg:flex lg:justify-end xl:justify-center">
-            <div className="w-full max-w-md xl:max-w-lg rounded-2xl border border-border bg-card p-6 xl:p-8 shadow-lg">
+            <div className="w-full rounded-2xl border border-border bg-card p-6 xl:p-8 shadow-lg">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
                 <Sparkles className="h-3 w-3 text-amber-400" />
                 <span className="text-xs font-semibold text-amber-400">
