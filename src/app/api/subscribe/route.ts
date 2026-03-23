@@ -3,7 +3,6 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 
 interface SubscribeBody {
   name?: string
@@ -30,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     // Send welcome email
     await resend.emails.send({
-      from: FROM_EMAIL,
+      from: 'Coogni <hola@coogni.es>',
       to: email,
       subject: firstName ? `Bienvenido/a a Coogni, ${firstName}` : 'Bienvenido/a a Coogni',
       html: `
