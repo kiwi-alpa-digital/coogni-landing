@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
+import { CognitiveChart } from '@/components/CognitiveChart'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import WaitlistModal from '@/components/WaitlistModal'
@@ -128,11 +129,12 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative flex justify-start px-6 py-40 lg:px-20 lg:py-72">
+      <div className="relative flex flex-col lg:flex-row items-start px-6 py-40 lg:px-20 lg:py-72 gap-12 xl:gap-16">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
-        <AnimatedGroup preset="fade" className="w-full max-w-4xl">
+        {/* Left: text content */}
+        <AnimatedGroup preset="fade" className="flex-1 min-w-0">
 
           {/* Headline */}
           <motion.h1
@@ -216,6 +218,10 @@ export function HeroSection() {
           </p>
 
         </AnimatedGroup>
+
+        {/* Right: cognitive decline chart */}
+        <CognitiveChart />
+
       </div>
 
       <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
