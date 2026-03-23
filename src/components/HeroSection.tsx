@@ -139,7 +139,7 @@ export function HeroSection() {
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
         {/* Left: text content */}
-        <AnimatedGroup preset="fade" className="flex-1 min-w-0">
+        <AnimatedGroup preset="fade" className="flex-1 min-w-0 max-w-xl">
 
           {/* Headline */}
           <motion.h1
