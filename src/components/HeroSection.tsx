@@ -170,8 +170,12 @@ export function HeroSection() {
             </div>
           </AnimatedGroup>
 
+          {/* Form CTA */}
+          <p className="mt-10 text-sm font-medium text-foreground">
+            Únete a la lista de espera y consigue un <span className="text-primary font-bold">20% de descuento</span>
+          </p>
+
           {/* Inline form */}
-          <form
             onSubmit={handleHeroSubmit}
             className="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl"
           >
