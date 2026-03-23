@@ -176,8 +176,9 @@ export function HeroSection() {
           </p>
 
           {/* Inline form */}
+          <form
             onSubmit={handleHeroSubmit}
-            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl"
+            className="mt-3 flex flex-col sm:flex-row gap-3 max-w-2xl"
           >
             <input
               type="text"
