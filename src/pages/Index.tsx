@@ -1,4 +1,5 @@
-import HeroSection from "@/components/HeroSection";
+import { HeroSection } from "@/components/HeroSection";
+import VideoSection from "@/components/VideoSection";
 import ProblemsSolutionsSection from "@/components/ProblemsSolutionsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import FeaturesGrid from "@/components/FeaturesGrid";
@@ -13,6 +14,7 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <HeroSection />
+      <VideoSection />
       <ProblemsSolutionsSection />
       <FeaturesSection />
       <FeaturesGrid />

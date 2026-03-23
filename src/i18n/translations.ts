@@ -345,11 +345,10 @@ export const translations = {
   // ---- Pricing ----
   pricing: {
     badge: { es: 'Precios', en: 'Pricing' },
-    titleAccent: { es: 'Sin sorpresas.', en: 'No surprises.' },
-    titleRest: { es: 'Paga solo por lo que necesitas.', en: 'Pay only for what you need.' },
+    titleAccent: { es: 'Sin sorpresas. Paga solo por lo que necesitas.', en: 'No surprises. Pay only for what you need.' },
     subtitle: {
-      es: 'Los ejercicios cognitivos son siempre gratis — porque el cuidado no debería tener barreras. Las herramientas de IA predictiva son para quien las necesite.',
-      en: 'Cognitive exercises are always free — because care should have no barriers. Predictive AI tools are for whoever needs them.',
+      es: 'Ejercicios cognitivos gratuitos para pacientes. Fichas clínicas, dashboard con IA y alertas predictivas para profesionales de la neurología y neuro-rehabilitación.',
+      en: 'Free cognitive exercises for patients. Clinical records, AI-powered dashboard and predictive alerts for neurology and neuro-rehabilitation professionals.',
     },
     monthly: { es: '/mes', en: '/mo' },
     custom: { es: 'A medida', en: 'Custom' },
@@ -362,7 +361,7 @@ export const translations = {
       free: {
         name: { es: 'Gratis', en: 'Free' },
         price: { es: '0€', en: '€0' },
-        desc: { es: 'Para pacientes y cuidadores', en: 'For patients and caregivers' },
+        desc: { es: 'Ejercitación cognitiva gratis para tus pacientes. Ideal para cuidadores y familias.', en: 'Free cognitive exercises for your patients. Ideal for caregivers and families.' },
         features: [
           { es: 'Ejercicios cognitivos ilimitados', en: 'Unlimited cognitive exercises' },
           { es: 'Rutinas diarias personalizadas', en: 'Personalized daily routines' },
@@ -373,14 +372,14 @@ export const translations = {
       },
       pro: {
         name: { es: 'Profesional', en: 'Professional' },
-        price: { es: '49€', en: '€49' },
-        desc: { es: 'Para profesionales independientes', en: 'For independent professionals' },
+        price: { es: '29€', en: '€29' },
+        desc: { es: 'Para neurólogos, neuropsicólogos y terapeutas en consulta privada.', en: 'For neurologists, neuropsychologists and therapists in private practice.' },
         features: [
+          { es: 'Todo lo del plan Gratis', en: 'Everything in Free plan' },
           { es: 'Fichas clínicas digitales', en: 'Digital clinical records' },
           { es: 'Dashboard clínico en tiempo real', en: 'Real-time clinical dashboard' },
           { es: 'Gráfico evolutivo del paciente', en: 'Patient evolution chart' },
-          { es: 'Hasta 150 pacientes', en: 'Up to 150 patients' },
-          { es: 'Alertas básicas', en: 'Basic alerts' },
+          { es: 'Hasta 100 pacientes', en: 'Up to 100 patients' },
           { es: 'Soporte por email', en: 'Email support' },
         ],
         bonus: { es: '+ 1 mes gratis si te apuntas en beta', en: '+ 1 month free if you join beta' },
@@ -388,7 +387,7 @@ export const translations = {
       clinic: {
         name: { es: 'Clínica', en: 'Clinic' },
         price: { es: '149€', en: '€149' },
-        desc: { es: 'Para centros y equipos clínicos', en: 'For centers and clinical teams' },
+        desc: { es: 'Para clínicas de neurología, rehabilitación y centros con equipos multidisciplinares.', en: 'For neurology clinics, rehabilitation centers and teams with multiple professionals.' },
         features: [
           { es: 'Todo lo de Profesional', en: 'Everything in Professional' },
           { es: 'IA predictiva y detección temprana', en: 'Predictive AI & early detection' },

@@ -3,7 +3,7 @@ import { translations } from '@/i18n/translations'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Check, Gift, Shield } from 'lucide-react'
+import { Check, Gift } from 'lucide-react'
 
 const PricingSection = () => {
   const { t } = useI18n()
@@ -13,7 +13,6 @@ const PricingSection = () => {
     { key: 'free' as const, cta: p.ctaFree, highlighted: false },
     { key: 'pro' as const, cta: p.cta, highlighted: false },
     { key: 'clinic' as const, cta: p.cta, highlighted: true },
-    { key: 'enterprise' as const, cta: p.ctaEnterprise, highlighted: false },
   ]
 
   return (
@@ -21,26 +20,21 @@ const PricingSection = () => {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-card to-background" />
       <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.06),transparent)]" />
 
-      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
-        <AnimatedGroup preset="blur-slide" className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20">
+        <AnimatedGroup preset="blur-slide" className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
             {t(p.badge)}
           </p>
-          <h2 className="text-4xl text-foreground lg:text-5xl">
-            <span className="font-bold italic">{t(p.titleAccent)}</span>{' '}
-            <span className="font-light">{t(p.titleRest)}</span>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
+            {t(p.titleAccent)}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             {t(p.subtitle)}
           </p>
-          {/* Risk reversal badge */}
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
-            <Shield className="h-4 w-4" />
-            <span>{t(p.riskReversal)}</span>
-          </div>
+
         </AnimatedGroup>
 
-        <div className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map(({ key, cta, highlighted }) => {
             const plan = p.plans[key]
             const hasBonus = 'bonus' in plan && plan.bonus
@@ -60,7 +54,7 @@ const PricingSection = () => {
                     </span>
                   </div>
                 )}
-                <CardHeader className="pb-4">
+                <CardHeader className="px-5 pt-5 pb-4">
                   <CardDescription className="text-sm font-medium text-muted-foreground">
                     {t(plan.desc)}
                   </CardDescription>
@@ -68,15 +62,9 @@ const PricingSection = () => {
                     {t(plan.name)}
                   </CardTitle>
                   <div className="mt-2">
-                    {key === 'enterprise' ? (
-                      <span className="text-2xl font-bold text-foreground">{t(p.custom)}</span>
-                    ) : (
-                      <>
-                        <span className="text-4xl font-bold text-foreground">{t(plan.price)}</span>
-                        {key !== 'free' && (
-                          <span className="text-sm text-muted-foreground">{t(p.monthly)}</span>
-                        )}
-                      </>
+                    <span className="text-4xl font-bold text-foreground">{t(plan.price)}</span>
+                    {key !== 'free' && (
+                      <span className="text-sm text-muted-foreground">{t(p.monthly)}</span>
                     )}
                   </div>
                   {hasBonus && (
@@ -86,7 +74,7 @@ const PricingSection = () => {
                     </div>
                   )}
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col">
+                <CardContent className="flex flex-1 flex-col px-5 pb-6">
                   <ul className="mb-6 flex-1 space-y-3">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
