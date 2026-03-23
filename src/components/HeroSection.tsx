@@ -172,8 +172,8 @@ export function HeroSection() {
           </div>
 
           {/* Right: form */}
-          <div className="w-full lg:flex-1 lg:flex lg:justify-center">
-            <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
+          <div className="w-full lg:flex-1 lg:flex lg:justify-end xl:justify-center">
+            <div className="w-full max-w-md xl:max-w-lg rounded-2xl border border-border bg-card p-6 xl:p-8 shadow-[var(--card-shadow)]">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
                 <Sparkles className="h-3 w-3 text-amber-400" />
                 <span className="text-xs font-semibold text-amber-400">
@@ -191,7 +191,7 @@ export function HeroSection() {
                   placeholder="Tu nombre"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-xl border border-border bg-background/80 px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
+                  className="w-full rounded-xl border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                 />
                 <input
                   type="email"
@@ -199,12 +199,12 @@ export function HeroSection() {
                   placeholder="Tu email profesional"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-xl border border-border bg-background/80 px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
+                  className="w-full rounded-xl border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/10"
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full rounded-xl bg-gradient-to-r from-primary to-cyan-400 px-8 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 mt-1 disabled:opacity-60"
+                  className="w-full rounded-xl bg-gradient-to-r from-primary to-cyan-400 px-8 py-4 xl:py-5 text-base xl:text-lg font-bold text-primary-foreground shadow-lg shadow-primary/30 transition-all hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 mt-1 disabled:opacity-60"
                 >
                   {isSubmitting ? 'Enviando...' : 'Reservar mi plaza →'}
                 </button>
