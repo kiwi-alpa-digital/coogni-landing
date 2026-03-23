@@ -27,16 +27,31 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email }),
+      })
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.error || 'Error en el servidor')
+      }
+
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
       setFormData({ name: "", email: "" });
-      setIsSubmitting(false);
       onOpenChange(false);
       navigate("/gracias-lista-espera", { state: { name: formData.name } });
-    }, 1000);
+    } catch (err) {
+      console.error('[Coogni] Subscribe error:', err);
+      toast.error('Error. Inténtalo de nuevo.');
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses =
