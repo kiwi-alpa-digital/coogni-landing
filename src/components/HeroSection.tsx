@@ -177,7 +177,7 @@ export function HeroSection() {
           </AnimatedGroup>
 
           {/* Form CTA */}
-          <p className="mt-10 text-sm font-medium text-foreground">
+          <p className="mt-10 text-base font-medium text-foreground">
             Únete a la lista de espera y consigue un <span className="text-primary font-bold">20% de descuento</span>
           </p>
 
