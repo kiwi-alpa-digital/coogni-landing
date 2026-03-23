@@ -146,73 +146,58 @@ export default function ThankYou() {
 
         {/* ── PDF GUIDE ── SECOND ── */}
         <div className="mb-12 w-full max-w-xl">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-lg">
-            <div className="mb-4 flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                <Download className="h-6 w-6 text-primary" />
-              </div>
-              <div className="flex-1">
-                <h3 className="mb-1 text-base font-semibold text-foreground">
-                  {es ? 'Guía práctica: Cómo Coogni transforma tu consulta' : 'Practical guide: How Coogni transforms your practice'}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {es
-                    ? 'Recurso gratuito con casos de uso, flujos de trabajo y resultados reales.'
-                    : 'Free resource with use cases, workflows, and real results.'}
-                </p>
+          <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
+            {/* Preview header */}
+            <div className="bg-gradient-to-br from-primary/20 via-primary/5 to-transparent px-6 py-5 border-b border-border/50">
+              <div className="flex items-start gap-5">
+                {/* Book cover preview */}
+                <div className="shrink-0 w-24 h-32 rounded-lg bg-gradient-to-br from-primary/30 to-cyan-400/20 border border-primary/20 flex flex-col items-center justify-center p-2 shadow-md">
+                  <BrainCircuit className="h-8 w-8 text-primary mb-1" />
+                  <p className="text-[8px] font-bold text-primary text-center leading-tight">Coogni</p>
+                  <p className="text-[7px] text-muted-foreground text-center leading-tight mt-0.5">Guía para{'\n'}Profesionales</p>
+                </div>
+                {/* Title + bullets */}
+                <div className="flex-1">
+                  <h3 className="mb-2 text-base font-semibold text-foreground leading-snug">
+                    {es ? 'Cómo Coogni transforma tu consulta' : 'How Coogni transforms your practice'}
+                  </h3>
+                  <p className="mb-2 text-xs text-muted-foreground">
+                    {es ? 'Qué encontrarás en la guía:' : 'What you\'ll find inside:'}
+                  </p>
+                  <ul className="space-y-1">
+                    {[
+                      es ? 'Casos de uso reales en consultas neurológicas' : 'Real use cases in neurology practices',
+                      es ? 'Flujos de trabajo para detección precoz' : 'Workflows for early detection',
+                      es ? 'Cómo integrar Coogni en tu día a día' : 'How to integrate Coogni into your daily routine',
+                      es ? 'Estimulación cognitiva basada en datos' : 'Data-driven cognitive stimulation',
+                      es ? 'Toma de decisiones con apoyo de IA' : 'AI-assisted clinical decisions',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                        <Check className="h-3.5 w-3.5 shrink-0 text-primary mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-            <a
-              href="https://coogni.com/guia-coogni-profesionales.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl bg-primary/10 px-4 py-3 text-sm font-medium text-primary transition-all hover:bg-primary/20"
-            >
-              <Download className="h-4 w-4" />
-              {es ? 'Descargar guía PDF →' : 'Download PDF guide →'}
-            </a>
-            <p className="mt-3 text-center text-xs text-muted-foreground">
-              {es
-                ? 'PDF · Detección precoz · Estimulación cognitiva · Apoyo a la decisión clínica'
-                : 'PDF · Early detection · Cognitive stimulation · Clinical decision support'}
-            </p>
-          </div>
-        </div>
 
-        {/* ── GUARANTEE ── THIRD ── */}
-        <div className="mb-8 w-full max-w-xl rounded-2xl border border-border bg-card p-6 text-center shadow-lg">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <ShieldCheck className="h-6 w-6 text-primary" />
+            {/* Download button */}
+            <div className="px-6 py-4">
+              <a
+                href="https://coogni.com/guia-coogni-profesionales.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+              >
+                <Download className="h-4 w-4" />
+                {es ? 'Descargar guía PDF →' : 'Download PDF guide →'}
+              </a>
+              <p className="mt-2 text-center text-xs text-muted-foreground">
+                {es ? 'PDF gratuito · Detección · Estimulación · Decisión clínica' : 'Free PDF · Detection · Stimulation · Clinical decisions'}
+              </p>
+            </div>
           </div>
-          <h3 className="mb-2 text-base font-semibold text-foreground">
-            {es ? 'Garantía de resultados' : 'Results guarantee'}
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            {es
-              ? 'Si en 60 días no has detectado al menos 1 caso que te hubiera pasado desapercibido, te devolvemos el dinero.'
-              : 'If in 60 days you have not detected at least 1 case that would have gone unnoticed, we refund your money.'}
-          </p>
-        </div>
-
-        {/* ── PRIVATE BETA ── */}
-        <div className="w-full max-w-xl rounded-2xl border border-border bg-card p-6 text-center shadow-lg">
-          <div className="mb-3 flex items-center justify-center gap-2">
-            <Clock className="h-5 w-5 text-primary" />
-            <span className="text-sm font-semibold text-foreground">
-              {es ? 'Beta privada — plazas limitadas' : 'Private beta — limited spots'}
-            </span>
-          </div>
-          <p className="mb-4 text-sm text-muted-foreground">
-            {es
-              ? 'Lanzamiento en primavera. Los primeros 200 profesionales tienen 20% de descuento permanente.'
-              : 'Launching this spring. First 200 professionals get a permanent 20% discount.'}
-          </p>
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-foreground/80 bg-transparent px-6 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-foreground/5"
-          >
-            {es ? 'Volver al inicio' : 'Back to home'}
-          </Link>
         </div>
 
       </div>
