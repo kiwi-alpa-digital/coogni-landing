@@ -50,12 +50,12 @@ function HeroHeader() {
             {locale}
           </button>
 
-          <a
-            href="#waitlist"
+          <button
+            onClick={() => window.dispatchEvent(new Event('openWaitlistModal'))}
             className="hidden rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:block"
           >
             {t(translations.nav.joinNow)}
-          </a>
+          </button>
 
           <button
             onClick={() => setMenuState(!menuState)}
@@ -80,13 +80,12 @@ function HeroHeader() {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#waitlist"
-              onClick={() => setMenuState(false)}
+            <button
+              onClick={() => { setMenuState(false); window.dispatchEvent(new Event('openWaitlistModal')) }}
               className="mt-2 flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
             >
               {t(translations.nav.joinNow)}
-            </a>
+            </button>
           </nav>
         </div>
       )}

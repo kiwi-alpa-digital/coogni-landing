@@ -6,7 +6,7 @@ export const translations = {
     problem: { es: 'Problema', en: 'Problem' },
     features: { es: 'Funcionalidades', en: 'Features' },
     platform: { es: 'Plataforma', en: 'Platform' },
-    joinNow: { es: 'Prueba Gratis', en: 'Free Trial' },
+    joinNow: { es: 'Únete ahora', en: 'Join now' },
   },
 
   // ---- Hero ----

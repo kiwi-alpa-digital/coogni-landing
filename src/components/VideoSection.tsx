@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { X, Play } from 'lucide-react'
 import { useI18n } from '@/i18n/context'
+import { AnimatedGroup } from '@/components/ui/animated-group'
 
 const VideoSection = () => {
   const { locale } = useI18n()
@@ -9,7 +10,7 @@ const VideoSection = () => {
 
   return (
     <section className="w-full py-8 px-6 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-5xl">
+      <AnimatedGroup preset="fade" className="mx-auto max-w-5xl">
         {/* Section header */}
         <div className="mb-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
@@ -88,7 +89,7 @@ const VideoSection = () => {
             ? 'Demo de la plataforma Coogni — Dashboard clínico con IA predictiva en acción'
             : 'Coogni platform demo — Clinical dashboard with predictive AI in action'}
         </p>
-      </div>
+      </AnimatedGroup>
 
       {/* Fullscreen modal */}
       {videoOpen && (

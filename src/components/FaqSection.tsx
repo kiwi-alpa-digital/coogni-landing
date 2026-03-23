@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ChevronDown, Check } from 'lucide-react'
 import { useI18n } from '@/i18n/context'
 import { Badge } from '@/components/ui/badge'
+import { AnimatedGroup } from '@/components/ui/animated-group'
 
 const faqs = [
   {
@@ -150,7 +151,7 @@ const FaqSection = () => {
         </div>
 
         {/* FAQ — two independent columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimatedGroup preset="blur-slide" className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Column 1 */}
           <div>
             {col1.map((faq, i) => (
@@ -163,7 +164,7 @@ const FaqSection = () => {
               <FaqItem key={i} q={(faq as any).q[faqLocale]} a={(faq as any).a[faqLocale]} open={openIndex === (faq as any).globalIndex} onToggle={() => handleToggle((faq as any).globalIndex)} />
             ))}
           </div>
-        </div>
+        </AnimatedGroup>
 
         {/* Still have questions */}
         <div className="mt-10 text-center">
