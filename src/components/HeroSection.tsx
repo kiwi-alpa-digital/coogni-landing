@@ -132,7 +132,7 @@ export function HeroSection() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
-        <div className="w-full max-w-xl">
+        <div className="w-full max-w-4xl">
 
           {/* Headline */}
           <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
