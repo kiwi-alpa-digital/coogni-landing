@@ -128,100 +128,82 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative min-h-screen flex items-end px-6 pb-20 pt-24 lg:px-20">
+      <div className="relative flex flex-col justify-center px-6 py-24 lg:px-20 lg:py-32">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
-        <div className="flex w-full flex-col lg:flex-row gap-8 items-start lg:items-end">
+        <div className="w-full">
 
-          {/* Left: text */}
-          <div className="flex-1 min-w-0">
-            <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
-              <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
-              <span className="font-light">{t(translations.hero.titleMid)}</span>{' '}
-              <span className="font-bold italic">{t(translations.hero.titleAccent2)}</span>{' '}
-              <span className="font-light">{t(translations.hero.titleRest)}</span>
-            </h1>
+          {/* Headline */}
+          <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+            <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
+            <span className="font-light">{t(translations.hero.titleMid)}</span>{' '}
+            <span className="font-bold italic">{t(translations.hero.titleAccent2)}</span>{' '}
+            <span className="font-light">{t(translations.hero.titleRest)}</span>
+          </h1>
 
-            <TextEffect
-              per="line"
-              as="p"
-              preset="fade"
-              delay={0.5}
-              className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-            >
-              {t(translations.hero.subtitle)}
-            </TextEffect>
+          {/* Subtitle */}
+          <TextEffect
+            per="line"
+            as="p"
+            preset="fade"
+            delay={0.5}
+            className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
+            {t(translations.hero.subtitle)}
+          </TextEffect>
 
-            <AnimatedGroup preset="blur-slide" delay={0.7} className="mt-8">
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {['MG','JG','AR','CL'].map((i) => (
-                      <div key={i} className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary border border-primary/20">{i}</div>
-                    ))}
-                  </div>
-                  <span className="text-xs">+200 profesionales en lista de espera</span>
+          {/* Social proof */}
+          <AnimatedGroup preset="blur-slide" delay={0.7} className="mt-6">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {['MG','JG','AR','CL'].map((i) => (
+                    <div key={i} className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary border border-primary/20">{i}</div>
+                  ))}
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-amber-400">★★★★★</span>
-                  <span className="text-xs">4.9/5 en satisfacción clínica</span>
-                </div>
+                <span className="text-xs">+200 profesionales en lista de espera</span>
               </div>
-            </AnimatedGroup>
-          </div>
-
-          {/* Right: form */}
-          <div className="w-full lg:flex-1 lg:flex lg:justify-end">
-            <div className="w-full max-w-md xl:max-w-lg rounded-2xl border border-border bg-card p-6 xl:p-8 shadow-lg">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
-                <Sparkles className="h-3 w-3 text-amber-400" />
-                <span className="text-xs font-semibold text-amber-400">
-                  Beta privada — 20% dto. lanzamiento
-                </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-amber-400">★★★★★</span>
+                <span className="text-xs">4.9/5 en satisfacción clínica</span>
               </div>
-
-              <form
-                onSubmit={handleHeroSubmit}
-                className="flex flex-col gap-4"
-              >
-                <input
-                  type="text"
-                  required
-                  placeholder="Tu nombre"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="h-11 w-full rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Tu email profesional"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="h-11 w-full rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
-                />
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="h-11 w-full rounded-xl bg-primary text-primary-foreground text-sm font-medium shadow-sm shadow-black/5 transition-all hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none"
-                >
-                  {isSubmitting ? 'Enviando...' : 'Reservar mi plaza →'}
-                </button>
-              </form>
-
-              {/* Separator */}
-              <div className="flex items-center gap-3 my-4">
-                <hr className="flex-grow border-t border-border" />
-                <span className="text-[10px] font-medium text-muted-foreground">o</span>
-                <hr className="flex-grow border-t border-border" />
-              </div>
-
-              <p className="text-xs text-muted-foreground/70 text-center leading-relaxed">
-                Únete gratis hoy. Sin tarjeta · Sin compromiso
-              </p>
             </div>
-          </div>
+          </AnimatedGroup>
+
+          {/* Inline form */}
+          <form
+            onSubmit={handleHeroSubmit}
+            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl"
+          >
+            <input
+              type="text"
+              required
+              placeholder="Tu nombre"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="flex-1 h-11 rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+            />
+            <input
+              type="email"
+              required
+              placeholder="Tu email profesional"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="flex-1 h-11 rounded-xl border border-input bg-background px-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="h-11 shrink-0 rounded-xl bg-primary text-primary-foreground text-sm font-medium shadow-sm shadow-black/5 transition-all hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none px-6"
+            >
+              {isSubmitting ? 'Enviando...' : 'Reservar mi plaza →'}
+            </button>
+          </form>
+
+          <p className="mt-3 text-xs text-muted-foreground/70">
+            Únete gratis hoy. Sin tarjeta · Sin compromiso
+          </p>
 
         </div>
       </div>
