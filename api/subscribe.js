@@ -33,8 +33,8 @@ module.exports = async function handler(req, res) {
 
     const firstName = (name || '').split(' ')[0] || ''
     const lastName = (name || '').split(' ').slice(1).join(' ') || ''
-    const apiKey = process.env.VITE_RESEND_API_KEY
-    const audienceId = process.env.VITE_RESEND_AUDIENCE_ID
+    const apiKey = process.env.RESEND_API_KEY
+    const audienceId = process.env.RESEND_AUDIENCE_ID
 
     console.log('[Coogni] apiKey:', apiKey ? 'SET' : 'MISSING', 'audienceId:', audienceId || 'MISSING')
 
