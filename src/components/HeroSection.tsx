@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
@@ -134,12 +135,17 @@ export function HeroSection() {
         <AnimatedGroup preset="fade" className="w-full max-w-4xl">
 
           {/* Headline */}
-          <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
+          >
             <span className="font-bold italic">{t(translations.hero.titleAccent)}</span>{' '}
             <span className="font-light">{t(translations.hero.titleMid)}</span>{' '}
             <span className="font-bold italic">{t(translations.hero.titleAccent2)}</span>{' '}
             <span className="font-light">{t(translations.hero.titleRest)}</span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
           <TextEffect
