@@ -102,7 +102,7 @@ function HeroHeader() {
 
 /* ─── Hero Content ─── */
 export function HeroSection() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '' })
