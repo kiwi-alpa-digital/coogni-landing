@@ -9,7 +9,7 @@ const VideoSection = () => {
   const es = locale === 'es'
 
   return (
-    <section className="w-full py-8 px-6 md:px-12 lg:px-20">
+    <section className="w-full py-0 px-6 md:px-12 lg:px-20">
       <AnimatedGroup preset="fade" className="mx-auto max-w-5xl">
         {/* Section header */}
         <div className="mb-6 text-center">

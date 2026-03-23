@@ -127,11 +127,11 @@ export function HeroSection() {
       <HeroHeader />
 
       {/* Hero — below fixed header */}
-      <div className="relative flex justify-start px-6 py-40 lg:px-20 lg:py-52">
+      <div className="relative flex justify-start px-6 py-40 lg:px-20 lg:py-36">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-card" />
         <div className="absolute inset-0 -z-10 [background:radial-gradient(ellipse_80%_60%_at_50%_-10%,hsl(215,60%,50%/0.08),transparent)]" />
 
-        <div className="w-full max-w-4xl">
+        <AnimatedGroup preset="fade" className="w-full max-w-4xl">
 
           {/* Headline */}
           <h1 className="text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
@@ -146,14 +146,14 @@ export function HeroSection() {
             per="line"
             as="p"
             preset="fade"
-            delay={0.5}
+            delay={0.3}
             className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
             {t(translations.hero.subtitle)}
           </TextEffect>
 
           {/* Social proof */}
-          <AnimatedGroup preset="blur-slide" delay={0.7} className="mt-6">
+          <AnimatedGroup preset="blur-slide" delay={0.5} className="mt-6">
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
@@ -204,7 +204,7 @@ export function HeroSection() {
             Únete gratis hoy. Sin tarjeta · Sin compromiso
           </p>
 
-        </div>
+        </AnimatedGroup>
       </div>
 
       <WaitlistModal open={modalOpen} onOpenChange={setModalOpen} />
