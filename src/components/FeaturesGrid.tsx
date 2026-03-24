@@ -2,6 +2,7 @@ import { Brain, Lock, Activity, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
+import organizationsImg from '@/assets/organizations.png'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 25 },
@@ -54,8 +55,7 @@ export default function FeaturesGrid() {
             <div className="[transform:skewY(-2deg)_skewX(-2deg)_rotateX(6deg)]">
               <div className="aspect-[88/36] relative">
                 <div className="absolute -inset-[4.25rem] z-[1] [background-image:radial-gradient(at_75%_25%,transparent,hsl(var(--background))_75%)]"></div>
-                <img src="https://tailark.com/_next/image?url=%2Fmail-upper.png&w=3840&q=75" className="absolute inset-0 z-10" alt="Coogni dashboard" width={2797} height={1137} />
-                <img src="https://tailark.com/_next/image?url=%2Fmail-back-light.png&w=3840&q=75" className="absolute inset-0" alt="Coogni background" width={2797} height={1137} />
+                <img src={organizationsImg} className="absolute inset-0 z-10" alt="Coogni organizations" width={2797} height={1137} />
               </div>
             </div>
           </div>
