@@ -1,55 +1,31 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { useI18n } from '@/i18n/context'
-import { translations } from '@/i18n/translations'
 import logoCoogni from '@/assets/logo-coogni.png'
-import { BrainCircuit, TrendingUp, Clock, BarChart3, Star, Users, Gift, ShieldCheck, Download, Check } from 'lucide-react'
-
-const TESTS = [
-  { es: 'Valoración neuropsicológica completa', en: 'Complete neuropsychological assessment', score: '15 min' },
-  { es: 'MMSE (Mini-Mental State Examination)', en: 'MMSE (Mini-Mental State Examination)', score: '10 min' },
-  { es: 'MoCA (Montreal Cognitive Assessment)', en: 'MoCA (Montreal Cognitive Assessment)', score: '15 min' },
-  { es: 'Trail Making Test A/B', en: 'Trail Making Test A/B', score: '10 min' },
-  { es: 'Test del Reloj (Clock Drawing Test)', en: 'Clock Drawing Test', score: '5 min' },
-  { es: 'Fotografía de la retina', en: 'Retinal photography', score: '5 min' },
-]
-
-const INTEREST_OPTIONS = [
-  { id: 'patientManagement', icon: Users, es: 'Gestión de pacientes', en: 'Patient management' },
-  { id: 'predictiveAnalytics', icon: BrainCircuit, es: 'Analítica predictiva', en: 'Predictive analytics' },
-  { id: 'decisionSupport', icon: TrendingUp, es: 'Soporte en decisiones clínicas', en: 'Clinical decision support' },
-  { id: 'patientExercises', icon: BarChart3, es: 'Ejercicios cognitivos', en: 'Cognitive exercises' },
-  { id: 'teamCollaboration', icon: Users, es: 'Colaboración en equipo', en: 'Team collaboration' },
-  { id: 'reporting', icon: BarChart3, es: 'Reporting y dashboards', en: 'Reporting & dashboards' },
-]
-
-const INTEREST_ICONS: Record<string, React.ReactNode> = {
-  patientManagement: <Users className="h-4 w-4 shrink-0" />,
-  predictiveAnalytics: <BrainCircuit className="h-4 w-4 shrink-0" />,
-  decisionSupport: <TrendingUp className="h-4 w-4 shrink-0" />,
-  patientExercises: <BarChart3 className="h-4 w-4 shrink-0" />,
-  teamCollaboration: <Users className="h-4 w-4 shrink-0" />,
-  reporting: <BarChart3 className="h-4 w-4 shrink-0" />,
-}
+import { Gift, ShieldCheck, Download, Check, User, Mail, ArrowRight } from 'lucide-react'
 
 export default function ThankYou() {
-  const { t, locale } = useI18n()
+  const { locale } = useI18n()
   const location = useLocation()
   const name = location.state?.name as string || ''
-  const firstName = name.split(' ')[0] || ''
+  const firstName = name.split(' ')[0] || (locale === 'es' ? 'doctor/a' : 'doctor')
   const es = locale === 'es'
 
-  const [interests, setInterests] = useState<string[]>([])
+  const [formData, setFormData] = useState({ name: name || '', email: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const toggleInterest = (id: string) => {
-    setInterests((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
-    )
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+    } catch {}
+    setIsSubmitting(false)
     setSubmitted(true)
   }
 
@@ -70,59 +46,73 @@ export default function ThankYou() {
 
       <div className="flex min-h-screen flex-col items-center justify-center px-6 py-32">
 
-        {/* ── 5% OFF SURVEY ── FIRST ── */}
+        {/* ── 5% OFF FORM ── FIRST ── */}
         {!submitted ? (
           <div className="mb-12 w-full max-w-xl">
-            <div className="mb-6 flex justify-center">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5">
-                <Gift className="h-3.5 w-3.5 text-amber-400" />
-                <span className="text-xs font-semibold text-amber-400">{es ? '5% extra de descuento' : 'Extra 5% discount'}</span>
+            {/* Badge */}
+            <div className="mb-5 flex justify-center">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5">
+                <Gift className="h-3.5 w-3.5 text-foreground/60" />
+                <span className="text-xs font-medium text-foreground/60">{es ? '5% extra de descuento' : 'Extra 5% discount'}</span>
               </span>
             </div>
 
-            <h2 className="mb-3 text-center text-2xl font-bold text-foreground sm:text-3xl">
-              {es ? <>¿Quieres un <span className="italic text-primary">5% extra</span> de descuento?</> : <>Want a <span className="italic text-primary">5% extra</span> discount?</>}
+            <h2 className="mb-2 text-center text-2xl font-bold text-foreground sm:text-3xl">
+              {es ? 'Envíaos el 5% extra' : 'Get your extra 5%'}
             </h2>
             <p className="mb-6 text-center text-sm text-muted-foreground">
-              {es ? 'Completa esta breve encuesta y te envíaos un código adicional del 5%.' : 'Fill out this short survey and we\'ll send you an additional 5% discount code.'}
+              {es ? 'Rellena la siguiente pregunta y recibe tu código personal.' : 'Fill out below and receive your personal code.'}
             </p>
 
             <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card p-6 shadow-lg">
-              <p className="mb-4 text-sm font-medium text-foreground">
+              <div className="mb-3 text-sm font-medium text-foreground">
                 {es ? '¿Qué funcionalidades te interesan más?' : 'What features interest you most?'}
-              </p>
-
-              <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {INTEREST_OPTIONS.map((opt) => {
-                  const selected = interests.includes(opt.id)
-                  return (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      onClick={() => toggleInterest(opt.id)}
-                      className={`flex items-center gap-2.5 rounded-xl border px-4 py-2.5 text-left text-sm transition-all ${selected
-                          ? 'border-primary/40 bg-primary/10 text-primary'
-                          : 'border-border bg-background text-muted-foreground hover:border-border/80 hover:text-foreground'
-                        }`}
-                    >
-                      {INTEREST_ICONS[opt.id]}
-                      <span>{es ? opt.es : opt.en}</span>
-                      {selected && <Check className="ml-auto h-4 w-4 shrink-0" />}
-                    </button>
-                  )
-                })}
               </div>
 
+              {/* Name input */}
+              <div className="mb-3">
+                <div className="relative">
+                  <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
+                  <input
+                    type="text"
+                    required
+                    placeholder={es ? 'Tu nombre' : 'Your name'}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="flex h-11 w-full rounded-xl border border-input bg-background pl-11 pr-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/50 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+                  />
+                </div>
+              </div>
+
+              {/* Email input */}
+              <div className="mb-4">
+                <div className="relative">
+                  <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
+                  <input
+                    type="email"
+                    required
+                    placeholder={es ? 'Tu email' : 'Your email'}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="flex h-11 w-full rounded-xl border border-input bg-background pl-11 pr-4 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/50 focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/20"
+                  />
+                </div>
+              </div>
+
+              {/* Submit button */}
               <button
                 type="submit"
-                className="w-full rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                disabled={isSubmitting}
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-sm font-bold text-primary-foreground shadow-sm shadow-black/5 transition-all hover:shadow-lg hover:shadow-primary/30 disabled:opacity-60"
               >
-                {es ? 'Enviar y obtener mi 5% →' : 'Send and get my 5% →'}
+                {isSubmitting ? (es ? 'Enviando...' : 'Sending...') : (es ? 'Envíaos →' : 'Send →')}
+                {!isSubmitting && <ArrowRight className="h-4 w-4" />}
               </button>
 
+              {/* Privacy */}
               <div className="mt-3 flex items-center justify-center gap-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-muted-foreground/60" />
-                <p className="text-xs text-muted-foreground/60">
+                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-muted-foreground/50" />
+                <p className="text-xs text-muted-foreground/50">
                   {es ? 'Sin spam. Solo te envíaos tu código.' : 'No spam. We only send your code.'}
                 </p>
               </div>
