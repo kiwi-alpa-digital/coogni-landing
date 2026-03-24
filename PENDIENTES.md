@@ -1,6 +1,6 @@
 # Coogni — Tareas Pendientes
 
-> Última actualización: 2026-03-22
+> Última actualización: 2026-03-24
 
 ---
 
@@ -25,8 +25,8 @@
 ### 3. Email service conectado
 - **Opciones:** Loops (gratis hasta 1K contactos), Mailchimp (gratis hasta 500), Resend (gratis)
 - **Acción:** Darme las credenciales/API key para conectar la Thank You page
+- ✅ **DONE (2026-03-24):** Resend conectado en `/api/subscribe` — añade contactos a audiencia y envía email de bienvenida con guía PDF
 - **Lo que falta:**
-  - Conectar Thank You page al email service
   - Configurar secuencia de 5 emails (contenido ya escrito en `public/email-sequence.md`)
 
 ---
@@ -36,7 +36,10 @@
 ### 4. Lead magnet PDF
 - **Contenido:** Ya escrito en `public/lead-magnet-content.md`
 - **Acción:** Generar PDF real y subirlo a la web
-- **Linkear** desde la landing y Thank You page
+- ✅ **DONE (2026-03-24):** Guía PDF de profesionales linkeada en ThankYou page (`/gracias-lista-espera`)
+
+### 4b. Thank You page → Supabase profiling data
+- ✅ **DONE (2026-03-24):** Formulario de profiling (perfil, clínica, pacientes, intereses, otro) guardado en tabla `waitlist_extra` de Supabase
 
 ### 5. OG image real
 - **Archivo:** `/public/og-image.png` — generado con PIL (básico)
@@ -58,6 +61,7 @@
 ### 8. Thank You page con offer stack real
 - **Contenido:** Ya escrito en `public/thank-you-content.md`
 - **Acción:** Implementar la página con lead magnet + visión + offer stack
+- ✅ **DONE (2026-03-24):** `/gracias-lista-espera` implementada con formulario profiling + guardamos en Supabase `waitlist_extra` + card guía PDF
 
 ### 9. Blog post SEO #2
 - **Keyword:** "Ejercicios cognitivos para pacientes con Alzheimer: evidencia y práctica"
