@@ -20,7 +20,6 @@ import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/lib/supabase";
 
 import logoCoogni from "@/assets/logo-coogni.png";
 
@@ -62,26 +61,31 @@ const ThankYou = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("waitlist_extra").insert({
-        name: locationState?.name || "",
-        email: locationState?.email || "",
-        profile_type: profileType,
-        clinic_name: clinicName,
-        patients,
-        interests,
-        other_text: otherText,
+      const res = await fetch('/api/waitlist-extra', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: locationState?.name || '',
+          email: locationState?.email || '',
+          profile_type: profileType,
+          clinic_name: clinicName,
+          patients,
+          interests,
+          other_text: otherText,
+        }),
       });
 
-      if (error) {
-        console.error("[Coogni] Supabase error:", error.message);
-        toast.error("Error guardando tus datos. Inténtalo de nuevo.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        console.error('[Coogni] API error:', data.error);
+        toast.error('Error guardando tus datos. Inténtalo de nuevo.');
       } else {
         setIsDone(true);
         toast.success(t(ty.finalTitle));
       }
     } catch (err) {
-      console.error("[Coogni] Submit error:", err);
-      toast.error("Error de conexión. Inténtalo de nuevo.");
+      console.error('[Coogni] Submit error:', err);
+      toast.error('Error de conexión. Inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);
     }
