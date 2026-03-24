@@ -100,7 +100,7 @@ export default async function handler(req, res) {
           <!-- Header with logo -->
           <tr>
             <td style="background-color: #ffffff; border-radius: 16px 16px 0 0; padding: 32px 40px; text-align: center; border-bottom: 1px solid #e2e8f0;">
-              <img src="https://coogni.com/logo-coogni.png" alt="Coogni" height="40" style="height: 40px; margin-bottom: 8px;">
+              <img src="https://www.coogni.es/assets/logo-coogni-CrQiJy3D.png" alt="Coogni" height="40" style="height: 40px; margin-bottom: 8px;">
               <p style="margin: 0; font-size: 13px; color: #64748b;">Neurociencia clínica con IA predictiva</p>
             </td>
           </tr>
