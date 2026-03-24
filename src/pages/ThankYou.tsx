@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useI18n } from '@/i18n/context'
 import logoCoogni from '@/assets/logo-coogni.png'
@@ -8,14 +8,13 @@ export default function ThankYou() {
   const { locale } = useI18n()
   const location = useLocation()
   const name = location.state?.name as string || ''
-  const firstName = name.split(' ')[0] || (locale === 'es' ? 'doctor/a' : 'doctor')
   const es = locale === 'es'
 
-  const [formData, setFormData] = useState({ name: name || '', email: '' })
+  const [formData, setFormData] = useState({ name, email: '' })
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     try {
@@ -38,7 +37,7 @@ export default function ThankYou() {
       {/* Header */}
       <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
         <div className="flex h-14 items-center rounded-full border border-border/50 bg-background/90 px-5 shadow-sm shadow-black/5 backdrop-blur-md">
-          <a href="/" className="flex items-center gap-2 pt-4">
+          <a href="/" className="flex items-center gap-2">
             <img src={logoCoogni} alt="Coogni" className="h-7" />
           </a>
         </div>
@@ -46,7 +45,7 @@ export default function ThankYou() {
 
       <div className="flex min-h-screen flex-col items-center justify-center px-6 py-32">
 
-        {/* ── 5% FORM ── */}
+        {/* 5% FORM */}
         {!submitted ? (
           <div className="mb-12 w-full max-w-xl">
             {/* Badge */}
@@ -64,7 +63,7 @@ export default function ThankYou() {
               {es ? 'Envíaos el 5% extra' : 'Get your extra 5%'}
             </h2>
             <p className="mb-6 text-center text-sm text-muted-foreground">
-              {es ? 'Rellena la siguiente pregunta y recibe tu código personal.' : 'Fill out below and receive your personal code.'}
+              {es ? 'Rellena y recibe tu código personal.' : 'Fill out below and receive your personal code.'}
             </p>
 
             {/* Form card */}
@@ -110,7 +109,9 @@ export default function ThankYou() {
                 onClick={handleSubmit}
                 className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-sm font-bold text-primary-foreground shadow-sm shadow-black/5 transition-all hover:shadow-lg hover:shadow-primary/30 disabled:opacity-60"
               >
-                {isSubmitting ? (es ? 'Enviando...' : 'Sending...') : (es ? 'Envíaos →' : 'Send →')}
+                {isSubmitting
+                  ? (es ? 'Enviando...' : 'Sending...')
+                  : (es ? 'Envíaos →' : 'Send →')}
                 {!isSubmitting && <ArrowRight className="h-4 w-4" />}
               </button>
 
@@ -133,13 +134,13 @@ export default function ThankYou() {
                 {es ? '¡Listo! Revisa tu email' : 'Done! Check your email'}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {es ? 'Te envíaos tu código del 5% extra a tu email.' : "We're sending your extra 5% code to your email."}
+                {es ? 'Te envíaos tu código del 5% extra.' : "We're sending your extra 5% code."}
               </p>
             </div>
           </div>
         )}
 
-        {/* ── GUIDE PDF ── */}
+        {/* GUIDE PDF */}
         <div className="w-full max-w-xl">
           <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
             {/* Preview header */}
