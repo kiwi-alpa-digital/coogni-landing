@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { useI18n } from '@/i18n/context'
 import logoCoogni from '@/assets/logo-coogni.png'
-import { Gift, ShieldCheck, Download, Check, User, Mail, ArrowRight } from 'lucide-react'
+import { Gift, ShieldCheck, Download, Check, User, Mail, ArrowRight, BrainCircuit } from 'lucide-react'
 
 export default function ThankYou() {
   const { locale } = useI18n()
