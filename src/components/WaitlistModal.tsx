@@ -46,7 +46,7 @@ const WaitlistModal = ({ open, onOpenChange }: WaitlistModalProps) => {
       toast.success(t(w.successTitle), { description: t(w.successDesc) });
       setFormData({ name: "", email: "" });
       onOpenChange(false);
-      navigate("/gracias-lista-espera", { state: { name: formData.name } });
+      navigate("/gracias-lista-espera", { state: { name: formData.name, email: formData.email } });
     } catch (err) {
       console.error('[Coogni] Subscribe error:', err);
       toast.error('Error. Inténtalo de nuevo.');

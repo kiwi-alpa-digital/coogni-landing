@@ -127,7 +127,7 @@ export function HeroSection() {
       })
     } catch {}
     setFormData({ name: '', email: '' })
-    navigate('/gracias-lista-espera')
+    navigate('/gracias-lista-espera', { state: { name: formData.name, email: formData.email } })
   }
 
   return (
