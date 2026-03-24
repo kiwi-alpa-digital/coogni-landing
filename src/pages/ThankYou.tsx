@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useI18n } from '@/i18n/context'
 import logoCoogni from '@/assets/logo-coogni.png'
 import { Gift, ShieldCheck, Download, Check, User, Mail, ArrowRight, BrainCircuit } from 'lucide-react'
@@ -38,7 +38,7 @@ export default function ThankYou() {
       {/* Header */}
       <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
         <div className="flex h-14 items-center rounded-full border border-border/50 bg-background/90 px-5 shadow-sm shadow-black/5 backdrop-blur-md">
-          <a href="/" className="flex items-center gap-2 shrink-0 pt-4">
+          <a href="/" className="flex items-center gap-2 pt-4">
             <img src={logoCoogni} alt="Coogni" className="h-7" />
           </a>
         </div>
@@ -46,17 +46,20 @@ export default function ThankYou() {
 
       <div className="flex min-h-screen flex-col items-center justify-center px-6 py-32">
 
-        {/* ── 5% OFF FORM ── FIRST ── */}
+        {/* ── 5% FORM ── */}
         {!submitted ? (
           <div className="mb-12 w-full max-w-xl">
             {/* Badge */}
             <div className="mb-5 flex justify-center">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5">
                 <Gift className="h-3.5 w-3.5 text-foreground/60" />
-                <span className="text-xs font-medium text-foreground/60">{es ? '5% extra de descuento' : 'Extra 5% discount'}</span>
+                <span className="text-xs font-medium text-foreground/60">
+                  {es ? '5% extra de descuento' : 'Extra 5% discount'}
+                </span>
               </span>
             </div>
 
+            {/* Headline */}
             <h2 className="mb-2 text-center text-2xl font-bold text-foreground sm:text-3xl">
               {es ? 'Envíaos el 5% extra' : 'Get your extra 5%'}
             </h2>
@@ -64,12 +67,13 @@ export default function ThankYou() {
               {es ? 'Rellena la siguiente pregunta y recibe tu código personal.' : 'Fill out below and receive your personal code.'}
             </p>
 
-            <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card p-6 shadow-lg">
-              <div className="mb-3 text-sm font-medium text-foreground">
+            {/* Form card */}
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-lg">
+              <p className="mb-4 text-sm font-medium text-foreground">
                 {es ? '¿Qué funcionalidades te interesan más?' : 'What features interest you most?'}
-              </div>
+              </p>
 
-              {/* Name input */}
+              {/* Name */}
               <div className="mb-3">
                 <div className="relative">
                   <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
@@ -84,7 +88,7 @@ export default function ThankYou() {
                 </div>
               </div>
 
-              {/* Email input */}
+              {/* Email */}
               <div className="mb-4">
                 <div className="relative">
                   <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
@@ -99,10 +103,11 @@ export default function ThankYou() {
                 </div>
               </div>
 
-              {/* Submit button */}
+              {/* Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
+                onClick={handleSubmit}
                 className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-sm font-bold text-primary-foreground shadow-sm shadow-black/5 transition-all hover:shadow-lg hover:shadow-primary/30 disabled:opacity-60"
               >
                 {isSubmitting ? (es ? 'Enviando...' : 'Sending...') : (es ? 'Envíaos →' : 'Send →')}
@@ -116,7 +121,7 @@ export default function ThankYou() {
                   {es ? 'Sin spam. Solo te envíaos tu código.' : 'No spam. We only send your code.'}
                 </p>
               </div>
-            </form>
+            </div>
           </div>
         ) : (
           <div className="mb-12 w-full max-w-xl">
@@ -128,19 +133,19 @@ export default function ThankYou() {
                 {es ? '¡Listo! Revisa tu email' : 'Done! Check your email'}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {es ? 'Te envíaos tu código del 5% extra a tu email.' : 'We\'re sending your extra 5% code to your email.'}
+                {es ? 'Te envíaos tu código del 5% extra a tu email.' : "We're sending your extra 5% code to your email."}
               </p>
             </div>
           </div>
         )}
 
-        {/* ── PDF GUIDE ── SECOND ── */}
-        <div className="mb-12 w-full max-w-xl">
+        {/* ── GUIDE PDF ── */}
+        <div className="w-full max-w-xl">
           <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
             {/* Preview header */}
             <div className="bg-gradient-to-br from-primary/20 via-primary/5 to-transparent px-6 py-5 border-b border-border/50">
               <div className="flex items-start gap-5">
-                {/* Book cover preview */}
+                {/* Book cover */}
                 <div className="shrink-0 w-24 h-32 rounded-lg bg-gradient-to-br from-primary/30 to-cyan-400/20 border border-primary/20 flex flex-col items-center justify-center p-2 shadow-md">
                   <BrainCircuit className="h-8 w-8 text-primary mb-1" />
                   <p className="text-[8px] font-bold text-primary text-center leading-tight">Coogni</p>
@@ -152,7 +157,7 @@ export default function ThankYou() {
                     {es ? 'Cómo Coogni transforma tu consulta' : 'How Coogni transforms your practice'}
                   </h3>
                   <p className="mb-2 text-xs text-muted-foreground">
-                    {es ? 'Qué encontrarás en la guía:' : 'What you\'ll find inside:'}
+                    {es ? 'Qué encontrarás en la guía:' : "What you'll find inside:"}
                   </p>
                   <ul className="space-y-1">
                     {[
@@ -172,7 +177,7 @@ export default function ThankYou() {
               </div>
             </div>
 
-            {/* Download button */}
+            {/* Download */}
             <div className="px-6 py-4">
               <a
                 href="https://coogni.com/guia-coogni-profesionales.pdf"
