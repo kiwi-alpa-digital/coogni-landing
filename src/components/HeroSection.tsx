@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
+import { Badge } from '@/components/ui/badge'
 import CoogniImpactChart from '@/components/CoogniImpactChart'
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
@@ -185,7 +186,13 @@ export function HeroSection() {
 
           {/* Form CTA */}
           <p className="mt-10 text-base font-medium text-foreground">
-            {t(translations.hero.formCta)}
+            <Badge
+              variant="default"
+              className="mr-2 inline-flex items-center gap-1 px-3 py-1 text-sm font-bold shadow-sm shadow-primary/25"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              {t(translations.hero.formCta)}
+            </Badge>
           </p>
 
           {/* Inline form */}
