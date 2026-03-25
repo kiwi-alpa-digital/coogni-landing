@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MoveRight, Gift } from "lucide-react";
+import { MoveRight, Gift, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n/context";
@@ -65,14 +65,17 @@ const WaitlistSection = () => {
                 <span className="font-bold italic">{t(w.titleAccent2)}</span>
               </h2>
               <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t(w.desc)}</p>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 {[
-                  { es: '✅ Fichas clínicas digitales', en: '✅ Digital clinical records' },
-                  { es: '✅ Dashboard con IA predictiva', en: '✅ AI predictive dashboard' },
-                  { es: '✅ Ejercicios cognitivos gratis para pacientes', en: '✅ Free cognitive exercises for patients' },
-                  { es: '✅ IA que detecta deterioro 3× antes', en: '✅ AI detects decline 3× earlier' },
+                  { es: 'Fichas clínicas digitales', en: 'Digital clinical records' },
+                  { es: 'Dashboard con IA predictiva', en: 'AI predictive dashboard' },
+                  { es: 'Ejercicios cognitivos gratis para pacientes', en: 'Free cognitive exercises for patients' },
+                  { es: 'IA que detecta deterioro 3× antes', en: 'AI detects decline 3× earlier' },
                 ].map((item, i) => (
-                  <p key={i} className="text-sm text-muted-foreground">{item[locale as 'es'|'en']}</p>
+                  <div key={i} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-primary" />
+                    <span className="text-sm text-muted-foreground">{item[locale as 'es'|'en']}</span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -83,7 +86,7 @@ const WaitlistSection = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-full max-w-md flex-shrink-0"
+            className="w-full max-w-xl flex-shrink-0"
           >
             <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-border bg-card p-6 md:p-8" style={{ boxShadow: "var(--card-shadow)" }}>
               <div>
