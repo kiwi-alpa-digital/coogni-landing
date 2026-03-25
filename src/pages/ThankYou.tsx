@@ -330,14 +330,14 @@ const ThankYou = () => {
           {/* Book preview header */}
           <div className="bg-gradient-to-br from-primary/20 via-primary/5 to-transparent px-6 py-5 border-b border-border/50">
             <div className="flex items-start gap-5">
-              {/* Book cover */}
+              {/* Book cover — 16:9 */}
               <img
                 src={portadaImg}
                 alt="Portada guía Coogni"
-                className="shrink-0 w-24 h-32 rounded-lg object-cover shadow-md"
+                className="shrink-0 w-40 sm:w-52 rounded-lg object-cover shadow-md aspect-video"
               />
               {/* Title + bullets */}
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <h3 className="mb-2 text-base font-semibold text-foreground leading-snug">
                   {es
                     ? "Cómo Coogni ayuda en tu día a día a profesionales de la salud"
@@ -346,7 +346,8 @@ const ThankYou = () => {
                 <p className="mb-2 text-xs text-muted-foreground">
                   {es ? "Qué encontrarás en la guía:" : "What you'll find inside:"}
                 </p>
-                <ul className="space-y-1">
+                {/* Index in 2 columns */}
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
                   {[
                     "01. El reto del deterioro cognitivo",
                     "02. Qué es Coogni",
