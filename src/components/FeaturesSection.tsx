@@ -165,11 +165,13 @@ function EvolutionChartCard() {
             </div>
             <h3 className="text-lg font-bold text-foreground">{t(f.evolutionChart.title)}</h3>
           </div>
-          <ul className="space-y-2.5">
+          <ul className="space-y-3">
             {f.evolutionChart.bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                <span><BoldText text={t(b)} /></span>
+              <li key={i} className="flex items-start gap-3 rounded-xl border border-border bg-muted/30 p-3 transition-colors hover:bg-muted/50">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                </div>
+                <span className="text-sm leading-relaxed text-muted-foreground"><BoldText text={t(b)} /></span>
               </li>
             ))}
           </ul>

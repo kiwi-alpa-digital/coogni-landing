@@ -148,11 +148,11 @@ export const translations = {
       ],
     },
     evolutionChart: {
-      title: { es: 'Gráfico Evolutivo', en: 'Evolution Chart' },
+      title: { es: 'Trayectoria Cognitiva', en: 'Cognitive Trajectory' },
       bullets: [
-        { es: 'Visualiza la **trayectoria cognitiva** en el tiempo', en: 'Visualize **cognitive trajectory** over time' },
-        { es: 'Detecta **patrones de deterioro** o mejora', en: 'Detect **deterioration** or improvement patterns' },
-        { es: 'Compara **períodos y tratamientos**', en: 'Compare **periods and treatments**' },
+        { es: 'Visualiza la **evolución del paciente** a lo largo del tiempo con datos reales y predicciones de IA', en: 'Visualize **patient evolution** over time with real data and AI predictions' },
+        { es: 'Detecta **patrones de deterioro** o mejora antes de que sean clínicamente evidentes', en: 'Detect **deterioration or improvement** patterns before they become clinically evident' },
+        { es: 'Compara **períodos y tratamientos** para identificar qué intervenciones funcionan mejor', en: 'Compare **periods and treatments** to identify which interventions work best' },
       ],
     },
     patientRecord: {
