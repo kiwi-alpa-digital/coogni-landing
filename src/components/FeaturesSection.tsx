@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
+import { Brain, ArrowRight, Users, ShieldCheck, Activity, Dumbbell, FileText, LayoutDashboard, Building2, Sparkles, CheckCircle2, TrendingUp, Database, ClipboardCheck, BellRing, Share2, History } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/context";
@@ -230,9 +230,9 @@ function BoldText({ text }: { text: string }) {
 
 // ---- Feature Card ----
 function FeatureCard({
-  icon, title, bullets, index,
+  icon, title, bullets, icons: bulletIcons, index,
 }: {
-  icon: React.ReactNode; title: string; bullets: string[]; index: number;
+  icon: React.ReactNode; title: string; bullets: string[]; icons?: React.ReactNode[]; index: number;
 }) {
   return (
     <motion.div
@@ -249,10 +249,14 @@ function FeatureCard({
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">{icon}</div>
           <span className="text-sm font-bold text-foreground">{title}</span>
         </div>
-        <ul className="space-y-2.5">
+        <ul className="space-y-3">
           {bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-              <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+            <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                {bulletIcons && bulletIcons[i]
+                  ? bulletIcons[i]
+                  : <CheckCircle2 className="h-4 w-4 text-primary" />}
+              </div>
               <span><BoldText text={b} /></span>
             </li>
           ))}
@@ -369,18 +373,33 @@ export default function FeaturesSection() {
               icon={<FileText className="h-5 w-5 text-primary" />}
               title={t(f.patientRecord.title)}
               bullets={f.patientRecord.bullets.map(b => t(b))}
+              icons={[
+                <Database className="h-4 w-4 text-primary" />,
+                <History className="h-4 w-4 text-primary" />,
+                <ClipboardCheck className="h-4 w-4 text-primary" />,
+              ]}
               index={0}
             />
             <FeatureCard
               icon={<LayoutDashboard className="h-5 w-5 text-primary" />}
               title={t(f.dashboard.title)}
               bullets={f.dashboard.bullets.map(b => t(b))}
+              icons={[
+                <BellRing className="h-4 w-4 text-primary" />,
+                <Activity className="h-4 w-4 text-primary" />,
+                <Sparkles className="h-4 w-4 text-primary" />,
+              ]}
               index={1}
             />
             <FeatureCard
               icon={<Building2 className="h-5 w-5 text-primary" />}
               title={t(f.organizations.title)}
               bullets={f.organizations.bullets.map(b => t(b))}
+              icons={[
+                <Users className="h-4 w-4 text-primary" />,
+                <Share2 className="h-4 w-4 text-primary" />,
+                <Building2 className="h-4 w-4 text-primary" />,
+              ]}
               index={2}
             />
           </div>
