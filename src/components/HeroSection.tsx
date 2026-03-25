@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Sparkles, ChevronRight } from 'lucide-react'
+import { Sparkles, ChevronRight, ShieldCheck } from 'lucide-react'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { TextEffect } from '@/components/ui/text-effect'
 import { Badge } from '@/components/ui/badge'
@@ -168,18 +168,12 @@ export function HeroSection() {
 
           {/* Social proof */}
           <AnimatedGroup preset="blur-slide" delay={0.5} className="mt-6">
-            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {['MG','JG','AR','CL'].map((i) => (
-                    <div key={i} className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary border border-primary/20">{i}</div>
-                  ))}
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15">
+                  <ShieldCheck className="h-4 w-4 text-primary" />
                 </div>
                 <span className="text-xs">{t(translations.hero.socialProof)}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-amber-400">★★★★★</span>
-                <span className="text-xs">{t(translations.hero.rating)}</span>
               </div>
             </div>
           </AnimatedGroup>
