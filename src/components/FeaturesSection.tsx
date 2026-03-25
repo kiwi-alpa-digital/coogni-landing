@@ -274,7 +274,7 @@ function FeatureCard({
 
 // ---- Main Section ----
 export default function FeaturesSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const f = translations.features;
 
   return (
