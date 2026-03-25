@@ -357,18 +357,6 @@ export default function FeaturesSection() {
                   />
                 </div>
               </div>
-
-              {/* Mini stats */}
-              <div className="mt-4 flex items-center gap-4 border-t border-border pt-3">
-                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
-                  <span className="font-medium">{t(f.exercises.routineLabel)}</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <Activity className="h-3.5 w-3.5 text-accent" />
-                  <span className="font-medium">{t(f.exercises.statsLabel)}</span>
-                </div>
-              </div>
             </motion.div>
 
             {/* Analytics IA */}
