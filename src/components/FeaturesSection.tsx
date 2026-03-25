@@ -325,11 +325,21 @@ export default function FeaturesSection() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 {/* List on the left */}
-                <ul className="space-y-2 flex-1">
-                  {Object.values(translations.features.exercises.categories).map((cat, i) => (
-                    <li key={i} className="flex items-center gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-sm text-foreground">{t(cat as any)}</span>
+                <ul className="flex-1 space-y-2">
+                  {[
+                    { cat: translations.features.exercises.categories.memory, color: "bg-primary", desc: { es: 'Recall and working memory exercises', en: 'Ejercicios de recuerdo y memoria' } },
+                    { cat: translations.features.exercises.categories.attention, color: "bg-amber-400", desc: { es: 'Sustained and selective attention tasks', en: 'Atención sostenida y selectiva' } },
+                    { cat: translations.features.exercises.categories.language, color: "bg-sky-400", desc: { es: 'Naming, fluency and comprehension', en: 'Denominación, fluidez y comprensión' } },
+                    { cat: translations.features.exercises.categories.executive, color: "bg-violet-400", desc: { es: 'Planning, reasoning and problem solving', en: 'Planificación, razonamiento y resolución' } },
+                    { cat: translations.features.exercises.categories.orientation, color: "bg-emerald-400", desc: { es: 'Temporal and spatial orientation', en: 'Orientación temporal y espacial' } },
+                    { cat: translations.features.exercises.categories.calculation, color: "bg-rose-400", desc: { es: 'Numeric operations and mental math', en: 'Operaciones numéricas y cálculo mental' } },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-muted/30 px-3 py-2.5">
+                      <div className={`mt-0.5 h-2.5 w-2.5 shrink-0 rounded-full ${item.color}`} />
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{t(item.cat as any)}</p>
+                        <p className="text-xs text-muted-foreground">{t(item.desc as any)}</p>
+                      </div>
                     </li>
                   ))}
                 </ul>
