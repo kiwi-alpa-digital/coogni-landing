@@ -85,19 +85,37 @@ export const translations = {
     },
     exercises: {
       badge: { es: '🎉 GRATIS para todos los pacientes', en: '🎉 FREE for all patients' },
-      title: { es: 'Ejercicios Cognitivos Gratis para', en: 'Free Cognitive Exercises for' },
-      titleHighlight: { es: 'TODOS', en: 'EVERYONE' },
+      title: { es: 'Ejercicios Cognitivos', en: 'Cognitive Exercises' },
+      titleHighlight: { es: 'GRATIS PARA TODOS', en: 'FREE FOR EVERYONE' },
       desc: {
-        es: 'Tus pacientes acceden sin coste a un catálogo completo de ejercicios de estimulación cognitiva organizados por categoría. Rutinas diarias personalizadas que trabajan entre consultas.',
-        en: 'Your patients get free access to a complete catalog of cognitive stimulation exercises organized by category. Personalized daily routines that work between appointments.',
+        es: 'Tus pacientes acceden GRATIS a un catálogo completo de ejercicios de estimulación cognitiva organizados por categoría. Rutinas diarias personalizadas que trabajan entre consultas.',
+        en: 'Your patients get FREE access to a complete catalog of cognitive stimulation exercises organized by category. Personalized daily routines that work between appointments.',
       },
       categories: {
-        memory: { es: 'Memoria', en: 'Memory' },
-        attention: { es: 'Atención', en: 'Attention' },
-        language: { es: 'Lenguaje', en: 'Language' },
-        executive: { es: 'Funciones ejecutivas', en: 'Executive functions' },
-        orientation: { es: 'Orientación', en: 'Orientation' },
-        calculation: { es: 'Cálculo', en: 'Calculation' },
+        cognition: {
+          es: { name: 'Cognición', desc: 'Atención, memoria, lenguaje y funciones ejecutivas' },
+          en: { name: 'Cognition', desc: 'Attention, memory, language and executive functions' },
+        },
+        physical: {
+          es: { name: 'Actividad Física', desc: 'Ejercicios motores y de coordinación' },
+          en: { name: 'Physical Activity', desc: 'Motor and coordination exercises' },
+        },
+        calculation: {
+          es: { name: 'Cálculo', desc: 'Operaciones numéricas y razonamiento lógico' },
+          en: { name: 'Calculation', desc: 'Numeric operations and logical reasoning' },
+        },
+        perception: {
+          es: { name: 'Percepción', desc: 'Discriminación visual, auditiva y espacial' },
+          en: { name: 'Perception', desc: 'Visual, auditory and spatial discrimination' },
+        },
+        memory: {
+          es: { name: 'Memoria', desc: 'Memoria de trabajo, episódica y prospectiva' },
+          en: { name: 'Memory', desc: 'Working, episodic and prospective memory' },
+        },
+        music: {
+          es: { name: 'Terapia Musical', desc: 'Estimulación cognitiva a través de la música' },
+          en: { name: 'Music Therapy', desc: 'Cognitive stimulation through music' },
+        },
       },
       routineLabel: { es: 'Rutina diaria completada', en: 'Daily routine completed' },
       progressLabel: { es: 'Progreso semanal', en: 'Weekly progress' },
