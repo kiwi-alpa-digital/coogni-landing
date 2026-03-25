@@ -22,6 +22,7 @@ import { translations } from "@/i18n/translations";
 import { cn } from "@/lib/utils";
 
 import logoCoogni from "@/assets/logo-coogni.png";
+import portadaImg from "@/assets/PORTADA_GUIA.png";
 
 const profileIcons: Record<string, React.ReactNode> = {
   independent: <User className="h-4 w-4" />,
@@ -330,15 +331,11 @@ const ThankYou = () => {
           <div className="bg-gradient-to-br from-primary/20 via-primary/5 to-transparent px-6 py-5 border-b border-border/50">
             <div className="flex items-start gap-5">
               {/* Book cover */}
-              <div className="shrink-0 w-24 h-32 rounded-lg bg-gradient-to-br from-primary/30 to-cyan-400/20 border border-primary/20 flex flex-col items-center justify-center p-2 shadow-md">
-                <BrainCircuit className="h-8 w-8 text-primary mb-1" />
-                <p className="text-[8px] font-bold text-primary text-center leading-tight">
-                  Coogni
-                </p>
-                <p className="text-[7px] text-muted-foreground text-center leading-tight mt-0.5">
-                  {es ? "Guía para\nProfesionales" : "Guide for\nProfessionals"}
-                </p>
-              </div>
+              <img
+                src={portadaImg}
+                alt="Portada guía Coogni"
+                className="shrink-0 w-24 h-32 rounded-lg object-cover shadow-md"
+              />
               {/* Title + bullets */}
               <div className="flex-1">
                 <h3 className="mb-2 text-base font-semibold text-foreground leading-snug">
@@ -351,21 +348,14 @@ const ThankYou = () => {
                 </p>
                 <ul className="space-y-1">
                   {[
-                    es
-                      ? "Detección precoz de deterioro cognitivo en consulta"
-                      : "Early detection of cognitive decline in practice",
-                    es
-                      ? "Casos reales en neurología y atención primaria"
-                      : "Real cases in neurology and primary care",
-                    es
-                      ? "Estimulación cognitiva personalizada con IA"
-                      : "AI-driven personalized cognitive stimulation",
-                    es
-                      ? "Cómo integrar Coogni en tu flujo de trabajo"
-                      : "How to integrate Coogni into your workflow",
-                    es
-                      ? "Apoyo a la decisión clínica con datos predictivos"
-                      : "Clinical decision support with predictive data",
+                    "01. El reto del deterioro cognitivo",
+                    "02. Qué es Coogni",
+                    "03. Cómo se adapta a cada perfil profesional",
+                    "04. El paciente en el centro",
+                    "05. El papel de las familias",
+                    "06. Funcionalidades clave",
+                    "07. Ejercitación cognitiva gratuita",
+                    "08. Seguridad y privacidad",
                   ].map((item, i) => (
                     <li
                       key={i}
