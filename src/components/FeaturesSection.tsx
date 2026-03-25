@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/context";
 import { translations } from "@/i18n/translations";
+import actividadesImg from "@/assets/actividades-en.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -322,7 +323,25 @@ export default function FeaturesSection() {
 
               <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{t(f.exercises.desc)}</p>
 
-              <ExerciseCategoriesVisual />
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* List on the left */}
+                <div className="flex-1 grid grid-cols-2 gap-2">
+                  {Object.values(translations.features.exercises.categories).map((cat, i) => (
+                    <div key={i} className="flex items-center gap-2 rounded-lg bg-muted/50 px-3 py-2">
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                      <span className="text-xs font-medium text-foreground">{t(cat as any)}</span>
+                    </div>
+                  ))}
+                </div>
+                {/* Image on the right */}
+                <div className="shrink-0">
+                  <img
+                    src={actividadesImg}
+                    alt="Actividades Coogni"
+                    className="w-full max-w-[200px] rounded-xl object-cover shadow-sm"
+                  />
+                </div>
+              </div>
 
               {/* Mini stats */}
               <div className="mt-4 flex items-center gap-4 border-t border-border pt-3">
