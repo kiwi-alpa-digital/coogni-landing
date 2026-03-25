@@ -128,7 +128,7 @@ export default async function handler(req, res) {
                     <p style="margin: 0 0 16px; font-size: 14px; color: #475569;">
                       Le facilitamos la siguiente guía práctica:
                     </p>
-                    <a href="https://coogni.com/guia-coogni-profesionales.pdf" style="display: inline-block; background-color: #0d9488; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 16px;">
+                    <a href="https://raw.githubusercontent.com/kiwi-alpa-digital/coogni-landing/main/src/assets/GUIA_USO_COOGNI_EN_LA_PRACTICA_CLINICA.pdf" style="display: inline-block; background-color: #0d9488; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 16px;">
                       → Descargar: Coogni en la práctica clínica neurológica
                     </a>
                     <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #64748b;">

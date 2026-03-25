@@ -383,7 +383,7 @@ const ThankYou = () => {
           {/* Download button */}
           <div className="px-6 py-4">
             <a
-              href="https://coogni.com/guia-coogni-profesionales.pdf"
+              href="https://raw.githubusercontent.com/kiwi-alpa-digital/coogni-landing/main/src/assets/GUIA_USO_COOGNI_EN_LA_PRACTICA_CLINICA.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
