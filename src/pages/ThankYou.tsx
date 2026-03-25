@@ -340,8 +340,8 @@ const ThankYou = () => {
               <div className="flex-1 min-w-0">
                 <h3 className="mb-2 text-base font-semibold text-foreground leading-snug">
                   {es
-                    ? "Cómo Coogni ayuda en tu día a día a profesionales de la salud"
-                    : "How Coogni helps healthcare professionals in their daily practice"}
+                    ? "El uso de Coogni como parte de la Práctica Clínica"
+                    : "Using Coogni as part of Clinical Practice"}
                 </h3>
                 <p className="mb-2 text-xs text-muted-foreground">
                   {es ? "Qué encontrarás en la guía:" : "What you'll find inside:"}
