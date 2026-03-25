@@ -249,9 +249,9 @@ export const translations = {
       en: 'Reserve your spot in our private beta. Get early access to patient management with predictive AI, cognitive exercises, and multidisciplinary collaboration.',
     },
     nameLabel: { es: 'Nombre completo', en: 'Full name' },
-    namePlaceholder: { es: 'Dr. María García', en: 'Dr. Jane Smith' },
+    namePlaceholder: { es: 'Inés Hernández', en: 'Inés Hernández' },
     emailLabel: { es: 'Email Profesional', en: 'Professional Email' },
-    emailPlaceholder: { es: 'maria.garcia@hospital.com', en: 'jane.smith@hospital.com' },
+    emailPlaceholder: { es: 'ines.hernandez@hospital.com', en: 'ines.hernandez@hospital.com' },
     specialtyLabel: { es: 'Especialidad / Rol', en: 'Specialty / Role' },
     specialtyPlaceholder: { es: 'Selecciona tu especialidad', en: 'Select your specialty' },
     specialtyOptions: {
