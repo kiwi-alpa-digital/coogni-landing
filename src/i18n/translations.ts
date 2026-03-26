@@ -216,8 +216,8 @@ export const translations = {
       desc: { es: 'Detección temprana de deterioro, predicción de trayectorias cognitivas, clustering de pacientes por patrones similares y recomendaciones clínicas automáticas.', en: 'Early detection of decline, cognitive trajectory prediction, patient clustering by similar patterns, and automatic clinical recommendations.' },
     },
     security: {
-      title: { es: 'Organizaciones y roles', en: 'Organizations & roles' },
-      desc: { es: 'Gestión de centros clínicos con roles granulares, invitaciones de equipo, pacientes compartidos entre profesionales y cumplimiento RGPD.', en: 'Clinical center management with granular roles, team invitations, patients shared between professionals, and GDPR compliance.' },
+      title: { es: 'Organizaciones y equipos', en: 'Organizations & teams' },
+      desc: { es: 'Gestión de centros clínicos con roles, invitaciones de equipo, pacientes compartidos entre profesionales del mismo equipo y cumplimiento RGPD.', en: 'Clinical center management with roles, team invitations, patients shared between team professionals, and GDPR compliance.' },
     },
     decision: {
       title: { es: 'Ejercicios cognitivos', en: 'Cognitive exercises' },
