@@ -1,26 +1,28 @@
 import { useI18n } from '@/i18n/context'
 import { translations } from '@/i18n/translations'
 import { AnimatedGroup } from '@/components/ui/animated-group'
-import { Star, Quote } from 'lucide-react'
+import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    quote: { es: 'Por primera vez puedo ver la trayectoria cognitiva de mis pacientes en una sola pantalla. La alerta predictiva me salvó de perder 6 meses de intervención en un paciente.', en: 'For the first time I can see my patients\' cognitive trajectory on one screen. The predictive alert saved me from losing 6 months of intervention in one patient.' },
-    name: { es: 'Dra. Marta Soler', en: 'Dr. Marta Soler' },
-    role: { es: 'Neuróloga, Hospital Clínico', en: 'Neurologist, Hospital Clínico' },
-    avatar: 'MS',
+    quote: { es: 'Me parece una propuesta muy interesante, especialmente por el enfoque en la personalización y la integración entre profesionales y pacientes.', en: 'I find this proposal very interesting, especially because of the focus on personalization and the integration between professionals and patients.' },
+    name: { es: 'A. Garrido', en: 'A. Garrido' },
+    role: { es: 'Neuropsicóloga. Psicóloga General Sanitaria', en: 'Neuropsychologist. General Health Psychologist' },
   },
   {
-    quote: { es: 'Los pacientes hacen los ejercicios en casa y yo veo sus resultados antes de la consulta. Esto cambia completamente la dinámica de la visita.', en: 'Patients do the exercises at home and I see their results before the consultation. This completely changes the visit dynamic.' },
-    name: { es: 'Dr. Pablo Ruiz', en: 'Dr. Pablo Ruiz' },
-    role: { es: 'Neuropsicólogo, Centro MEMORY', en: 'Neuropsychologist, Centro MEMORY' },
-    avatar: 'PR',
+    quote: { es: 'Creo que Coogni puede ser muy útil para la detección temprana y el seguimiento de pacientes con deterioro cognitivo. Puede ser una herramienta valiosa en el día a día de los profesionales de la salud y, por supuesto, también en el bienestar de los pacientes.', en: 'I believe Coogni can be very useful for early detection and monitoring of patients with cognitive impairment. It can be a valuable tool in the daily practice of healthcare professionals and, of course, also in the well-being of patients.' },
+    name: { es: 'J. González', en: 'J. González' },
+    role: { es: 'Neuropsicóloga', en: 'Neuropsychologist' },
   },
   {
-    quote: { es: 'La gestión multidisciplinaria era un caos. Ahora cada profesional sabe exactamente qué han hecho los demás y el paciente no tiene que repetir su historia 4 veces.', en: 'Multidisciplinary management was chaos. Now every professional knows exactly what others have done and the patient doesn\'t have to repeat their story 4 times.' },
-    name: { es: 'Laura Gascón', en: 'Laura Gascón' },
-    role: { es: 'Terapeuta Ocupacional, Residencia Geriátrica Vitalia', en: 'Occupational Therapist, Residencia Geriátrica Vitalia' },
-    avatar: 'LG',
+    quote: { es: 'Combinar neuropsicología e IA es muy innovador, estoy deseando ver cómo funciona y cómo ayudaría tanto a mis pacientes como a mí como profesional.', en: 'Combining neuropsychology and AI is very innovative, I am looking forward to seeing how it works and how it would help both my patients and me as a professional.' },
+    name: { es: 'N. Gutiérrez', en: 'N. Gutiérrez' },
+    role: { es: 'Neurólogo', en: 'Neurologist' },
+  },
+  {
+    quote: { es: 'Integrar IA y Salud me parece apasionante y personalmente muy motivador. Así que estaré probando vuestro producto encantado.', en: 'Integrating AI and Health seems exciting to me and personally very motivating. So I will be trying your product with pleasure.' },
+    name: { es: 'C. Pérez', en: 'C. Pérez' },
+    role: { es: 'Terapeuta Ocupacional', en: 'Occupational Therapist' },
   },
 ]
 
@@ -48,26 +50,16 @@ const BenefitsSection = () => {
         </AnimatedGroup>
 
         {/* Testimonials */}
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t_, i) => (
             <div key={i} className="relative rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
               <Quote className="absolute top-4 right-4 h-5 w-5 text-primary/20" />
-              <div className="flex gap-1 mb-3">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
               <p className="text-sm leading-relaxed text-muted-foreground italic">
                 "{t(t_.quote)}"
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                  {t_.avatar}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{t(t_.name)}</p>
-                  <p className="text-xs text-muted-foreground">{t(t_.role)}</p>
-                </div>
+              <div className="mt-4">
+                <p className="text-sm font-semibold text-foreground">{t(t_.name)}</p>
+                <p className="text-xs text-muted-foreground">{t(t_.role)}</p>
               </div>
             </div>
           ))}
