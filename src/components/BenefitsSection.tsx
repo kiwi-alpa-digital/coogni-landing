@@ -50,7 +50,10 @@ const BenefitsSection = () => {
         </AnimatedGroup>
 
         {/* Testimonials */}
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <p className="mt-16 text-center text-sm text-muted-foreground">
+          {t({ es: 'Algunos de los profesionales que hemos entrevistado piensan esto de Coogni:', en: 'Some of the professionals we interviewed think this about Coogni:' })}
+        </p>
+        <div className="mx-auto mt-6 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t_, i) => (
             <div key={i} className="relative rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
               <Quote className="absolute top-4 right-4 h-5 w-5 text-primary/20" />
