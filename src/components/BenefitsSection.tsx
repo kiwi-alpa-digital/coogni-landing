@@ -50,35 +50,31 @@ const BenefitsSection = () => {
         </AnimatedGroup>
 
         {/* Testimonials */}
-        <p className="mt-16 text-center text-sm text-muted-foreground">
-          {t({ es: 'Algunos de los profesionales que hemos entrevistado piensan esto de Coogni:', en: 'Some of the professionals we interviewed think this about Coogni:' })}
-        </p>
-        <div className="mx-auto mt-6 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 flex flex-col items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+              {t({ es: 'Lo que dicen los profesionales', en: 'What professionals say' })}
+            </span>
+          </span>
+          <p className="text-center text-sm text-muted-foreground/80">
+            {t({ es: 'Algunos de los profesionales que hemos entrevistado piensan esto de Coogni', en: 'Some of the professionals we interviewed think this about Coogni' })}
+          </p>
+        </div>
+
+        <div className="mx-auto mt-8 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t_, i) => (
-            <div key={i} className="relative rounded-2xl border border-border bg-card p-6 shadow-[var(--card-shadow)]">
+            <div key={i} className="relative flex flex-col rounded-2xl border border-border bg-card p-6 pt-8 shadow-[var(--card-shadow)]">
               <Quote className="absolute top-4 right-4 h-5 w-5 text-primary/20" />
-              <p className="text-sm leading-relaxed text-muted-foreground italic">
+              <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
                 "{t(t_.quote)}"
               </p>
-              <div className="mt-4">
-                <p className="text-sm font-semibold text-foreground">{t(t_.name)}</p>
-                <p className="text-xs text-muted-foreground">{t(t_.role)}</p>
+              <div className="mt-5 border-t border-border pt-4">
+                <p className="text-sm font-bold text-foreground">{t(t_.name)}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{t(t_.role)}</p>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Trust strip */}
-        <div className="mx-auto mt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-green-500" />{t({ es: 'RGPD Compliant', en: 'GDPR Compliant' })}
-          </span>
-          <span>·</span>
-          <span>{t({ es: 'Datos clínicos encriptados AES-256', en: 'Clinical data AES-256 encrypted' })}</span>
-          <span>·</span>
-          <span>{t({ es: 'Hosting en la UE', en: 'EU-hosted infrastructure' })}</span>
-          <span>·</span>
-          <span>{t({ es: 'Certificación ISO 27001', en: 'ISO 27001 Certified' })}</span>
         </div>
       </div>
     </section>
