@@ -316,7 +316,7 @@ export default function FeaturesSection() {
                 <div>
                   <h3 className="text-lg font-bold text-foreground">
                     {t(f.exercises.title)}{" "}
-                    <span className="uppercase font-bold text-primary tracking-wide">{t(f.exercises.titleHighlight)}</span>
+                    <span className="font-semibold text-primary">{t(f.exercises.titleHighlight)}</span>
                   </h3>
                 </div>
               </div>

@@ -61,8 +61,8 @@ const faqs = [
       en: 'How does Coogni guarantee the security and privacy of clinical data?',
     },
     a: {
-      es: 'Todos los datos están encriptados en tránsito (TLS 1.3) y en reposo (AES-256). Cumplimos con el RGPD, la Ley de Protección de Datos española y la certificación ISO 27001.',
-      en: 'All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We comply with GDPR, Spanish Data Protection Law, and ISO 27001 certification.',
+      es: 'Todos los datos están encriptados en tránsito (TLS 1.3) y en reposo (AES-256). Cumplimos con el RGPD y la Ley de Protección de Datos española. Nuestra arquitectura de seguridad sigue el estándar ISO 27001.',
+      en: 'All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We comply with GDPR and Spanish Data Protection Law. Our security architecture follows the ISO 27001 standard.',
     },
   },
   {

@@ -70,7 +70,7 @@ const WaitlistSection = () => {
                   { es: 'Fichas clínicas digitales', en: 'Digital clinical records' },
                   { es: 'Dashboard con IA predictiva', en: 'AI predictive dashboard' },
                   { es: 'Ejercicios cognitivos gratis para pacientes', en: 'Free cognitive exercises for patients' },
-                  { es: 'IA que detecta deterioro 3× antes', en: 'AI detects decline 3× earlier' },
+                  { es: 'IA que detecta deterioro hasta 3× antes', en: 'AI detects decline up to 3× earlier' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <Check className="h-4 w-4 shrink-0 text-primary" />
