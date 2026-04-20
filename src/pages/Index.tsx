@@ -4,7 +4,7 @@ import ProblemsSolutionsSection from "@/components/ProblemsSolutionsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import BenefitsSection from "@/components/BenefitsSection";
-import PricingSection from "@/components/PricingSection";
+// import PricingSection from "@/components/PricingSection"; // HIDDEN
 import WaitlistSection from "@/components/WaitlistSection";
 import FooterSection from "@/components/FooterSection";
 import FaqSection from "@/components/FaqSection";
@@ -20,7 +20,7 @@ const Index = () => {
       <FeaturesGrid />
       <FaqSection />
       <BenefitsSection />
-      <PricingSection />
+      {/* <PricingSection /> */}{/* HIDDEN */}
       <WaitlistSection />
       <FooterSection />
       <StickyCta />
