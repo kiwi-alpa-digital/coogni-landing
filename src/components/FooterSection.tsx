@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Linkedin } from "lucide-react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 import { useI18n } from "@/i18n/context"
 import logoCoogni from '@/assets/logo-coogni.png'
 
@@ -89,12 +90,15 @@ function FooterSection() {
             © 2026 Coogni. {es ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
           <nav className="flex gap-5 text-sm">
-            <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            <Link to="/privacidad" className="text-muted-foreground transition-colors hover:text-primary">
               {es ? 'Privacidad' : 'Privacy'}
-            </a>
-            <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            </Link>
+            <Link to="/terminos" className="text-muted-foreground transition-colors hover:text-primary">
               {es ? 'Términos' : 'Terms'}
-            </a>
+            </Link>
+            <Link to="/cookies" className="text-muted-foreground transition-colors hover:text-primary">
+              Cookies
+            </Link>
             <a href="mailto:hello@coogni.com" className="text-muted-foreground transition-colors hover:text-primary">
               hello@coogni.com
             </a>
