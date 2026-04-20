@@ -1,14 +1,12 @@
 import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Linkedin, Send } from "lucide-react"
+import { Linkedin } from "lucide-react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 import { useI18n } from "@/i18n/context"
-import { translations } from "@/i18n/translations"
 import logoCoogni from '@/assets/logo-coogni.png'
 
 function FooterSection() {
-  const { t, locale } = useI18n()
+  const { locale } = useI18n()
   const es = locale === 'es'
 
   return (
@@ -22,9 +20,9 @@ function FooterSection() {
       <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-12 lg:px-20">
 
         {/* Main grid */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 
-          {/* Col 1: About + Sobre nosotros */}
+          {/* Col 1: About */}
           <div className="space-y-4">
             <img src={logoCoogni} alt="Coogni" className="h-8" />
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -40,11 +38,6 @@ function FooterSection() {
                 LinkedIn
               </a>
             </div>
-            <nav className="flex flex-col space-y-2 pt-2 text-sm">
-              <a href="/about" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Sobre nosotros' : 'About us'}
-              </a>
-            </nav>
           </div>
 
           {/* Col 2: Producto */}
@@ -55,9 +48,6 @@ function FooterSection() {
             <nav className="flex flex-col space-y-2.5 text-sm">
               <a href="#features" className="text-muted-foreground transition-colors hover:text-primary">
                 {es ? 'Funcionalidades' : 'Features'}
-              </a>
-              <a href="#pricing" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Precios' : 'Pricing'}
               </a>
               <a href="#faq" className="text-muted-foreground transition-colors hover:text-primary">
                 FAQ
@@ -92,56 +82,6 @@ function FooterSection() {
             </nav>
           </div>
 
-          {/* Col 4: Recursos clínicos */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">
-              {es ? 'Recursos clínicos' : 'Clinical Resources'}
-            </h3>
-            <nav className="flex flex-col space-y-2.5 text-sm">
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Artículos clínicos' : 'Clinical articles'}
-              </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Guías de práctica clínica' : 'Clinical practice guidelines'}
-              </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Escalas neuropsicológicas' : 'Neuropsychological scales'}
-              </a>
-              <a href="https://www.sen.es" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Sociedad Española de Neurología (SEN)' : 'Spanish Neurology Society'}
-              </a>
-              <a href="https://www.isciii.es" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
-                {es ? 'Instituto de Salud Carlos III' : 'Carlos III Health Institute'}
-              </a>
-            </nav>
-          </div>
-
-          {/* Col 5: Newsletter */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">
-              {es ? 'Mantente informado' : 'Stay informed'}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {es
-                ? 'Novedades sobre avances en neurociencia clínica e IA aplicada a la detección temprana.'
-                : 'Updates on advances in clinical neuroscience and AI applied to early detection.'}
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder={es ? 'tu@email.com' : 'you@email.com'}
-                className="flex-1"
-              />
-              <Button variant="cta" size="icon" aria-label="Suscribirse">
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-muted-foreground">
-              <span className="h-2 w-2 rounded-full bg-green-500" />
-              {es ? 'Datos clínicos encriptados en la UE' : 'Clinical data encrypted in the EU'}
-            </div>
-          </div>
-
         </div>
 
         {/* Bottom bar */}
@@ -150,12 +90,15 @@ function FooterSection() {
             © 2026 Coogni. {es ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
           <nav className="flex gap-5 text-sm">
-            <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            <Link to="/privacidad" className="text-muted-foreground transition-colors hover:text-primary">
               {es ? 'Privacidad' : 'Privacy'}
-            </a>
-            <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            </Link>
+            <Link to="/terminos" className="text-muted-foreground transition-colors hover:text-primary">
               {es ? 'Términos' : 'Terms'}
-            </a>
+            </Link>
+            <Link to="/cookies" className="text-muted-foreground transition-colors hover:text-primary">
+              Cookies
+            </Link>
             <a href="mailto:hello@coogni.com" className="text-muted-foreground transition-colors hover:text-primary">
               hello@coogni.com
             </a>
