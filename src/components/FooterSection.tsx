@@ -61,7 +61,7 @@ function FooterSection() {
           {/* Col 3: Para quién */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">
-              {es ? 'Para quién' : 'For whom'}
+              {es ? 'Para quién' : "Who it's for"}
             </h3>
             <nav className="flex flex-col space-y-2.5 text-sm">
               <span className="text-muted-foreground">

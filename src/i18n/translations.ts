@@ -28,8 +28,8 @@ export const translations = {
       en: "You don't know it yet.",
     },
     subtitle: {
-      es: 'Coogni analiza las trayectorias cognitivas de tus pacientes, detecta deterioro 3× antes que cualquier prueba clínica, y te envía alertas automáticas cuando un paciente empieza a empeorar — no cuando ya es tarde.',
-      en: 'Coogni analyzes your patients\' cognitive trajectories, detects decline 3× earlier than any clinical test, and sends you automatic alerts when a patient starts declining — not when it\'s too late.',
+      es: 'Coogni analiza las trayectorias cognitivas de tus pacientes y detecta patrones de deterioro hasta 3× antes que una prueba clínica convencional. Te envía alertas automáticas cuando el paciente aún está estable — no cuando ya es tarde.',
+      en: 'Coogni analyzes your patients\' cognitive trajectories and detects decline patterns up to 3× earlier than a conventional clinical test. It sends you automatic alerts while the patient is still stable — not when it\'s too late.',
     },
     trustedBy: { es: 'Confían en nosotros', en: 'Trusted by' },
     formTitle: { es: 'Solicita tu demo gratuita', en: 'Request your free demo' },
@@ -60,7 +60,7 @@ export const translations = {
       reactive: {
         title: { es: 'Siempre llegas tarde', en: 'You always arrive too late' },
         problem: { es: 'Detectas el deterioro cuando ya es irreversible. Las opciones de intervención se han reducido drásticamente.', en: 'You detect decline when it is already irreversible. Intervention options have been drastically reduced.' },
-        solution: { es: 'IA predictiva que detecta patrones de deterioro 3× antes. Alertas automáticas cuando el paciente aún está estable.', en: 'Predictive AI that detects decline patterns 3× earlier. Automatic alerts while the patient is still stable.' },
+        solution: { es: 'IA predictiva que detecta patrones de deterioro hasta 3× antes. Alertas automáticas cuando el paciente aún está estable.', en: 'Predictive AI that detects decline patterns up to 3× earlier. Automatic alerts while the patient is still stable.' },
       },
       insecure: {
         title: { es: 'Pacientes sin hacer nada entre consultas', en: 'Patients doing nothing between appointments' },
@@ -86,7 +86,7 @@ export const translations = {
     exercises: {
       badge: { es: '🎉 GRATIS para todos los pacientes', en: '🎉 FREE for all patients' },
       title: { es: 'Ejercicios Cognitivos', en: 'Cognitive Exercises' },
-      titleHighlight: { es: 'GRATIS PARA TODOS', en: 'FREE FOR EVERYONE' },
+      titleHighlight: { es: 'gratis para todos los pacientes', en: 'free for all patients' },
       desc: {
         es: 'Tus pacientes acceden GRATIS a un catálogo completo de ejercicios de estimulación cognitiva organizados por categoría. Rutinas diarias personalizadas que trabajan entre consultas.',
         en: 'Your patients get FREE access to a complete catalog of cognitive stimulation exercises organized by category. Personalized daily routines that work between appointments.',
@@ -281,7 +281,7 @@ export const translations = {
     },
     clinicLabel: { es: 'Nombre del Centro / Clínica', en: 'Center / Clinic Name' },
     clinicPlaceholder: { es: 'Hospital Universitario...', en: 'University Hospital...' },
-    submit: { es: 'Solicitar demo gratuita + 20% dto.', en: 'Request free demo + 20% off' },
+    submit: { es: 'Solicitar demo gratuita + 20% de descuento', en: 'Request free demo + 20% off' },
     submitting: { es: 'Enviando...', en: 'Submitting...' },
     privacy: {
       es: 'Tus datos están protegidos. Cero spam, solo te avisaremos cuando estemos listos para ti.',
